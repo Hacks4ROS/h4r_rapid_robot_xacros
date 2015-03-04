@@ -3,7 +3,7 @@
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       xmlns:xacro="http://ros.org/wiki/xacro" name="reppy_bot">
+       xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- Constants -->
 <xacro:include filename="$(find rapid_robot_xacros)/defs/constants.xacro"/>
@@ -26,10 +26,8 @@
 <xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/position/gps.xacro"/>
 	
 <!-- Drives -->
-<xacro:include filename="$(find rapid_robot_xacros)/defs/drive/simple_wheel.xacro" />
+<xacro:include filename="$(find rapid_robot_xacros)/defs/drive/wheel_solid.xacro" />
 <xacro:include filename="$(find rapid_robot_xacros)/defs/drive/diff_drive.xacro" />
 
-	
-	
 	
 </robot>

@@ -5,9 +5,9 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 <xacro:include filename="$(find rapid_robot_xacros)/defs/constants.xacro"/>	
-<xacro:include filename="$(find rapid_robot_xacros)/defs/drive/simple_wheel.xacro"/>
+<xacro:include filename="$(find rapid_robot_xacros)/defs/drive/wheel_solid.xacro"/>
 
-<xacro:macro name="diff_drive_setup" 
+<xacro:macro name="rr_diff_drive" 
 	         params="base_frame
 					 robot_namespace
 	                 wheel_base_center_x
@@ -36,7 +36,7 @@
 					 ros_plugin_publish_tf
 	                 ">
 	                 	
-		<xacro:diff_drive_wheel
+		<xacro:rr_wheel_solid
 			                 name="${ros_plugin_controller_name}_wheel_left"
 						     base_frame="${base_frame}"
 			                 radius="${wheel_diameter/2}"
@@ -53,7 +53,7 @@
 							 friction2="${wheel_friction2}" 
 							 />
 	                 	
-		<xacro:diff_drive_wheel
+		<xacro:rr_wheel_solid
                  name="${ros_plugin_controller_name}_wheel_right"
 			     base_frame="${base_frame}"
                  radius="${wheel_diameter/2}"

@@ -6,7 +6,7 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 	
 	<xacro:include filename="$(find rapid_robot_xacros)/defs/constants.xacro"/>
-	<xacro:macro name="simple_full_wheel" 
+	<xacro:macro name="rr_wheel_solid" 
 			         params="name
 						     base_frame
 			                 radius
