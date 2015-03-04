@@ -1,5 +1,5 @@
 <launch>
-	<include file="$(find rapid_robot_xacro)/launch/test_bot_description.xml" />
+	<include file="$(find rapid_robot_xacros)/launch/test_bot_description.xml" />
 	
   	<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
 
@@ -13,7 +13,7 @@
   	
 			<node pkg="rviz" type="rviz" name="rviz" />
 				
-	<include file="$(find rapid_robot_xacros)/launch/my_empty_world.launch">
+	<include file="$(find rapid_robot_xacros)/launch/empty_world.launch">
     <!--<arg name="world_name" value="$(find reppy_bot)/worlds/my.world"/>-->
     </include>
 </launch>
