@@ -1,0 +1,19 @@
+<launch>
+	<include file="$(find rapid_robot_xacro)/launch/test_bot_description.xml" />
+	
+  	<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
+
+    	<param name="publish_frequency" type="double" value="30.0"/>
+
+    	<param name="tf_prefix" type="string" value=""/>
+  	</node>
+	<!--<node pkg="reppy_bot_urdf" type="publisher_urdf" name="reppy_bot_publisher" output="screen">
+	</node>-->
+    <node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -urdf -param robot_description -model robot_description" respawn="false" />
+  	
+			<node pkg="rviz" type="rviz" name="rviz" />
+				
+	<include file="$(find rapid_robot_xacros)/launch/my_empty_world.launch">
+    <!--<arg name="world_name" value="$(find reppy_bot)/worlds/my.world"/>-->
+    </include>
+</launch>

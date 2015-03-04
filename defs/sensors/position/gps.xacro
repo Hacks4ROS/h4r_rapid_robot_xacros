@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro"
+> 
+<!-- Example -->		
+<!--
+	<xacro:rr_gps_receiver  
+		name="gps0"
+	 	robot_namespace="${robot_namespace}"
+		parent_link="chassis"
+		x="0" y="0" z="0"
+		frame_id="world"
+		topic_name="/fix"
+		velocity_topic_name="/fix_vel"
+		reference_latitude="49"
+		reference_longitude="8"
+		reference_heading="0"
+		reference_altitude="0"/> 
+-->
+<xacro:macro name="rr_gps_receiver" 
+params= "name
+		 robot_namespace
+		 frame_id
+		 topic_name
+		 parent_link
+		 x y z
+		 velocity_topic_name
+		 reference_latitude
+		 reference_longitude
+		 reference_heading
+		 reference_altitude
+		">		 
+	<link name="${name}_receiver_link">	
+		<visual>
+			<geometry>
+				<box size="0.04 0.04 0.04" />
+			</geometry>
+			<material name="Blue">
+				<color rgba="0 0 1 1"/>
+			</material>
+		</visual>
+	</link>
+	
+	<joint name="${name}_receiver_joint" type="fixed">
+		<parent link="${parent_link}" />
+		<child link="${name}_receiver_link" />
+		<origin xyz="${x} ${y} ${z}" rpy="0 0 0" />
+	</joint>
+	
+<gazebo>
+	<plugin name="${name}_controller" 
+		    filename="libhector_gazebo_ros_gps.so">
+		<robotNamespace>${robot_namespace}</robotNamespace>
+		<bodyName>${name}_receiver_link</bodyName>
+		<frameId>${frame_id}</frameId>
+		<topicName>${topic_name}</topicName>
+		<velocityTopicName>${velocity_topic_name}</velocityTopicName>
+		<referenceLatitude>${reference_latitude}</referenceLatitude>
+		<referenceLongitude>${reference_longitude}</referenceLongitude>
+		<referenceHeading>${reference_heading}</referenceHeading>
+		<referenceAltitude>${reference_altitude}</referenceAltitude>
+	</plugin>
+</gazebo>  
+</xacro:macro>	
+</robot>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- Example 
+	Inertial tags must be there but they can be empty when has_inertia is false 
+ -->
+<!--
+<xacro:rr_bumper name="bumper0" 
+              parent="chassis" 
+              always_on="true" 
+              update_rate="30" 
+	          topic="bumper0" 
+              has_inertia="false">
+	<origin xyz="${chassis_len/2} ${chassis_width/2} 0" rpy="0 0 0" />
+	
+	<geometry>
+		<box size="0.1 0.1 0.1" />
+	</geometry>
+	<material name="Green">
+		<color rgba="0 1 0 0.5"/>		
+	</material>
+	<inertial>
+		
+	</inertial>
+</xacro:bumper>	
+<gazebo reference="bumper0">
+	<material value="Gazebo/FlatBlack" />
+</gazebo>
+-->
+	       	
+<xacro:macro name="rr_bumper" 
+	params="name parent has_inertia always_on update_rate topic *origin *geometry *material *inertial">	
+
+	<link name="${name}">
+		
+	 
+	  
+	  <visual> 	  	
+	      <xacro:insert_block name="geometry" />
+		  <xacro:insert_block name="material" />      
+	  </visual>
+      <collision name="${name}_collision">
+	  	  	<xacro:insert_block name="geometry" />
+	  </collision>
+	  
+	  <xacro:if value="${has_inertia}">
+		<xacro:insert_block name="inertial" />
+	  </xacro:if>
+	  
+	</link>	
+	
+	<joint name="${name}_${parent}_joint" type="fixed">
+		<parent link="${parent}" />
+		<child link="${name}" />
+		<xacro:insert_block name="origin" />
+	</joint> 	
+	
+	<gazebo reference="${name}">
+	  <sensor name="${name}_sensor" type="contact">
+	    <always_on>${always_on}</always_on>
+	    <update_rate>${update_rate}</update_rate>
+	    <contact>
+	      <collision>${name}_collision</collision>
+	    </contact>
+	    <plugin name="${name}_plugin" filename="libgazebo_ros_bumper.so">
+	      <bumperTopicName>${topic}</bumperTopicName>
+	      <frameName>${name}</frameName>
+	    </plugin>
+	  </sensor>
+	</gazebo>
+	
+</xacro:macro>  
+
+
+</robot>

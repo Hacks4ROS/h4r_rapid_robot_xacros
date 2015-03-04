@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro"
+>
+	
+<!-- Example -->
+<!--
+<xacro:rr_imu 	
+		name="imu0"
+	 	robot_namespace=""
+		topic_name="/imu"
+		parent_link="chassis"
+		x="${wheel_base_center_x}"
+		y="0"
+		z="0"
+		roll="0"
+		pitch="0"
+		yaw="0"
+		gaussian_noise="2.89e-08"
+		imu_x="0"
+		imu_y="0"
+		imu_z="0"
+		imu_roll="0"
+		imu_pitch="0"
+		imu_yaw="0"
+		/> 
+-->
+<xacro:macro name="rr_imu" params="name
+								robot_namespace
+								topic_name
+								parent_link
+								x y z roll pitch yaw
+								gaussian_noise
+								imu_x imu_y imu_z imu_roll imu_pitch imu_yaw
+								">	
+	
+<link name="${name}_link">	
+	<visual>
+		<geometry>
+			<box size="0.02 0.02 0.02" />
+		</geometry>
+		<material name="Yellow">
+			<color rgba="1 1 0 1"/>
+		</material>
+	</visual>
+</link>
+
+<joint name="${name}_joint" type="fixed">
+	<parent link="${parent_link}" />
+	<child link="${name}_link" />
+	<origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}" />
+</joint>
+	
+<gazebo>
+	  <plugin name="imu{id}_controller" filename="libgazebo_ros_imu.so">
+			<robotNamespace>${robot_namespace}</robotNamespace>
+			<bodyName>${name}_link</bodyName>
+			<topicName>${topic_name}</topicName>
+			<gaussianNoise>${gaussian_noise}</gaussianNoise>
+			<xyzOffsets>0 0 0</xyzOffsets>
+			<rpyOffsets>0 0 0</rpyOffsets>
+	  </plugin>
+</gazebo>
+</xacro:macro>
+
+</robot>

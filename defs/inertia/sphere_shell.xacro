@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro"
+>
+ <xacro:macro name="rr_inertia_sphere_shell" params="r r_i mass *origin">
+    <inertial>
+      <mass value="${mass}" />
+      <xacro:insert_block name="origin" />
+      <inertia ixx="${(2/5) * mass * (r*r*r*r*r - r_i*r_i*r_i*r_i*r_i)/(r*r*r - r_i*r_i*r_i)}" ixy="0.0" ixz="0.0"
+        iyy="${(2/5) * mass * (r*r*r*r*r - r_i*r_i*r_i*r_i*r_i)/(r*r*r - r_i*r_i*r_i)}" iyz="0.0"
+        izz="${(2/5) * mass * (r*r*r*r*r - r_i*r_i*r_i*r_i*r_i)/(r*r*r - r_i*r_i*r_i)}" />
+    </inertial>
+</xacro:macro>
+</robot>
