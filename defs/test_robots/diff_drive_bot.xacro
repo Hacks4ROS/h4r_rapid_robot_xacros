@@ -20,12 +20,16 @@
 <xacro:property name="caster_collision_x"      value="${chassis_len/(1.618*2)}"        />
 <xacro:property name="robot_namespace" value="/" />
 
+<xacro:property name="chassis_center" value="${chassis_floor_clearance+chassis_height/2}" />
+	
 <!--CHASSIS-->
-<link name="chassis">
-	 <xacro:rr_inertia_box_solid x="${chassis_len}" y="${chassis_width}" z="${chassis_height}" mass="1">
-      <origin xyz="0 0 ${chassis_floor_clearance}" rpy="0 0 0" />
+<link name="base_link">
+
+	<xacro:rr_inertia_box_solid x="${chassis_len}" y="${chassis_width}" z="${chassis_height}" mass="1">
+      	 <origin xyz="0 0 ${chassis_center}" rpy="0 0 0" />
     </xacro:rr_inertia_box_solid>
 	<visual>
+		<origin xyz="0 0 ${chassis_center}" rpy="0 0 0" />
 		<geometry>
 			<box size="${chassis_len} ${chassis_width} ${chassis_height}" />
 		</geometry>
@@ -34,6 +38,7 @@
 		</material>
 	</visual>
 	<collision>
+		<origin xyz="0 0 ${chassis_center}" rpy="0 0 0" />
 		<geometry>
 			<box size="${chassis_len} ${chassis_width} ${chassis_height}" />
 		</geometry>
@@ -41,13 +46,13 @@
 	</collision>
 </link>
 
-<gazebo reference="chassis">
+<gazebo reference="base_link">
 	<material value="Gazebo/Green"/>
 </gazebo>
 
-<!-- Bumper -->
-<xacro:rr_bumper name="bumper0" parent="chassis" always_on="true" update_rate="30" topic="bumper0"  has_inertia="true">
-	<origin xyz="${chassis_len/2} ${chassis_width/2} 0" rpy="0 0 0" />
+<!-- Bumper --> 
+<xacro:rr_bumper name="bumper0" parent="base_link" always_on="true" update_rate="30" topic="bumper0"  has_inertia="true">
+	<origin xyz="${chassis_len/2} ${chassis_width/2} ${chassis_center}" rpy="0 0 0" />
 	
 	<geometry>
 		<box size="0.02 0.02 ${chassis_height}" />
@@ -64,8 +69,8 @@
 </gazebo>
 
 
-<xacro:rr_bumper name="bumper1" parent="chassis" always_on="true" update_rate="30" topic="bumper1"  has_inertia="true">
-	<origin xyz="${chassis_len/2} -${chassis_width/2} 0" rpy="0 0 0" />
+<xacro:rr_bumper name="bumper1" parent="base_link" always_on="true" update_rate="30" topic="bumper1"  has_inertia="true">
+	<origin xyz="${chassis_len/2} -${chassis_width/2} ${chassis_center}" rpy="0 0 0" />
 	
 	<geometry>
 		<box size="0.02 0.02 ${chassis_height}" />
@@ -82,8 +87,8 @@
 </gazebo>
 
 
-<xacro:rr_bumper name="bumper2" parent="chassis" always_on="true" update_rate="30" topic="bumper2"  has_inertia="true">
-	<origin xyz="${chassis_len/2} 0 -${chassis_height/4}" rpy="0 0 0" />
+<xacro:rr_bumper name="bumper2" parent="base_link" always_on="true" update_rate="30" topic="bumper2"  has_inertia="true">
+	<origin xyz="${chassis_len/2} 0 ${chassis_center-chassis_height/4}" rpy="0 0 0" />
 	
 	<geometry>
 		<box size="0.02 ${chassis_width-0.04} 0.02" />
@@ -95,6 +100,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:inertia_box>
 </xacro:rr_bumper>	
+
 <gazebo reference="bumper2"> 
 	<material value="Gazebo/FlatBlack" />
 </gazebo>
@@ -132,14 +138,14 @@
 	<material value="Gazebo/FlatBlack"/>
 </gazebo>
 <joint name="base_caster_col_joint" type="fixed">
-	<parent link="chassis" />
+	<parent link="base_link" />
 	<child link="caster_collision" />
-	<origin xyz="${caster_collision_x} 0 ${-(chassis_height/2)}" rpy="0 0 0" />
+	<origin xyz="${caster_collision_x} 0 ${chassis_center-(chassis_height/2)}" rpy="0 0 0" />
 </joint>
 
 <!-- Drive -->
 <xacro:rr_diff_drive
-	 base_frame="chassis"
+	 base_frame="base_link"
 	 robot_namespace="${robot_namespace}"
 	 wheel_base_center_x="${wheel_base_center_x}"
      wheel_separation ="${chassis_width}"
@@ -154,7 +160,7 @@
 	 wheel_contact_damping="100.0"
      wheel_contact_stiffness="1000000.0"
 	 wheel_mass="3"
-	 z_dist="${-((chassis_floor_clearance+chassis_height/2)-(wheel_diameter/2))}"
+	 z_dist="${chassis_center-((chassis_floor_clearance+chassis_height/2)-(wheel_diameter/2))}"
      cmd_topic="/cmd_vel"
 	 odom_topic="odom"
      odom_frame="odom"
@@ -166,7 +172,109 @@
 	 ros_plugin_publish_wheel_tf="true"
 	 ros_plugin_publish_tf="1" />      	
 
+<!-- GPS -->
+	<xacro:rr_gps_receiver  
+		name="gps0"
+	 	robot_namespace="${robot_namespace}"
+		parent_link="base_link"
+		frame_id="world"
+		topic_name="/fix"
+		velocity_topic_name="/fix_vel"
+		reference_latitude="49"
+		reference_longitude="8"
+		reference_heading="0"
+		reference_altitude="0"
+		has_inertia="true">
+	    <origin xyz="${-(chassis_len/2-0.04/2)} ${chassis_width/2-0.015} 
+                     ${chassis_center+chassis_height/2+0.02/2}" 
+	                 rpy="0 0 0" />
+		<geometry>
+			<box size="0.04 0.03 0.02" />
+		</geometry>
+		<material name="Black">
+			<color rgba="0 0 0 1"/>		
+		</material>
+		 <xacro:inertia_box x="0.02" y="0.02" z="0.04" mass="0.1">
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	    </xacro:inertia_box>
+	</xacro:rr_gps_receiver>
+	<gazebo reference="gps0">
+		<material value="Gazebo/FlatBlack" />
+	</gazebo>
+<!-- IMU -->
+<xacro:rr_imu 	
+		name="imu0"
+	 	robot_namespace=""
+		topic_name="/imu"
+		parent_link="base_link"
+		gaussian_noise="2.89e-08"
+		imu_x="0"
+		imu_y="0"
+		imu_z="0"
+		imu_roll="0"
+		imu_pitch="0"
+		imu_yaw="0"
+		has_inertia="false"
+		>
+		<origin xyz="${wheel_base_center_x} 
+                       0 
+		             ${chassis_center-((chassis_floor_clearance+
+                       chassis_height/2)-(wheel_diameter/2))}" rpy="0 0 0" />
+		<geometry>
+			<box size="0.02 0.02 0.02" />
+		</geometry>
+		<material name="Yellow">
+			<color rgba="1 1 0 1"/>		
+		</material>
+		 <inertial/>
+	</xacro:rr_imu>
+			
+<!-- CAMERA
+<xacro:rr_cam
+		name             ="cam0"
+	 	robot_namespace  ="${robot_namespace}"
+		parent_link      ="base_link"  
+		x                ="${chassis_len/2}" 
+	    y                ="0" 
+        z                ="0" 
+        roll             ="0" 
+        pitch            ="-0.01" 
+        yaw              ="0"
+		always_on        ="true"
+		frame_name       ="camera0"
+		image_width      ="640"
+		image_height     ="480"
+		image_format     ="R8G8B8"
+		clip_near        ="0.02"
+		clip_far         ="300"
+		noise_type       ="gaussian"
+		noise_mean       ="0.0"
+		noise_std_dev    ="0.007"
+		fov              ="0.873"
+		hack_baseline    ="0.07"
+		dist_K1          ="0.0"
+		dist_K2          ="0.0"
+		dist_K3          ="0.0"
+		dist_T1          ="0.0"
+		dist_T2          ="0.0"
+		update_rate      ="30" 
+        />	 -->
 
-
+        	
+<!-- LIDAR
+<xacro:rplidar id="0"
+	 	robot_namespace="${robot_namespace}"
+		topic_name="/laser/scan"
+		frame_name="laser"
+		parent_link="base_link"
+		x="0" 
+        y="0" 
+        z="${chassis_height/2}"
+	    roll="0" 
+	    pitch="0" 
+        yaw="0" 
+		update_rate="5.5"
+		visualize="false" />	
+ -->
 </robot>
 											

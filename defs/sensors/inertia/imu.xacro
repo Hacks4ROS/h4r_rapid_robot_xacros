@@ -8,50 +8,46 @@
 	
 <!-- Example -->
 <!--
-<xacro:rr_imu 	
-		name="imu0"
-	 	robot_namespace=""
-		topic_name="/imu"
-		parent_link="chassis"
-		x="${wheel_base_center_x}"
-		y="0"
-		z="0"
-		roll="0"
-		pitch="0"
-		yaw="0"
-		gaussian_noise="2.89e-08"
-		imu_x="0"
-		imu_y="0"
-		imu_z="0"
-		imu_roll="0"
-		imu_pitch="0"
-		imu_yaw="0"
-		/> 
+
 -->
 <xacro:macro name="rr_imu" params="name
 								robot_namespace
 								topic_name
 								parent_link
-								x y z roll pitch yaw
 								gaussian_noise
-								imu_x imu_y imu_z imu_roll imu_pitch imu_yaw
+								imu_x 
+								imu_y 
+								imu_z 
+								imu_roll 
+								imu_pitch 
+								imu_yaw 	     
+	                            has_inertia 
+							    *origin 
+							    *geometry 
+							    *material 
+							    *inertial
 								">	
 	
 <link name="${name}_link">	
-	<visual>
-		<geometry>
-			<box size="0.02 0.02 0.02" />
-		</geometry>
-		<material name="Yellow">
-			<color rgba="1 1 0 1"/>
-		</material>
-	</visual>
-</link>
+
+  <visual> 	  	
+      <xacro:insert_block name="geometry" />
+	  <xacro:insert_block name="material" />      
+  </visual>
+  <collision name="${name}_collision">
+  	  	<xacro:insert_block name="geometry" />
+  </collision>
+  
+  <xacro:if value="${has_inertia}">
+	<xacro:insert_block name="inertial" />
+  </xacro:if>
+  
+</link>	
 
 <joint name="${name}_joint" type="fixed">
 	<parent link="${parent_link}" />
 	<child link="${name}_link" />
-	<origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}" />
+	<xacro:insert_block name="origin" />
 </joint>
 	
 <gazebo>
@@ -60,8 +56,8 @@
 			<bodyName>${name}_link</bodyName>
 			<topicName>${topic_name}</topicName>
 			<gaussianNoise>${gaussian_noise}</gaussianNoise>
-			<xyzOffsets>0 0 0</xyzOffsets>
-			<rpyOffsets>0 0 0</rpyOffsets>
+			<xyzOffsets>${imu_x} ${imu_y} ${imu_z}</xyzOffsets>
+			<rpyOffsets>${imu_roll} ${imu_pitch} ${imu_yaw}</rpyOffsets>
 	  </plugin>
 </gazebo>
 </xacro:macro>

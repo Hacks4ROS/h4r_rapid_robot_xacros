@@ -32,7 +32,7 @@
 -->
 	       	
 <xacro:macro name="rr_bumper" 
-	params="name parent has_inertia always_on update_rate topic *origin *geometry *material *inertial">	
+	params="name parent always_on update_rate topic has_inertia *origin *geometry *material *inertial">	
 
 	<link name="${name}">
 		
