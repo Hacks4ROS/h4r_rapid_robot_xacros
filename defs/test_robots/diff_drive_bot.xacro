@@ -176,7 +176,6 @@
 	<xacro:rr_gps_receiver  
 		name="gps0"
 	 	robot_namespace="${robot_namespace}"
-		parent_link="base_link"
 		frame_id="world"
 		topic_name="/fix"
 		velocity_topic_name="/fix_vel"
@@ -184,6 +183,7 @@
 		reference_longitude="8"
 		reference_heading="0"
 		reference_altitude="0"
+		parent="base_link"
 		has_inertia="true">
 	    <origin xyz="${-(chassis_len/2-0.04/2)} ${chassis_width/2-0.015} 
                      ${chassis_center+chassis_height/2+0.02/2}" 
@@ -198,15 +198,13 @@
 	      <origin xyz="0 0 0" rpy="0 0 0" />
 	    </xacro:inertia_box>
 	</xacro:rr_gps_receiver>
-	<gazebo reference="gps0">
-		<material value="Gazebo/FlatBlack" />
-	</gazebo>
+	<xacro:rr_gaz_mat_s name="gps0" material="Gazebo/FlatBlack"/>
+
 <!-- IMU -->
 <xacro:rr_imu 	
 		name="imu0"
 	 	robot_namespace=""
 		topic_name="/imu"
-		parent_link="base_link"
 		gaussian_noise="2.89e-08"
 		imu_x="0"
 		imu_y="0"
@@ -214,6 +212,7 @@
 		imu_roll="0"
 		imu_pitch="0"
 		imu_yaw="0"
+		parent="base_link"
 		has_inertia="false"
 		>
 		<origin xyz="${wheel_base_center_x} 
@@ -228,18 +227,12 @@
 		</material>
 		 <inertial/>
 	</xacro:rr_imu>
+	<xacro:rr_gaz_mat_s name="imu0" material="Gazebo/Yellow"/>
 			
-<!-- CAMERA
+<!-- CAMERA  -->
 <xacro:rr_cam
 		name             ="cam0"
 	 	robot_namespace  ="${robot_namespace}"
-		parent_link      ="base_link"  
-		x                ="${chassis_len/2}" 
-	    y                ="0" 
-        z                ="0" 
-        roll             ="0" 
-        pitch            ="-0.01" 
-        yaw              ="0"
 		always_on        ="true"
 		frame_name       ="camera0"
 		image_width      ="640"
@@ -258,8 +251,21 @@
 		dist_T1          ="0.0"
 		dist_T2          ="0.0"
 		update_rate      ="30" 
-        />	 -->
-
+		parent           ="base_link"
+	    has_inertia      ="false"
+		>  
+		<origin xyz="${chassis_len/2} 
+                     0 
+		             ${chassis_center}" rpy="0 0 0" />
+		<geometry>
+			<box size="0.02 0.02 0.02" />
+		</geometry>
+		<material name="Yellow">
+			<color rgba="0 0 0 1"/>		
+		</material>
+		 <inertial/>
+        </xacro:rr_cam>	 
+		<xacro:rr_gaz_mat_s name="cam0" material="Gazebo/FlatBlack"/>
         	
 <!-- LIDAR
 <xacro:rplidar id="0"

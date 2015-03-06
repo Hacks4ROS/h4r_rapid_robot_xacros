@@ -4,93 +4,78 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:include filename="$(find rapid_robot_xacros)/defs/constants.xacro"/>		
+<xacro:include filename="$(find rapid_robot_xacros)/defs/geometry/geo_ins.xacro"/>
 <!-- Example -->
 <!-- 
 <xacro:rr_cam
-		name             ="cam0"
-	 	robot_namespace  ="${robot_namespace}"
-		parent_link      ="chassis"  
-		x                ="${chassis_len/2}" 
-	    y                ="0" 
-        z                ="0" 
-        roll             ="0" 
-        pitch            ="-0.01" 
-        yaw              ="0"
-		always_on        ="true"
-		frame_name       ="camera0"
-		image_width      ="640"
-		image_height     ="480"
-		image_format     ="R8G8B8"
-		clip_near        ="0.02"
-		clip_far         ="300"
-		noise_type       ="gaussian"
-		noise_mean       ="0.0"
-		noise_std_dev    ="0.007"
-		fov              ="0.873"
-		hack_baseline    ="0.07"
-		dist_K1          ="0.0"
-		dist_K2          ="0.0"
-		dist_K3          ="0.0"
-		dist_T1          ="0.0"
-		dist_T2          ="0.0"
-		update_rate      ="30" 
-        />	
+	name             ="cam0"
+ 	robot_namespace  ="${robot_namespace}"
+	always_on        ="true"
+	frame_name       ="camera0"
+	image_width      ="640"
+	image_height     ="480"
+	image_format     ="R8G8B8"
+	clip_near        ="0.02"
+	clip_far         ="300"
+	noise_type       ="gaussian"
+	noise_mean       ="0.0"
+	noise_std_dev    ="0.007"
+	fov              ="0.873"
+	hack_baseline    ="0.07"
+	dist_K1          ="0.0"
+	dist_K2          ="0.0"
+	dist_K3          ="0.0"
+	dist_T1          ="0.0"
+	dist_T2          ="0.0"
+	update_rate      ="30" 
+	parent           ="base_link"
+    has_inertia      ="false"
+	>  
+	<origin xyz="${chassis_len/2} 
+                 0 
+	             ${chassis_center}" rpy="0 0 0" />
+	<geometry>
+		<box size="0.02 0.02 0.02" />
+	</geometry>
+	<material name="Yellow">
+		<color rgba="0 0 0 1"/>		
+	</material>
+	 <inertial/>
+    </xacro:rr_cam>	 
+	<xacro:rr_gaz_mat_s name="cam0" material="Gazebo/FlatBlack"/>
 -->
+			
+<xacro:macro name="rr_cam" 
+	params="
+			name
+			robot_namespace
+			always_on
+			frame_name
+			image_width
+			image_height
+			image_format
+			clip_near
+			clip_far
+			noise_type
+			noise_mean
+			noise_std_dev
+			fov
+			hack_baseline
+			dist_K1
+			dist_K2
+			dist_K3
+			dist_T1
+			dist_T2
+			update_rate
+			parent
+	        has_inertia 
+		    *origin 
+		    *geometry 
+		    *material 
+		    *inertial
+	        ">
 	
-	
-<xacro:macro name="rr_cam" params="
-	 							name
-	 							robot_namespace
-								parent_link
-								x y z roll pitch yaw
-								always_on
-								frame_name
-								image_width
-								image_height
-								image_format
-								clip_near
-								clip_far
-								noise_type
-								noise_mean
-								noise_std_dev
-								fov
-								hack_baseline
-								dist_K1
-								dist_K2
-								dist_K3
-								dist_T1
-								dist_T2
-								update_rate
-	                            ">
-	
-<link name="${name}_link">
-	<visual>
-		<origin xyz="0 0 0" 
-		        rpy="0 0 0"/>
-		<geometry>
-			<box size="0.02 0.02 0.02" />
-		</geometry>
-		<material name="Black">
-			<color rgba="0.0 0.0 0.0 1.0"/>
-		</material>
-	</visual>
-	
-	<collision>
-		<origin xyz="0 0 0" 
-		        rpy="0 0 0"/>
-		<geometry>
-			<box size="0.02 0.02 0.02" />
-		</geometry>
-	</collision>
-</link>
-
-<joint name="${name}_joint" type="fixed">
-	<origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}"/>
-	<parent link="${parent_link}"/>
-	<child link="${name}_link"/>
-</joint>
-
+<xacro:rr_geo_ins/>
 <gazebo reference="${name}_link">
 	<material value="Gazebo/FlatBlack" />
 	<sensor type="camera" name="${name}">

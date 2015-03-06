@@ -5,15 +5,40 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro"
 >
-	
+<xacro:include filename="$(find rapid_robot_xacros)/defs/geometry/geo_ins.xacro"/>		
+		
 <!-- Example -->
 <!--
-
+<xacro:rr_imu 	
+	name="imu0"
+ 	robot_namespace=""
+	topic_name="/imu"
+	gaussian_noise="2.89e-08"
+	imu_x="0"
+	imu_y="0"
+	imu_z="0"
+	imu_roll="0"
+	imu_pitch="0"
+	imu_yaw="0"
+	parent="base_link"
+	has_inertia="false"
+	>
+	<origin xyz="${wheel_base_center_x} 
+                   0 
+	             ${chassis_center-((chassis_floor_clearance+
+                   chassis_height/2)-(wheel_diameter/2))}" rpy="0 0 0" />
+	<geometry>
+		<box size="0.02 0.02 0.02" />
+	</geometry>
+	<material name="Yellow">
+		<color rgba="1 1 0 1"/>		
+	</material>
+	 <inertial/>
+</xacro:rr_imu>
 -->
 <xacro:macro name="rr_imu" params="name
 								robot_namespace
 								topic_name
-								parent_link
 								gaussian_noise
 								imu_x 
 								imu_y 
@@ -21,6 +46,7 @@
 								imu_roll 
 								imu_pitch 
 								imu_yaw 	     
+								parent
 	                            has_inertia 
 							    *origin 
 							    *geometry 
@@ -28,28 +54,7 @@
 							    *inertial
 								">	
 	
-<link name="${name}_link">	
-
-  <visual> 	  	
-      <xacro:insert_block name="geometry" />
-	  <xacro:insert_block name="material" />      
-  </visual>
-  <collision name="${name}_collision">
-  	  	<xacro:insert_block name="geometry" />
-  </collision>
-  
-  <xacro:if value="${has_inertia}">
-	<xacro:insert_block name="inertial" />
-  </xacro:if>
-  
-</link>	
-
-<joint name="${name}_joint" type="fixed">
-	<parent link="${parent_link}" />
-	<child link="${name}_link" />
-	<xacro:insert_block name="origin" />
-</joint>
-	
+<xacro:rr_geo_ins/>
 <gazebo>
 	  <plugin name="imu{id}_controller" filename="libgazebo_ros_imu.so">
 			<robotNamespace>${robot_namespace}</robotNamespace>

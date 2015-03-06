@@ -5,12 +5,12 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro"
 > 
+<xacro:include filename="$(find rapid_robot_xacros)/defs/geometry/geo_ins.xacro"/>
 <!-- Example -->	
 <!--
 	<xacro:rr_gps_receiver  
 		name="gps0"
 	 	robot_namespace="${robot_namespace}"
-		parent_link="base_link"
 		frame_id="world"
 		topic_name="/fix"
 		velocity_topic_name="/fix_vel"
@@ -18,6 +18,7 @@
 		reference_longitude="8"
 		reference_heading="0"
 		reference_altitude="0"
+		parent="base_link"
 		has_inertia="true">
 	    <origin xyz="0 0 0" rpy="0 0 0" />
 		<geometry>
@@ -39,39 +40,20 @@ params= "name
 		 robot_namespace
 		 frame_id
 		 topic_name
-		 parent_link
 		 velocity_topic_name
 		 reference_latitude
 		 reference_longitude
 		 reference_heading
 		 reference_altitude
+		 parent
 	     has_inertia 
 	     *origin 
 	     *geometry 
 	     *material 
 	     *inertial
 		">		 
-<link name="${name}_link">	
 
-  <visual> 	  	
-      <xacro:insert_block name="geometry" />
-	  <xacro:insert_block name="material" />      
-  </visual>
-  <collision name="${name}_collision">
-  	  	<xacro:insert_block name="geometry" />
-  </collision>
-  
-  <xacro:if value="${has_inertia}">
-	<xacro:insert_block name="inertial" />
-  </xacro:if>
-  
-</link>	
-
-<joint name="${name}_joint" type="fixed">
-	<parent link="${parent_link}" />
-	<child link="${name}_link" />
-	<xacro:insert_block name="origin" />
-</joint>
+<xacro:rr_geo_ins/>
 	
 <gazebo>
 	<plugin name="${name}_controller" 
