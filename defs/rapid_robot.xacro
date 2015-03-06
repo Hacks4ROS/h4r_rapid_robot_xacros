@@ -9,8 +9,11 @@
 <xacro:include filename="$(find rapid_robot_xacros)/defs/constants.xacro"/>
 
 <!-- Geometry -->
+<xacro:include filename="$(find rapid_robot_xacros)/defs/geometry/geo_ins.xacro"/>
 
-	
+<!-- Material -->
+<xacro:include filename="$(find rapid_robot_xacros)/defs/material/gazebo_simple.xacro"/>
+
 <!-- Inertia -->
 <xacro:include filename="$(find rapid_robot_xacros)/defs/inertia/box_solid.xacro"/> 
 <xacro:include filename="$(find rapid_robot_xacros)/defs/inertia/cylinder_solid.xacro"/> 
