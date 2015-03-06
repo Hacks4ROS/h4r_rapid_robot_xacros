@@ -4,10 +4,25 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 	
-<xacro:macro name="rr_gaz_mat_s" params="name material">
-   <gazebo reference="${name}_link">
+<xacro:macro name="rr_mat_gaz" params="name material">
+   <gazebo reference="${link}_link">
 	<material value="${material}" />
    </gazebo>
+</xacro:macro>
+
+<xacro:macro name="rr_mat_color_def" params="color rgba">
+	<material name="rr_m_${color}">
+		<color rgba="${rgba}"/>
+	</material>	
+</xacro:macro> 
+
+<!-- predefine color macro -->
+<xacro:macro name="rr_mat_gaz_color_def" params="color material">
+<!--	<xacro:macro name="rr_mat_gaz_${color}" params="name material">
+	   <gazebo reference="${name}_link">
+		<material value="${material}" />
+	   </gazebo>
+	</xacro:macro>-->
 </xacro:macro>
 
 </robot>

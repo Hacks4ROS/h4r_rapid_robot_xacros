@@ -13,6 +13,7 @@
 
 <!-- Material -->
 <xacro:include filename="$(find rapid_robot_xacros)/defs/material/gazebo_simple.xacro"/>
+<xacro:include filename="$(find rapid_robot_xacros)/defs/material/rr_mats.xacro"/>
 
 <!-- Inertia -->
 <xacro:include filename="$(find rapid_robot_xacros)/defs/inertia/box_solid.xacro"/> 

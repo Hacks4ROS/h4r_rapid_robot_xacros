@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- Gazebo Colors -->
+<xacro:rr_mat_gaz_color_def color="green" material="Gazebo/Green" />
+<xacro:rr_mat_gaz_color_def color="black" material="Gazebo/FlatBlack" />
+
+<!-- URDF colors -->
+<xacro:rr_mat_color_def color="green" rgba="0 1 0 1" />
+<xacro:rr_mat_color_def color="green_tp" rgba="0 1 0 .5" />
+<xacro:rr_mat_color_def color="black" rgba="0 0 0 1" />
+	
+</robot>
+	
