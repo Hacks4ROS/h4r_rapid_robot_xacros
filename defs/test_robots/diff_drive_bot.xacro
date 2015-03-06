@@ -124,7 +124,6 @@
 <!-- Drive -->
 <xacro:rr_diff_drive
 	 base_frame="base_link"
-	 robot_namespace="${robot_namespace}"
 	 wheel_base_center_x="${wheel_base_center_x}"
      wheel_separation ="${chassis_width}"
      wheel_diameter="${wheel_diameter}"
@@ -210,7 +209,6 @@
 <!-- CAMERA  -->
 <xacro:rr_cam
 		name             ="cam0"
-	 	robot_namespace  ="${robot_namespace}"
 		always_on        ="true"
 		frame_name       ="camera0"
 		image_width      ="640"
