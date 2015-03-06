@@ -260,7 +260,7 @@
 		<geometry>
 			<box size="0.02 0.02 0.02" />
 		</geometry>
-		<material name="Yellow">
+		<material name="Black">
 			<color rgba="0 0 0 1"/>		
 		</material>
 		 <inertial/>
