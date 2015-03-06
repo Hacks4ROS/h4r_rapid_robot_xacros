@@ -22,7 +22,7 @@
 
 <!-- Sensors -->
 <xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/contact/bumper.xacro"/>
-<xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/distance/rplidar.xacro"/> 
+<xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/distance/laser_scanner_2d.xacro"/> 
 <xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/distance/sonar.xacro"/>
 <xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/imaging/camera.xacro"/>
 <xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/inertia/imu.xacro"/>
@@ -32,5 +32,4 @@
 <xacro:include filename="$(find rapid_robot_xacros)/defs/drive/wheel_solid.xacro" />
 <xacro:include filename="$(find rapid_robot_xacros)/defs/drive/diff_drive.xacro" />
 
-	
 </robot>
