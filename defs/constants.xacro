@@ -8,5 +8,5 @@
        <xacro:property name="debugLevel" value="1"/>  
        		
        <!-- Pi -->
-	   <xacro:property name="const_pi" value="3.1415926535897931"/>       	
+	   <xacro:property name="rr_const_pi" value="3.1415926535897931"/>       	
 </robot>

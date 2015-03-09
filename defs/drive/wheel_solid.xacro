@@ -23,7 +23,7 @@
 		<link name="${name}">
 		<inertial> 
 			<mass value="${mass}"/>	
-			<origin xyz="0 0 0" rpy="${const_pi/2} 0 0" />			
+			<origin xyz="0 0 0" rpy="${rr_const_pi/2} 0 0" />			
 		    <inertia  ixx="${1/4*mass*radius*radius+1/12*mass+width*width}"  
                       iyy="${1/4*mass*radius*radius+1/12*mass+width*width}" 
                       izz="${1/2*mass*radius*radius}"
@@ -31,7 +31,7 @@
 		    </inertial>			
 		<visual>
 			<origin xyz="0 0 0" 
-			        rpy="${const_pi/2} 0 0"/>
+			        rpy="${rr_const_pi/2} 0 0"/>
 			<geometry>
 				<cylinder radius="${radius}" length="${width}"/>
 			</geometry>
@@ -42,7 +42,7 @@
 		
 		<collision>
 			<origin xyz="0 0 0"  
-			        rpy="${const_pi/2} 0 0"/>
+			        rpy="${rr_const_pi/2} 0 0"/>
 			<geometry>
 				<cylinder radius="${radius}" length="${width}"/>
 			</geometry>
