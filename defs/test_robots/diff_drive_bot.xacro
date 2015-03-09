@@ -18,36 +18,34 @@
 <xacro:property name="wheel_width"             value="${chassis_width/(16.18)}"        />  
 <xacro:property name="wheel_base_center_x"     value="${chassis_len/(-1.618*3)}"       />  
 <xacro:property name="caster_collision_x"      value="${chassis_len/(1.618*2)}"        />
-<xacro:property name="robot_namespace" value="/" />
 
-<xacro:property name="chassis_center" value="${chassis_floor_clearance+chassis_height/2}" />
+<xacro:property name="chassis_center_z" value="${chassis_floor_clearance+chassis_height/2}" />
+	
 	
 <!--CHASSIS-->
 <link name="base_link">
-
 	<xacro:rr_inertia_box_solid x="${chassis_len}" y="${chassis_width}" z="${chassis_height}" mass="1">
-      	 <origin xyz="0 0 ${chassis_center}" rpy="0 0 0" />
+      	 <origin xyz="-${-wheel_base_center_x} 0 ${chassis_center_z}" rpy="0 0 0" />
     </xacro:rr_inertia_box_solid>
 	<visual>
-		<origin xyz="0 0 ${chassis_center}" rpy="0 0 0" />
+		<origin xyz="${-wheel_base_center_x} 0 ${chassis_center_z}" rpy="0 0 0" />
 		<geometry>
 			<box size="${chassis_len} ${chassis_width} ${chassis_height}" />
 		</geometry>
 		<material name="rr_m_green_tp"/>
 	</visual>
 	<collision>
-		<origin xyz="0 0 ${chassis_center}" rpy="0 0 0" />
+		<origin xyz="${-wheel_base_center_x} 0 ${chassis_center_z}" rpy="0 0 0" />
 		<geometry>
 			<box size="${chassis_len} ${chassis_width} ${chassis_height}" />
-		</geometry>
-		  	
+		</geometry>		  	
 	</collision>
 </link>
 <xacro:rr_m_gz_green name="base_link"/>
 
 <!-- Bumper --> 
 <xacro:rr_bumper name="bumper0" parent="base_link" always_on="true" update_rate="30" topic="bumper0"  has_inertia="true">
-	<origin xyz="${chassis_len/2} ${chassis_width/2} ${chassis_center}" rpy="0 0 0" />
+	<origin xyz="${chassis_len/2-wheel_base_center_x} ${chassis_width/2} ${chassis_center_z}" rpy="0 0 0" />
 	
 	<geometry>
 		<box size="0.02 0.02 ${chassis_height}" />
@@ -61,7 +59,7 @@
 
 
 <xacro:rr_bumper name="bumper1" parent="base_link" always_on="true" update_rate="30" topic="bumper1"  has_inertia="true">
-	<origin xyz="${chassis_len/2} -${chassis_width/2} ${chassis_center}" rpy="0 0 0" />
+	<origin xyz="${chassis_len/2-wheel_base_center_x} -${chassis_width/2} ${chassis_center_z}" rpy="0 0 0" />
 	
 	<geometry>
 		<box size="0.02 0.02 ${chassis_height}" />
@@ -75,7 +73,7 @@
 
 
 <xacro:rr_bumper name="bumper2" parent="base_link" always_on="true" update_rate="30" topic="bumper2"  has_inertia="true">
-	<origin xyz="${chassis_len/2} 0 ${chassis_center-chassis_height/4}" rpy="0 0 0" />
+	<origin xyz="${chassis_len/2-wheel_base_center_x} 0 ${chassis_center_z-chassis_height/4}" rpy="0 0 0" />
 	
 	<geometry>
 		<box size="0.02 ${chassis_width-0.04} 0.02" />
@@ -118,13 +116,13 @@
 <joint name="base_caster_col_joint" type="fixed">
 	<parent link="base_link" />
 	<child link="caster_collision" />
-	<origin xyz="${caster_collision_x} 0 ${chassis_center-(chassis_height/2)}" rpy="0 0 0" />
+	<origin xyz="${caster_collision_x-wheel_base_center_x} 0 ${chassis_center_z-(chassis_height/2)}" rpy="0 0 0" />
 </joint>
 
 <!-- Drive -->
 <xacro:rr_diff_drive
 	 base_frame="base_link"
-	 wheel_base_center_x="${wheel_base_center_x}"
+	 wheel_base_center_x="0"
      wheel_separation ="${chassis_width}"
      wheel_diameter="${wheel_diameter}"
 	 wheel_width="${wheel_width}"
@@ -137,7 +135,7 @@
 	 wheel_contact_damping="100.0"
      wheel_contact_stiffness="1000000.0"
 	 wheel_mass="3"
-	 z_dist="${chassis_center-((chassis_floor_clearance+chassis_height/2)-(wheel_diameter/2))}"
+	 z_dist="${chassis_center_z-((chassis_floor_clearance+chassis_height/2)-(wheel_diameter/2))}"
      cmd_topic="/cmd_vel"
 	 odom_topic="odom"
      odom_frame="odom"
@@ -152,7 +150,6 @@
 <!-- GPS -->
 	<xacro:rr_gps_receiver  
 		name="gps0"
-	 	robot_namespace="${robot_namespace}"
 		frame_id="world"
 		topic_name="/fix"
 		velocity_topic_name="/fix_vel"
@@ -162,8 +159,8 @@
 		reference_altitude="0"
 		parent="base_link"
 		has_inertia="true">
-	    <origin xyz="${-(chassis_len/2-0.04/2)} ${chassis_width/2-0.015} 
-                     ${chassis_center+chassis_height/2+0.02/2}" 
+	    <origin xyz="${-(chassis_len/2-0.04/2)-wheel_base_center_x} ${chassis_width/2-0.015} 
+                     ${chassis_center_z+chassis_height/2+0.02/2}" 
 	                 rpy="0 0 0" />
 		<geometry>
 			<box size="0.04 0.03 0.02" />
@@ -180,7 +177,6 @@
 <!-- IMU -->
 <xacro:rr_imu 	
 		name="imu0"
-	 	robot_namespace=""
 		topic_name="/imu"
 		gaussian_noise="2.89e-08"
 		imu_x="0"
@@ -192,9 +188,8 @@
 		parent="base_link"
 		has_inertia="false"
 		>
-		<origin xyz="${wheel_base_center_x} 
-                       0 
-		             ${chassis_center-((chassis_floor_clearance+
+		<origin xyz="0 0 
+		             ${chassis_center_z-((chassis_floor_clearance+
                        chassis_height/2)-(wheel_diameter/2))}" rpy="0 0 0" />
 		<geometry>
 			<box size="0.02 0.02 0.02" />
@@ -230,9 +225,9 @@
 		parent           ="base_link"
 	    has_inertia      ="false"
 		>  
-		<origin xyz="${chassis_len/2} 
+		<origin xyz="${chassis_len/2-wheel_base_center_x} 
                      0 
-		             ${chassis_center}" rpy="0 0 0" />
+		             ${chassis_center_z}" rpy="0 0 0" />
 		<geometry>
 			<box size="0.02 0.02 0.02" />
 		</geometry>
@@ -242,21 +237,38 @@
 		 <inertial/>
         </xacro:rr_cam>	 
 		<xacro:rr_gaz_mat_s name="cam0" material="Gazebo/FlatBlack"/>
-        	
-<!-- LIDAR
-<xacro:rplidar id="0"
-	 	robot_namespace="${robot_namespace}"
-		topic_name="/laser/scan"
-		frame_name="laser"
-		parent_link="base_link"
-		x="0" 
-        y="0" 
-        z="${chassis_height/2}"
-	    roll="0" 
-	    pitch="0" 
-        yaw="0" 
-		update_rate="5.5"
-		visualize="false" />	
- -->
+
+<!-- LIDAR -->
+
+<xacro:rr_laser_2d 
+	name="laser"
+	topic_name="scan/laser"
+	update_rate="5.5"
+	visualize="false"
+	hor_samples="360"
+	hor_resolution="1"
+	hor_min_angle="${0}"
+	hor_max_angle="${2*rr_const_pi}"
+	range_min="0.20"
+	range_max="6"
+	range_resolution="0.005"
+	noise_type="gaussian"
+    noise_mean="0.0"
+    noise_stddev="0.01"
+	parent="base_link"
+    has_inertia="false"
+	>
+	<origin xyz="0 0 ${chassis_center_z+chassis_height/2+0.1/2}" rpy="0 0 0" />
+	<geometry>
+		<box size="0.098 0.07 0.1" />
+	</geometry>
+	<material name="Black">
+		<color rgba="0 0 0 1"/>		
+	</material>
+	<inertial/>
+    <pose>0 0 0 0 0 0</pose>    	
+</xacro:rr_laser_2d>
+<xacro:rr_gaz_mat_s name="laser" material="Gazebo/FlatBlack"/>
+
 </robot>
 											

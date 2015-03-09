@@ -19,7 +19,7 @@
 	  <xacro:insert_block name="geometry" />
 	  <xacro:insert_block name="material" />      
 	</visual>
-	<collision name="${name}_collision">
+	<collision name="${name}_link_collision">
 	  	<xacro:insert_block name="geometry" />
 	</collision>
 	

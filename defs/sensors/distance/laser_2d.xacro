@@ -5,26 +5,65 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro"
 >
-<!-- Example -->
-<!--
-<xacro:rplidar id="0"
-	 	robot_namespace="${robot_namespace}"
-		topic_name="/laser/scan"
-		frame_name="laser"
-		parent_link="chassis"
-		x="0" 
-        y="0" 
-        z="${chassis_height/2}"
-	    roll="0" 
-	    pitch="0" 
-        yaw="0" 
-		update_rate="5.5"
-		visualize="false" />	
--->
 	
-<xacro:include filename="$(find rapid_robot_xacros)/defs/constants.xacro"/>	
+<xacro:macro name="rr_laser_2d" params="
+	name
+	topic_name
+	update_rate
+	visualize
+	hor_samples
+	hor_resolution
+	hor_min_angle
+	hor_max_angle
+	range_min
+	range_max
+	range_resolution
+	noise_type
+    noise_mean
+    noise_stddev
+	parent
+    has_inertia 
+    *origin 
+    *geometry 
+    *material 
+    *inertial
+	*laser_pose
+	">
+	<xacro:rr_geo_ins/>
+  <gazebo reference="${name}_link">
+    <sensor type="gpu_ray" name="${name}_sensor">      
+      <visualize>${visualize}</visualize>
+      <update_rate>${update_rate}</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>${hor_samples}</samples>
+            <resolution>${hor_resolution}</resolution>
+            <min_angle>${hor_min_angle}</min_angle>
+            <max_angle>${hor_max_angle}</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>${range_min}</min>
+          <max>${range_max}</max>
+          <resolution>${range_resolution}</resolution>
+        </range>
+        <noise>
+          <type>${noise_type}</type>
+          <mean>${noise_mean}</mean>
+          <stddev>${noise_stddev}</stddev>
+        </noise>
+      </ray>
+      <plugin name="${name}_gpu_laser_controller" filename="libgazebo_ros_gpu_laser.so">
+      	<topicName>${topic_name}</topicName>
+        <frameName>${name}_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+</xacro:macro>
+
+
 <xacro:macro name="rplidar" params="id
-								robot_namespace
 								topic_name
 								frame_name
 								parent_link
@@ -32,8 +71,6 @@
 								update_rate
 								visualize
 								">	
-	
- <xacro:property />
 
   <!-- RPLidar Laser -->
   <link name="rplidar${id}_link">
@@ -81,7 +118,7 @@
             <samples>360</samples>
             <resolution>1</resolution>
             <min_angle>0</min_angle>
-            <max_angle>${2*const_pi}</max_angle>
+            <max_angle>${2*rr_const_pi}</max_angle>
           </horizontal>
         </scan>
         <range>
@@ -96,7 +133,6 @@
         </noise>
       </ray>
       <plugin name="gazebo_ros_head_rplidar${id}_controller" filename="libgazebo_ros_gpu_laser.so">
-        <robotNamespace>${robot_namespace}</robotNamespace>
       	<topicName>${topic_name}</topicName>
         <frameName>rplidar${id}_link</frameName>
       </plugin>
@@ -104,4 +140,9 @@
   </gazebo>
   
 </xacro:macro>
+
+
+
+
+
 </robot>
