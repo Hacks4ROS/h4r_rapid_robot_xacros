@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+	
+<xacro:rr_imu 	
+		name="imu0"
+		topic_name="/imu"
+		gaussian_noise="2.89e-08"
+		imu_x="0"
+		imu_y="0"
+		imu_z="0"
+		imu_roll="0"
+		imu_pitch="0"
+		imu_yaw="0"
+		parent="base_link"
+		has_inertia="false"
+		>
+		<origin xyz="0 0 
+		             ${chassis_center_z-((chassis_floor_clearance+
+                       chassis_height/2)-(wheel_diameter/2))}" rpy="0 0 0" />
+		<geometry>
+			<box size="0.02 0.02 0.02" />
+		</geometry>
+		<material name="Yellow">
+			<color rgba="1 1 0 1"/>		
+		</material>
+		 <inertial/>
+	</xacro:rr_imu>
+	<xacro:rr_gaz_mat_s name="imu0" material="Gazebo/Yellow"/>
+			      	     	
+</robot>

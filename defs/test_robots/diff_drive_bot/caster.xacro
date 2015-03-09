@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+	
+<link name="caster_collision">
+	<visual>
+		<geometry>
+			<sphere radius="${chassis_floor_clearance}" />
+		</geometry>
+		<material name="rr_m_black"/>
+	</visual>
+	<collision>
+		<geometry>
+			<sphere radius="${chassis_floor_clearance}" />
+		</geometry>
+	</collision>
+
+    <inertial>
+    <mass value="1.0"/>
+    <origin xyz="0.0 0.0 0.0"/>
+    <inertia ixx="0.1" 
+             iyy="0.1" 
+             izz="0.1"
+        	 iyz="0.0"
+             ixy="0.0" 
+             ixz="0.0"/>
+    </inertial>
+</link>
+<xacro:rr_m_gz_black name="caster_collision"/>
+
+<joint name="base_caster_col_joint" type="fixed">
+	<parent link="base_link" />
+	<child link="caster_collision" />
+	<origin xyz="${caster_collision_x-wheel_base_center_x} 0 ${chassis_center_z-(chassis_height/2)}" rpy="0 0 0" />
+</joint>    
+  	
+</robot>
+	
