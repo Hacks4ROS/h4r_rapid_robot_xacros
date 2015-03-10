@@ -5,13 +5,21 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 	
-<!--CHASSIS-->
 <link name="base_link">
-	<xacro:rr_inertia_box_solid x="${chassis_len}" y="${chassis_width}" z="${chassis_height}" mass="1">
-      	 <origin xyz="-${-wheel_base_center_x} 0 ${chassis_center_z}" rpy="0 0 0" />
+	<xacro:rr_inertia_box_solid x="${chassis_len}" 
+		                        y="${chassis_width}" 
+		                        z="${chassis_height}" 
+		                        mass="1">
+      	 <origin xyz=" -${-wheel_base_center_x} 
+      	                0 
+      	 				${chassis_center_z}" 
+      	         rpy="0 0 0" />
     </xacro:rr_inertia_box_solid>
 	<visual>
-		<origin xyz="${-wheel_base_center_x} 0 ${chassis_center_z}" rpy="0 0 0" />
+		<origin xyz="${-wheel_base_center_x} 
+		             0 
+			         ${chassis_center_z}" 
+		        rpy="0 0 0" />
 		<geometry>
 			<box size="${chassis_len} ${chassis_width} ${chassis_height}" />
 		</geometry>
