@@ -7,20 +7,7 @@
 	
 <xacro:include filename="$(find rapid_robot_xacros)/defs/rapid_robot.xacro"/>
 
-	
-<!-- Simple Robot Settings -->
-<xacro:property name="chassis_height"          value="0.25"                            />
-<xacro:property name="chassis_width"           value="${chassis_height*1.618}"         />  
-<xacro:property name="chassis_len"             value="${chassis_width+chassis_height}" />
-<xacro:property name="chassis_floor_clearance" value="${chassis_height/(1.618*2)}"     />
-
-<xacro:property name="wheel_diameter"          value="${chassis_len/(1.618*1.618)}"    />  
-<xacro:property name="wheel_width"             value="${chassis_width/(16.18)}"        />  
-<xacro:property name="wheel_base_center_x"     value="${chassis_len/(-1.618*3)}"       />  
-<xacro:property name="caster_collision_x"      value="${chassis_len/(1.618*2)}"        />
-<xacro:property name="chassis_center_z" value="${chassis_floor_clearance+chassis_height/2}" />
-	
-
+<xacro:include filename="$(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot/properties.xacro"/>
 <xacro:include filename="$(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot/chassis.xacro"/>
 <xacro:include filename="$(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot/bumpers.xacro"/>
 <xacro:include filename="$(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot/caster.xacro"/>
