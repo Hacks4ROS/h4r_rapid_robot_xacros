@@ -5,7 +5,6 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- Gazebo Colors -->
-
 <xacro:macro name="rr_m_gz_green" params="name">
 	<gazebo reference="${name}_link">
 	<material value="Gazebo/Green" />
