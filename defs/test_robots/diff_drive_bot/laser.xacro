@@ -32,6 +32,6 @@
 	<inertial/>
     <pose>0 0 0 0 0 0</pose>    	
 </xacro:rr_laser_2d>
-<xacro:rr_gaz_mat_s name="laser" material="Gazebo/FlatBlack"/>
-       	  
+<xacro:rr_m_gz_black name="laser"/>
+	   	  
 </robot>

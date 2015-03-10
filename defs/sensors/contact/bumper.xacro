@@ -48,6 +48,4 @@
 	  </sensor>
 	</gazebo>
 </xacro:macro>  
-
-
 </robot>

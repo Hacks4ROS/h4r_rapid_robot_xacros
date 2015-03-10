@@ -15,14 +15,4 @@
 		<color rgba="${rgba}"/>
 	</material>	
 </xacro:macro> 
-
-<!-- predefine color macro -->
-<xacro:macro name="rr_mat_gaz_color_def" params="color material">
-<!--	<xacro:macro name="rr_mat_gaz_${color}" params="name material">
-	   <gazebo reference="${name}_link">
-		<material value="${material}" />
-	   </gazebo>
-	</xacro:macro>-->
-</xacro:macro>
-
 </robot>

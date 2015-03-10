@@ -24,7 +24,7 @@
 		</geometry>		  	
 	</collision>
 </link>
-<xacro:rr_m_gz_green name="base_link"/>
+<xacro:rr_m_gz_green name="base"/>
        	
 </robot>
 	
