@@ -5,45 +5,6 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
 <xacro:include filename="$(find rapid_robot_xacros)/defs/geometry/geo_ins.xacro"/>
-<!-- Example -->
-<!-- 
-<xacro:rr_cam
-	name             ="cam0"
-	always_on        ="true"
-	frame_name       ="camera0"
-	image_width      ="640"
-	image_height     ="480"
-	image_format     ="R8G8B8"
-	clip_near        ="0.02"
-	clip_far         ="300"
-	noise_type       ="gaussian"
-	noise_mean       ="0.0"
-	noise_std_dev    ="0.007"
-	fov              ="0.873"
-	hack_baseline    ="0.07"
-	dist_K1          ="0.0"
-	dist_K2          ="0.0"
-	dist_K3          ="0.0"
-	dist_T1          ="0.0"
-	dist_T2          ="0.0"
-	update_rate      ="30" 
-	parent           ="base_link"
-    has_inertia      ="false"
-	>  
-	<origin xyz="${chassis_len/2} 
-                 0 
-	             ${chassis_center}" rpy="0 0 0" />
-	<geometry>
-		<box size="0.02 0.02 0.02" />
-	</geometry>
-	<material name="Yellow">
-		<color rgba="0 0 0 1"/>		
-	</material>
-	 <inertial/>
-    </xacro:rr_cam>	 
-	<xacro:rr_gaz_mat_s name="cam0" material="Gazebo/FlatBlack"/>
--->
-			
 <xacro:macro name="rr_cam" 
 	params="
 			name

@@ -2,35 +2,7 @@
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       xmlns:xacro="http://ros.org/wiki/xacro">
-
-<!-- Example 
-	Inertial tags must be there but they can be empty when has_inertia is false 
- -->
-<!--
-<xacro:rr_bumper name="bumper0" 
-              parent="chassis" 
-              always_on="true" 
-              update_rate="30" 
-	          topic="bumper0" 
-              has_inertia="false">
-	<origin xyz="${chassis_len/2} ${chassis_width/2} 0" rpy="0 0 0" />
-	
-	<geometry>
-		<box size="0.1 0.1 0.1" />
-	</geometry>
-	<material name="Green">
-		<color rgba="0 1 0 0.5"/>		
-	</material>
-	<inertial>
-		
-	</inertial>
-</xacro:bumper>	
-<gazebo reference="bumper0">
-	<material value="Gazebo/FlatBlack" />
-</gazebo>
--->
-	       	
+       xmlns:xacro="http://ros.org/wiki/xacro">	       	
 <xacro:macro name="rr_bumper" 
 	params="name parent always_on update_rate topic has_inertia *origin *geometry *material *inertial">	
 	<xacro:rr_geo_ins/>

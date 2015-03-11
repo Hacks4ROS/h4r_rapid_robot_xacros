@@ -6,34 +6,6 @@
        xmlns:xacro="http://ros.org/wiki/xacro"
 > 
 <xacro:include filename="$(find rapid_robot_xacros)/defs/geometry/geo_ins.xacro"/>
-<!-- Example -->	
-<!--
-	<xacro:rr_gps_receiver  
-		name="gps0"
-		frame_id="world"
-		topic_name="/fix"
-		velocity_topic_name="/fix_vel"
-		reference_latitude="49"
-		reference_longitude="8"
-		reference_heading="0"
-		reference_altitude="0"
-		parent="base_link"
-		has_inertia="true">
-	    <origin xyz="0 0 0" rpy="0 0 0" />
-		<geometry>
-			<box size="0.04 0.03 0.02" />
-		</geometry>
-		<material name="Black">
-			<color rgba="0 0 0 1"/>		
-		</material>
-		 <xacro:inertia_box x="0.02" y="0.02" z="0.04" mass="0.1">
-	      <origin xyz="0 0 0" rpy="0 0 0" />
-	    </xacro:inertia_box>
-	</xacro:rr_gps_receiver>
-	<gazebo reference="gps0">
-		<material value="Gazebo/FlatBlack" />
-	</gazebo>
--->
 <xacro:macro name="rr_gps_receiver" 
 params= "name
 		 frame_id
