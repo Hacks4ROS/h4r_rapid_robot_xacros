@@ -5,7 +5,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 	
-<link name="caster_collision">
+<link name="caster_link">
 	<visual>
 		<geometry>
 			<sphere radius="${chassis_floor_clearance}" />
@@ -29,12 +29,12 @@
              ixz="0.0"/>
     </inertial>
 </link>
-<xacro:rr_m_gz_black name="caster_collision"/>
+<xacro:rr_m_gz_black name="caster"/>
 
 <joint name="base_caster_col_joint" type="fixed">
 	<parent link="base_link" />
-	<child link="caster_collision" />
-	<origin xyz="${caster_collision_x-wheel_base_center_x} 0 ${chassis_center_z-(chassis_height/2)}" rpy="0 0 0" />
+	<child link="caster_link" />
+	<origin xyz="${caster_x-wheel_base_center_x} 0 ${chassis_center_z-(chassis_height/2)}" rpy="0 0 0" />	
 </joint>    
   	
 </robot>

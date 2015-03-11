@@ -14,7 +14,7 @@
 <xacro:property name="wheel_diameter" value="${chassis_len/(1.618*1.618)}" />  
 <xacro:property name="wheel_width" value="${chassis_width/(16.18)}" />  
 <xacro:property name="wheel_base_center_x" value="${chassis_len/(-1.618*3)}" />  
-<xacro:property name="caster_collision_x" value="${chassis_len/(1.618*2)}"/>
+<xacro:property name="caster_x" value="${chassis_len/(1.618*2)}"/>
 <xacro:property name="chassis_center_z" 
 				value="${chassis_floor_clearance+chassis_height/2}" />
 </robot>
