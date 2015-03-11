@@ -21,7 +21,7 @@
      wheel_contact_stiffness="1000000.0"
 	 wheel_mass="3"
 	 z_dist="${chassis_center_z-((chassis_floor_clearance+chassis_height/2)-(wheel_diameter/2))}"
-     cmd_topic="/cmd_vel"
+     cmd_topic="cmd_vel"
 	 odom_topic="odom"
      odom_frame="odom"
 	 ros_plugin_always_on="true"

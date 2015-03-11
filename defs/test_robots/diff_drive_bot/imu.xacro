@@ -7,7 +7,7 @@
 	
 <xacro:rr_imu 	
 		name="imu0"
-		topic_name="/imu"
+		topic_name="imu"
 		gaussian_noise="2.89e-08"
 		imu_x="0"
 		imu_y="0"
