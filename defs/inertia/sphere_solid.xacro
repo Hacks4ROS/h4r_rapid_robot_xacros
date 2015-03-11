@@ -5,13 +5,13 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro"
 >	
-<xacro:macro name="rr_inertia_sphere_solid" params="r mass *origin">
+<xacro:macro name="rr_inertia_sphere_solid" params="radius mass *origin">
     <inertial>
       <mass value="${mass}" />
       <xacro:insert_block name="origin" />
-      <inertia ixx="${(2/5) * mass * r * r}" ixy="0.0" ixz="0.0"
-        iyy="${(2/5) * mass * r * r}" iyz="0.0"
-        izz="${(2/5) * mass * r * r}" />
+      <inertia ixx="${(2/5) * mass * radius * radius}" ixy="0.0" ixz="0.0"
+        iyy="${(2/5) * mass * radius * radius}" iyz="0.0"
+        izz="${(2/5) * mass * radius * radius}" />
     </inertial>
 </xacro:macro>
 
