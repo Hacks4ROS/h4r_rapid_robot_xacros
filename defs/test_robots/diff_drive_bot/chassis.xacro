@@ -10,7 +10,7 @@
 		                        y="${chassis_width}" 
 		                        z="${chassis_height}" 
 		                        mass="1">
-      	 <origin xyz=" -${-wheel_base_center_x} 
+      	 <origin xyz=" ${-wheel_base_center_x} 
       	                0 
       	 				${chassis_center_z}" 
       	         rpy="0 0 0" />
