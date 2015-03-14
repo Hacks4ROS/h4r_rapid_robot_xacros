@@ -6,7 +6,7 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 	
 <xacro:rr_diff_drive
-	 base_frame="base_link"
+	 parent="base_link"
 	 wheel_base_center_x="0"
      wheel_separation ="${chassis_width}"
      wheel_diameter="${wheel_diameter}"

@@ -8,7 +8,7 @@
 	<xacro:include filename="$(find rapid_robot_xacros)/defs/constants.xacro"/>
 	<xacro:macro name="rr_wheel_solid" 
 			         params="name
-						     base_frame
+						     parent
 			                 radius
 			                 width
 							 mass
@@ -56,7 +56,7 @@
 		
     	<limit effort="${limit_effort}" velocity="${limit_vel}" />
 
-   		<parent link="${base_frame}"/>
+   		<parent link="${parent}"/>
 		<child link="${name}"/>
 	</joint>
 	
