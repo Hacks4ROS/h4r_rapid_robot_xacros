@@ -8,7 +8,7 @@
 	name="laser"
 	topic_name="scan/laser"
 	update_rate="10"
-	visualize="true"
+	visualize="false"
 	hor_samples="360"
 	hor_resolution="1"
 	hor_min_angle="${0}"
