@@ -1,5 +1,0 @@
-<launch>
-	  <param name="robot_description" command="$(find xacro)/xacro.py $(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
-	  <param name="robot_description2" command="$(find xacro)/xacro.py $(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
-	  		  
-</launch>
