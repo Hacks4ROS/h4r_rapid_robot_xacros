@@ -5,7 +5,6 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro"
 >
-<xacro:include filename="$(find rapid_robot_xacros)/defs/geometry/geo_ins.xacro"/>		
 <xacro:macro name="rr_imu" params="name
 								topic_name
 								gaussian_noise
@@ -16,11 +15,11 @@
 								imu_pitch 
 								imu_yaw 	     
 								parent
-	                            has_inertia 
-							    *origin 
-							    *geometry 
-							    *material 
-							    *inertial
+								has_inertia 
+								*origin 
+								*geometry 
+								*material 
+								*inertial
 								">	
 	
 <xacro:rr_geo_ins/>
