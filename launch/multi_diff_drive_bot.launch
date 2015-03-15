@@ -1,36 +1,42 @@
 <launch>
+	<node pkg="rviz" type="rviz" name="rviz" />
+	
 	<include file="$(find rapid_robot_xacros)/launch/empty_world.launch"/>
 	
+	<!--ROBOT A-->	
     <group ns="robotA" clear_params="true">
-	<include file="$(find rapid_robot_xacros)/launch/test_bot_description.xml" />
-	
-  	<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
+		<param name="robot_description" command=
+		"$(find xacro)/xacro.py $(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
+		<include file="$(find rapid_robot_xacros)/launch/test_bot_description.xml" />
+		
+	  	<node pkg="robot_state_publisher" 
+	  		  type="state_publisher" name="robot_state_publisher">
+	  		
+	    	<param name="publish_frequency" type="double" value="30.0"/>
+	    	<param name="tf_prefix" type="string" value=""/>
+	  	</node>
 
-    	<param name="publish_frequency" type="double" value="30.0"/>
-
-    	<param name="tf_prefix" type="string" value=""/>
-  	</node>
-	<!--<node pkg="reppy_bot_urdf" type="publisher_urdf" name="reppy_bot_publisher" output="screen">
-	</node>-->
-    <node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -urdf -param robot_description -model robot_description" respawn="false" />
-  	
-			<node pkg="rviz" type="rviz" name="rviz" />
-    
-    	
-
+    	<node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
+    	      args="-z 0.2 -x 0 -urdf -param robot_description -model robot_description" 
+    	      respawn="false" />
+    		
     </group>
+    
+    <!--ROBOT B-->
     <group ns="robotB" clear_params="true">
-	<include file="$(find rapid_robot_xacros)/launch/test_bot_description.xml" />
+		<param name="robot_description" command=
+		"$(find xacro)/xacro.py $(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
+		<include file="$(find rapid_robot_xacros)/launch/test_bot_description.xml" />
 	
-  	<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
-
-    	<param name="publish_frequency" type="double" value="30.0"/>
-
-    	<param name="tf_prefix" type="string" value=""/>
-  	</node>
-
-    <node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -x 1 -urdf -param robot_description2 -model robot_description2" respawn="false" />
-  	
-			<node pkg="rviz" type="rviz" name="rviz" />
+	  	<node pkg="robot_state_publisher" 
+	  		  type="state_publisher" 
+	  		  name="robot_state_publisher">
+	  		<remap from="robot_description" to="robot_description2" />
+	    	<param name="publish_frequency" type="double" value="30.0"/>
+	    	<param name="tf_prefix" type="string" value=""/>
+	  	</node>
+	    <node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
+	          args="-z 0.2 -x 3 -urdf -param robot_description -model robot_description2" 
+	          respawn="false" />
     </group>
 </launch>
