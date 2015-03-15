@@ -1,13 +1,19 @@
 <launch>
-	<include file="$(find rapid_robot_xacros)/launch/empty_world.launch"/>
-	<include file="$(find rapid_robot_xacros)/launch/test_bot_description.xml" />
+	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+	<param name="robot_description"  command=
+	"$(find xacro)/xacro.py $(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
+
+	<node pkg="robot_state_publisher" type="state_publisher" 
+		  name="robot_state_publisher">
+		<!-- joint_states and robot_description are used in default -->
+		<param name="publish_frequency" type="double" value="30.0"/>
+		<param name="tf_prefix" type="string" value=""/>
+	</node>
 	
-  	<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
-    	<param name="publish_frequency" type="double" value="30.0"/>
-    	<param name="tf_prefix" type="string" value=""/>
-  	</node>
-    <node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
-          args="-z 0.1 -urdf -param robot_description -model robot_description"
-    	  required="false" />
-			<node pkg="rviz" type="rviz" name="rviz" />
+	<node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
+	      args="-z 0.1 -urdf -param robot_description -model Robot"
+		  required="false" />
+	
+	<node name="rviz" pkg="rviz" type="rviz" 
+	args="-d $(find rapid_robot_xacros)/rviz/rplidar.rviz" />
 </launch>
