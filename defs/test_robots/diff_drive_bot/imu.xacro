@@ -19,8 +19,9 @@
 		has_inertia="false"
 		>
 		<origin xyz="0 0 
-		             ${chassis_center_z-((chassis_floor_clearance+
-                       chassis_height/2)-(wheel_diameter/2))}" rpy="0 0 0" />
+		        ${chassis_center_z-((chassis_floor_clearance+
+                chassis_height/2)-(wheel_diameter/2))}" 
+		        rpy="0 0 0" />
 		<geometry>
 			<box size="0.02 0.02 0.02" />
 		</geometry>

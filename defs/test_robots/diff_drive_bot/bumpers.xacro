@@ -5,45 +5,54 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:rr_bumper name="bumper0" parent="base_link" always_on="true" 
-       	       update_rate="30" topic="bumper0"  has_inertia="true">
-	<origin xyz="${chassis_len/2-wheel_base_center_x} ${chassis_width/2} ${chassis_center_z}" rpy="0 0 0" />
+<xacro:rr_bumper name="bumper0" parent="base_link" always_on="true" update_rate="30"
+	topic="bumper0" has_inertia="true">
+	<origin xyz="${chassis_len/2-wheel_base_center_x} 
+	             ${chassis_width/2} 
+		         ${chassis_center_z}"
+		    rpy="0 0 0" />
 	<geometry>
 		<box size="0.02 0.02 ${chassis_height}" />
 	</geometry>
 	<material name="rr_m_black"/>
-	 <xacro:rr_inertia_box_solid x="0.02" y="0.02" z="${chassis_height}" mass="0.1">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:rr_inertia_box_solid>
-</xacro:rr_bumper>	
+	<xacro:rr_inertia_box_solid x="0.02" y="0.02" z="${chassis_height}" mass="0.1">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</xacro:rr_inertia_box_solid>
+</xacro:rr_bumper>
 <xacro:rr_m_gz_black name="bumper0"/>
 
-
-<xacro:rr_bumper name="bumper1" parent="base_link" always_on="true" update_rate="30" topic="bumper1"  has_inertia="true">
-	<origin xyz="${chassis_len/2-wheel_base_center_x} -${chassis_width/2} ${chassis_center_z}" rpy="0 0 0" />
+<xacro:rr_bumper name="bumper1" parent="base_link" always_on="true" update_rate="30"
+	topic="bumper1" has_inertia="true">
+	<origin xyz="${chassis_len/2-wheel_base_center_x} -${chassis_width/2} ${chassis_center_z}"
+		rpy="0 0 0" />
 	
 	<geometry>
 		<box size="0.02 0.02 ${chassis_height}" />
 	</geometry>
 	<material name="rr_m_black"/>
-	 <xacro:inertia_box x="0.02" y="0.02" z="${chassis_height}" mass="0.1">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:inertia_box>
-</xacro:rr_bumper>	
+	<xacro:inertia_box x="0.02" y="0.02" z="${chassis_height}" mass="0.1">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</xacro:inertia_box>
+</xacro:rr_bumper>
 <xacro:rr_m_gz_black name="bumper1"/>
 
 
-<xacro:rr_bumper name="bumper2" parent="base_link" always_on="true" update_rate="30" topic="bumper2"  has_inertia="true">
-	<origin xyz="${chassis_len/2-wheel_base_center_x} 0 ${chassis_center_z-chassis_height/4}" rpy="0 0 0" />
+<xacro:rr_bumper name="bumper2" parent="base_link" 
+	             always_on="true" update_rate="30"
+	             topic="bumper2" has_inertia="true">
+	<origin xyz="${chassis_len/2-wheel_base_center_x} 
+				 0
+	             ${chassis_center_z-chassis_height/4}"
+		    rpy="0 0 0" />
 	
 	<geometry>
 		<box size="0.02 ${chassis_width-0.04} 0.02" />
 	</geometry>
 	<material name="rr_m_black"/>
-	 <xacro:inertia_box x="0.02" y="0.02" z="0.04" mass="0.1">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:inertia_box>
-</xacro:rr_bumper>	
+	<xacro:inertia_box x="0.02" y="0.02" z="0.04" mass="0.1">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</xacro:inertia_box>
+</xacro:rr_bumper>
 <xacro:rr_m_gz_black name="bumper2"/>
 
 </robot>
