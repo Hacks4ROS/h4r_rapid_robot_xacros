@@ -1,7 +1,7 @@
 <launch>
 	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
 	<param name="robot_description"  command=
-	"$(find xacro)/xacro.py $(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
+	"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
 
 	<node pkg="robot_state_publisher" type="state_publisher" 
 		  name="robot_state_publisher">
@@ -15,5 +15,5 @@
 		  required="false" />
 	
 	<node name="rviz" pkg="rviz" type="rviz" 
-	args="-d $(find rapid_robot_xacros)/rviz/rplidar.rviz" />
+	args="-d $(find h4r_rapid_robot_xacros)/rviz/rplidar.rviz" />
 </launch>

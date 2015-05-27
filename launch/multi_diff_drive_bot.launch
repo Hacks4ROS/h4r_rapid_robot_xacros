@@ -1,13 +1,13 @@
 <launch>
 	<node pkg="rviz" type="rviz" name="rviz" />
 	
-	<include file="$(find rapid_robot_xacros)/launch/empty_world.launch"/>
+	<include file="$(find h4r_rapid_robot_xacros)/launch/empty_world.launch"/>
 	
 	<!--ROBOT A-->	
     <group ns="robotA" clear_params="true">
 		<param name="robot_description" command=
-		"$(find xacro)/xacro.py $(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
-		<include file="$(find rapid_robot_xacros)/launch/test_bot_description.xml" />
+		"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
+		<include file="$(find h4r_rapid_robot_xacros)/launch/test_bot_description.xml" />
 		
 	  	<node pkg="robot_state_publisher" 
 	  		  type="state_publisher" name="robot_state_publisher">
@@ -25,8 +25,8 @@
     <!--ROBOT B-->
     <group ns="robotB" clear_params="true">
 		<param name="robot_description" command=
-		"$(find xacro)/xacro.py $(find rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
-		<include file="$(find rapid_robot_xacros)/launch/test_bot_description.xml" />
+		"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
+		<include file="$(find h4r_rapid_robot_xacros)/launch/test_bot_description.xml" />
 	
 	  	<node pkg="robot_state_publisher" 
 	  		  type="state_publisher" 
