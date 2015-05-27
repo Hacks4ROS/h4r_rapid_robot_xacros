@@ -14,7 +14,7 @@
 		imu_z="0"
 		imu_roll="0"
 		imu_pitch="0"
-		imu_yaw="0"
+		imu_yaw="${rr_const_pi*2}"
 		parent="base_link"
 		has_inertia="false"
 		>
