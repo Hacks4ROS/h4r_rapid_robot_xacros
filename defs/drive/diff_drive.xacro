@@ -75,7 +75,7 @@
 		filename="libgazebo_ros_diff_drive.so">
 		<robotBaseFrame>${parent}</robotBaseFrame>
 					
-		<wheelSeparation>${wheel_separation}</wheelSeparation>
+		<wheelSeparation>${wheel_separation+wheel_width}</wheelSeparation>
 		<wheelDiameter>${wheel_diameter}</wheelDiameter>
 		<wheelTorque>${wheel_torque}</wheelTorque>
 		<wheelAcceleration>${wheel_acceleration}</wheelAcceleration>
