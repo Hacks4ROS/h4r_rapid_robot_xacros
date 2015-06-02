@@ -6,30 +6,30 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- Constants -->
-<xacro:include filename="$(find rapid_robot_xacros)/defs/constants.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/constants.xacro"/>
 
 <!-- Geometry -->
-<xacro:include filename="$(find rapid_robot_xacros)/defs/geometry/geo_ins.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/geometry/geo_ins.xacro"/>
 
 <!-- Material -->
-<xacro:include filename="$(find rapid_robot_xacros)/defs/material/mat_def.xacro"/>
-<xacro:include filename="$(find rapid_robot_xacros)/defs/material/materials.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/material/mat_def.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/material/materials.xacro"/>
 
 <!-- Inertia -->
-<xacro:include filename="$(find rapid_robot_xacros)/defs/inertia/box_solid.xacro"/> 
-<xacro:include filename="$(find rapid_robot_xacros)/defs/inertia/cylinder_solid.xacro"/> 
-<xacro:include filename="$(find rapid_robot_xacros)/defs/inertia/sphere_shell.xacro"/> 
-<xacro:include filename="$(find rapid_robot_xacros)/defs/inertia/sphere_solid.xacro"/> 
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/inertia/box_solid.xacro"/> 
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/inertia/cylinder_solid.xacro"/> 
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/inertia/sphere_shell.xacro"/> 
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/inertia/sphere_solid.xacro"/> 
 
 <!-- Sensors -->
-<xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/contact/bumper.xacro"/>
-<xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/distance/laser_2d.xacro"/> 
-<xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/imaging/camera.xacro"/>
-<xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/inertia/imu.xacro"/>
-<xacro:include filename="$(find rapid_robot_xacros)/defs/sensors/position/gps.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/contact/bumper.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/distance/laser_2d.xacro"/> 
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/imaging/camera.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/inertia/imu.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/position/gps.xacro"/>
 	
 <!-- Drives -->
-<xacro:include filename="$(find rapid_robot_xacros)/defs/drive/wheel_solid.xacro" />
-<xacro:include filename="$(find rapid_robot_xacros)/defs/drive/diff_drive.xacro" />
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/drive/wheel_solid.xacro" />
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/drive/diff_drive.xacro" />
 
 </robot>

@@ -4,8 +4,8 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-<xacro:include filename="$(find rapid_robot_xacros)/defs/constants.xacro"/>	
-<xacro:include filename="$(find rapid_robot_xacros)/defs/drive/wheel_solid.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/constants.xacro"/>	
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/drive/wheel_solid.xacro"/>
 
 <xacro:macro name="rr_diff_drive" 
 	params="parent
