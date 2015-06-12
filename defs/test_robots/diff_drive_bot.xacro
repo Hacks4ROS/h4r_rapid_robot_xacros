@@ -16,6 +16,7 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot/imu.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot/laser.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot/bumpers.xacro"/>
-<!--
--->
+
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot/gps.xacro"/>
+
 </robot>									
