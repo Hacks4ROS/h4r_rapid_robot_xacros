@@ -8,8 +8,8 @@
 <xacro:rr_gps_receiver  
 	name="gps0"
 	frame_id="world"
-	topic_name="/fix"
-	velocity_topic_name="/fix_vel"
+	topic_name="fix"
+	velocity_topic_name="fix_vel"
 	reference_latitude="49"
 	reference_longitude="8"
 	reference_heading="0"

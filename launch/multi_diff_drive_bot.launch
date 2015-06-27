@@ -1,39 +1,31 @@
-<launch>
-	<node pkg="rviz" type="rviz" name="rviz" />
-	
+<launch>	
 	<include file="$(find h4r_rapid_robot_xacros)/launch/empty_world.launch"/>
 	
 	<!--ROBOT A-->	
     <group ns="robotA" clear_params="true">
 		<param name="robot_description" command=
 		"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
-		<include file="$(find h4r_rapid_robot_xacros)/launch/test_bot_description.xml" />
 		
 	  	<node pkg="robot_state_publisher" 
 	  		  type="state_publisher" name="robot_state_publisher">
 	  		
 	    	<param name="publish_frequency" type="double" value="30.0"/>
-	    	<param name="tf_prefix" type="string" value=""/>
 	  	</node>
 
     	<node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
     	      args="-z 0.2 -x 0 -urdf -param robot_description -model robot_description" 
     	      respawn="false" />
-    		
     </group>
     
     <!--ROBOT B-->
     <group ns="robotB" clear_params="true">
 		<param name="robot_description" command=
 		"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
-		<include file="$(find h4r_rapid_robot_xacros)/launch/test_bot_description.xml" />
 	
 	  	<node pkg="robot_state_publisher" 
 	  		  type="state_publisher" 
 	  		  name="robot_state_publisher">
-	  		<remap from="robot_description" to="robot_description2" />
 	    	<param name="publish_frequency" type="double" value="30.0"/>
-	    	<param name="tf_prefix" type="string" value=""/>
 	  	</node>
 	    <node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
 	          args="-z 0.2 -x 3 -urdf -param robot_description -model robot_description2" 

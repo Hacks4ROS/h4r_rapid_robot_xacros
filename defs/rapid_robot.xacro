@@ -22,7 +22,7 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/inertia/sphere_solid.xacro"/> 
 
 <!-- Sensors -->
-<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/contact/bumper.xacro"/>
+<!--<xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/contact/bumper.xacro"/> disabled because not really useful with that topic-->
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/distance/laser_2d.xacro"/> 
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/imaging/camera.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/defs/sensors/inertia/imu.xacro"/>

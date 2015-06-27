@@ -5,7 +5,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 	
-<xacro:rr_imu 	
+<xacro:rr_imu_hector
 		name="imu0"
 		topic_name="imu"
 		gaussian_noise="2.89e-08"
@@ -29,7 +29,7 @@
 			<color rgba="1 1 0 1"/>		
 		</material>
 		 <inertial/>
-	</xacro:rr_imu>
+	</xacro:rr_imu_hector>
 	<xacro:rr_gaz_mat_s name="imu0" material="Gazebo/Yellow"/>
 			      	     	
 </robot>
