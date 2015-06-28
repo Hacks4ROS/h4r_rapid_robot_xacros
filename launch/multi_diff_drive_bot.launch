@@ -8,7 +8,7 @@
 		
 	  	<node pkg="robot_state_publisher" 
 	  		  type="state_publisher" name="robot_state_publisher">
-	  		
+	  		<param name="tf_prefix" value="robotA"/>
 	    	<param name="publish_frequency" type="double" value="30.0"/>
 	  	</node>
 
@@ -25,6 +25,7 @@
 	  	<node pkg="robot_state_publisher" 
 	  		  type="state_publisher" 
 	  		  name="robot_state_publisher">
+	  		<param name="tf_prefix" value="robotB"/>
 	    	<param name="publish_frequency" type="double" value="30.0"/>
 	  	</node>
 	    <node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
