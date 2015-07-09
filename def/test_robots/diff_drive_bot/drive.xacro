@@ -19,7 +19,7 @@
 	wheel_friction2="1000"
 	wheel_contact_damping="100.0"
 	wheel_contact_stiffness="1000000.0"
-	wheel_mass="1"
+	wheel_mass="0.5"
 	z_dist="${chassis_center_z-
               ((chassis_floor_clearance
                +chassis_height/2)

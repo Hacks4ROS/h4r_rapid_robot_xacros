@@ -4,7 +4,7 @@
 	<!--ROBOT A-->	
     <group ns="robotA" clear_params="true">
 		<param name="robot_description" command=
-		"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
+		"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot.xacro" />
 		
 	  	<node pkg="robot_state_publisher" 
 	  		  type="state_publisher" name="robot_state_publisher">
@@ -20,7 +20,7 @@
     <!--ROBOT B-->
     <group ns="robotB" clear_params="true">
 		<param name="robot_description" command=
-		"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/defs/test_robots/diff_drive_bot.xacro" />
+		"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot.xacro" />
 	
 	  	<node pkg="robot_state_publisher" 
 	  		  type="state_publisher" 
