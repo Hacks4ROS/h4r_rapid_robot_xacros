@@ -76,7 +76,7 @@
 		<robotBaseFrame>${parent}</robotBaseFrame>
 					
 		<wheelSeparation>${wheel_separation+wheel_width}</wheelSeparation>
-		<wheelDiameter>${wheel_diameter}</wheelDiameter>
+		<wheelDiameter>${wheel_diameter/2}</wheelDiameter>
 		<wheelTorque>${wheel_torque}</wheelTorque>
 		<wheelAcceleration>${wheel_acceleration}</wheelAcceleration>
 		
