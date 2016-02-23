@@ -8,7 +8,7 @@
 <xacro:rr_diff_drive
 	parent="base_link"
 	wheel_base_center_x="0"
-	wheel_separation ="${chassis_width}"
+	wheel_separation ="${wheel_separation}"
 	wheel_diameter="${wheel_diameter}"
 	wheel_width="${wheel_width}"
 	wheel_torque="5"
