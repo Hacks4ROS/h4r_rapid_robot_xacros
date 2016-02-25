@@ -42,7 +42,7 @@
 	width="${wheel_width}"
 	mass="${wheel_mass}"
 	origin_x="${wheel_base_center_x}" 
-	origin_y="${-(wheel_separation+wheel_width)/2}" 
+	origin_y="${(wheel_separation+wheel_width)/2}" 
 	origin_z="${z_dist}"
 	limit_vel="${wheel_joint_limit_vel}" 
 	limit_effort="${wheel_joint_limit_effort}"
@@ -59,7 +59,7 @@
 	width="${wheel_width}"
 	mass="${wheel_mass}"
 	origin_x="${wheel_base_center_x}" 
-	origin_y="${(wheel_separation+wheel_width)/2}" 
+	origin_y="${-(wheel_separation+wheel_width)/2}" 
 	origin_z="${z_dist}"
 	limit_vel="${wheel_joint_limit_vel}" 
 	limit_effort="${wheel_joint_limit_effort}"
@@ -75,11 +75,14 @@
 		filename="libgazebo_ros_diff_drive.so">
 		<robotBaseFrame>${parent}</robotBaseFrame>
 					
-		<wheelSeparation>${(wheel_separation+wheel_width)*2}</wheelSeparation>
+		<wheelSeparation>${(wheel_separation+wheel_width)}</wheelSeparation>
 		<wheelDiameter>${wheel_diameter}</wheelDiameter>
 		<wheelTorque>${wheel_torque}</wheelTorque>
 		<wheelAcceleration>${wheel_acceleration}</wheelAcceleration>
 		
+		<Acceleration_v>1</Acceleration_v>
+		<Acceleration_w>1</Acceleration_w>
+        
 		<commandTopic>${cmd_topic}</commandTopic>
 		<odometryTopic>${odom_topic}</odometryTopic> 
 		<odometryFrame>${odom_frame}</odometryFrame>
