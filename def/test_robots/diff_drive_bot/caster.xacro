@@ -28,6 +28,6 @@
 	<child link="caster_link" />
 	<origin xyz="${caster_x-wheel_base_center_x} 0 ${chassis_center_z-(chassis_height/2)}" rpy="0 0 0" />	
 </joint>    
-  	
+    
 </robot>
 	
