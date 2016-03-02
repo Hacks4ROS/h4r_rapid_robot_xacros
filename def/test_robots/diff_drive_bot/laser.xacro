@@ -5,24 +5,24 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 <xacro:rr_laser_2d 
-	name="laser"
-	topic_name="scan/laser"
-	update_rate="10"
-	visualize="false"
-	hor_samples="360"
-	hor_resolution="1"
-	hor_min_angle="${0}"
-	hor_max_angle="${2*rr_const_pi}"
-	range_min="0.20"
-	range_max="6"
-	range_resolution="0.005"
-	noise_type="gaussian"
-    noise_mean="0.01"
+    name="laser"
+    topic_name="xmos_com/scan"
+    update_rate="2.0"
+    visualize="false"
+    hor_samples="360"
+    hor_resolution="1"
+    hor_min_angle="${-rr_const_pi}"
+    hor_max_angle="${rr_const_pi}"
+    range_min="0.20"
+    range_max="14"
+    range_resolution="0.005"
+    noise_type="gaussian"
+    noise_mean="0.0"
     noise_stddev="0.01"
-	parent="base_link"
+    parent="base_link"
     has_inertia="false"
 	>
-	<origin xyz="0 0 ${chassis_center_z+chassis_height/2+0.1/2}" rpy="0 0 0" />
+	<origin xyz="0 0 ${chassis_center_z+0.15}" rpy="0 0 0" />
 	<geometry>
 		<box size="0.098 0.07 0.1" />
 	</geometry>
