@@ -90,6 +90,7 @@
 		<alwaysOn>${ros_plugin_always_on}</alwaysOn>
 		<updateRate>${ros_plugin_update_rate}</updateRate>
 		<odometrySource>${ros_plugin_odom_source}</odometrySource>
+		<legacyMode>false</legacyMode>
 			    
 		<leftJoint>${ros_plugin_controller_name}_wheel_left_joint</leftJoint>
 		<rightJoint>${ros_plugin_controller_name}_wheel_right_joint</rightJoint>
