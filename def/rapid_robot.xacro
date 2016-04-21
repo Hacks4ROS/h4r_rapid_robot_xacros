@@ -32,4 +32,9 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/drive/wheel_solid.xacro" />
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/drive/diff_drive.xacro" />
 
+<!-- Fixes -->
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/fixes/id_link.xacro"/> 
+
+
+
 </robot>
