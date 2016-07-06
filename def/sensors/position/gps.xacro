@@ -8,9 +8,6 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/geometry/geo_ins.xacro"/>
 <xacro:macro name="rr_gps_receiver" 
 params= "name
-		 frame_id
-		 topic_name
-		 velocity_topic_name
 		 reference_latitude
 		 reference_longitude
 		 reference_heading
@@ -24,19 +21,18 @@ params= "name
 		">		 
 
 <xacro:rr_geo_ins/>
-	
 <gazebo>
-	<plugin name="${name}_controller" 
-		    filename="libhector_gazebo_ros_gps.so">
-		<bodyName>${name}_link</bodyName>
-		<frameId>${frame_id}</frameId>
-		<topicName>${topic_name}</topicName>
-		<velocityTopicName>${velocity_topic_name}</velocityTopicName>
-		<referenceLatitude>${reference_latitude}</referenceLatitude>
-		<referenceLongitude>${reference_longitude}</referenceLongitude>
-		<referenceHeading>${reference_heading}</referenceHeading>
-		<referenceAltitude>${reference_altitude}</referenceAltitude>
-	</plugin>
+    <plugin name="${name}_controller" 
+            filename="libhector_gazebo_ros_gps.so">
+        <bodyName>${name}_link</bodyName>
+        <frameId>${name}_link</frameId>
+        <topicName>/${name}/fix</topicName>
+        <velocityTopicName>/${name}/velocity</velocityTopicName>
+        <referenceLatitude>${reference_latitude}</referenceLatitude>
+        <referenceLongitude>${reference_longitude}</referenceLongitude>
+        <referenceHeading>${reference_heading}</referenceHeading>
+        <referenceAltitude>${reference_altitude}</referenceAltitude>
+    </plugin>
 </gazebo>  
-</xacro:macro>	
+</xacro:macro>  
 </robot>
