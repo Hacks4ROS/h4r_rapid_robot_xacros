@@ -12,7 +12,9 @@
        	
 <xacro:property name="y_track_width"  value="${x_track_height}" />
 <xacro:property name="y_track_height" value="${x_track_width}" />
-
+<xacro:property name="y_bar_weight" value="1.5" />
+	
+	
 <xacro:property name="z_track_width"  value="${y_track_width}" />
 <xacro:property name="z_track_height" value="${x_track_height}" />
 	
