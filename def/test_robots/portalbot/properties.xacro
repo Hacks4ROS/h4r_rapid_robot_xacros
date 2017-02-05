@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- Axis bar dimensions -->      	
+ 
+<xacro:property name="x_track_width"  value="0.20" />
+<xacro:property name="x_track_height" value="0.05" />
+       	
+<xacro:property name="y_track_width"  value="${x_track_height}" />
+<xacro:property name="y_track_height" value="${x_track_width}" />
+
+<xacro:property name="z_track_width"  value="${y_track_width}" />
+<xacro:property name="z_track_height" value="${x_track_height}" />
+	
+
+<!-- Axis length in meters -->
+
+<xacro:property name="x_axis_len"  value="1.0" />
+<xacro:property name="y_axis_len"  value="2.0" />
+<xacro:property name="z_axis_len"  value="1.5" />
+	
+
+		
+
+	
+</robot>
