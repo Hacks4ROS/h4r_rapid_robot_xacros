@@ -15,7 +15,7 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot/camera.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot/imu.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot/laser.xacro"/>
-<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot/bumpers.xacro"/>
+<!--TODO needs fixing <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot/bumpers.xacro"/>-->
 
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot/gps.xacro"/>
 
