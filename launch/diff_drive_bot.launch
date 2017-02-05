@@ -1,8 +1,7 @@
 <launch>
 	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
-	<param name="robot_description"  command=
-	"$(find xacro)/xacro.py $(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot.xacro" />
-
+	<param name="robot_description"  command="$(find xacro)/xacro --inorder $(find h4r_rapid_robot_xacros)/def/test_robots/diff_drive_bot.xacro" />
+		
 	<node pkg="robot_state_publisher" type="state_publisher" 
 		  name="robot_state_publisher">
 		<!-- joint_states and robot_description are used in default -->
