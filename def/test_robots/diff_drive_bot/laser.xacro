@@ -6,7 +6,7 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 <xacro:rr_laser_2d 
     name="laser"
-    topic_name="xmos_com/scan"
+    topic_name="/scan"
     update_rate="2.0"
     visualize="false"
     hor_samples="360"
