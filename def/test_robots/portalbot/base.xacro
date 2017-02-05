@@ -38,10 +38,20 @@
 	<origin xyz="${x_axis_len + y_track_width} 0 0" rpy="0 0 0" />	
 </joint>    
 
+<xacro:rr_port_base_y_side name="x_base_front"  width="${x_axis_len}" len="${y_track_width}" height="${y_track_height}" weight="${y_bar_weight}" />
+<xacro:rr_port_base_y_side name="x_base_back"  width="${x_axis_len}" len="${y_track_width}" height="${y_track_height}" weight="${y_bar_weight}" />
+	
+<joint name="joint_y_track_left_x_base_front" type="fixed">
+	<parent link="y_track_left" />
+	<child  link="x_base_front" />
+	<origin xyz="${x_axis_len/2+y_track_width/2} ${y_track_width/2-y_axis_len/2} 0" rpy="0 0 0" />	
+</joint>               	
 
-           	
-
-
+<joint name="joint_y_track_left_x_base_back" type="fixed">
+	<parent link="y_track_left" />
+	<child  link="x_base_back" />
+	<origin xyz="${x_axis_len/2+y_track_width/2} ${y_axis_len/2-y_track_width/2} 0" rpy="0 0 0" />	
+</joint>    
        		
 </robot>
 
