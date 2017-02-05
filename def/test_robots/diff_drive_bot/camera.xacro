@@ -37,7 +37,7 @@ has_inertia      ="false"
 	<color rgba="0 0 0 1"/>		
 </material>
  <inertial/>
-</xacro:rr_cam>	 
-<xacro:rr_gaz_mat_s name="cam0" material="Gazebo/FlatBlack"/>
-       	
+</xacro:rr_cam>
+<xacro:rr_m_gz_black name="cam0"/>		 
+	
 </robot>
