@@ -5,28 +5,29 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:rr_gps_hector
+       	
+<xacro:rr_gps_receiver
 	name="gps0"
-	topic_name="/gps/fix"
 	reference_latitude="48.652726006"
 	reference_longitude="9.184366555"
 	reference_heading="0"
 	reference_altitude="472.05"
 	parent="base_link"
-	has_inertia="true">
+	has_inertia="false">
     <origin xyz="${-(chassis_len/2-0.04/2)-wheel_base_center_x} ${chassis_width/2-0.015} 
                  ${chassis_center_z+chassis_height/2+0.02/2}" 
                  rpy="0 0 0" />
+
+		
 	<geometry>
-		<box size="0.04 0.03 0.02" />
+		<box size="0.02 0.02 0.02" />
 	</geometry>
 	<material name="Black">
 		<color rgba="0 0 0 1"/>		
 	</material>
-	 <!--xacro:inertia_box x="0.02" y="0.02" z="0.04" mass="0.1">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:inertia_box-->
-</xacro:rr_gps_hector>
+	 <inertial/>
+		
+</xacro:rr_gps_receiver>
 <xacro:rr_m_gz_black name="gps0"/>	
    
 </robot>
