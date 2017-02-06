@@ -6,9 +6,8 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/bar.xacro"/>
 
-	
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/properties.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/base.xacro"/>
-	
-
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/portal.xacro"/>
+		
 </robot>		
