@@ -4,6 +4,7 @@
        xmlns:xacro="http://ros.org/wiki/xacro" name="diff_drive_bot">
 	
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/bar.xacro"/>
 
 	
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/properties.xacro"/>

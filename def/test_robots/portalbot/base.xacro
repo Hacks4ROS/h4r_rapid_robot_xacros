@@ -29,8 +29,8 @@
        	
 
 
-<xacro:rr_port_base_y_side name="y_track_left"  width="${y_track_width}" len="${y_axis_len}" height="${y_track_height}" weight="${y_bar_weight}" />
-<xacro:rr_port_base_y_side name="y_track_right" width="${y_track_width}" len="${y_axis_len}" height="${y_track_height}" weight="${y_bar_weight}" />
+<xacro:rr_portal_bar name="y_track_left"  width="${y_track_width}" len="${y_axis_len}" height="${y_track_height}" weight="${y_bar_weight}" />
+<xacro:rr_portal_bar name="y_track_right" width="${y_track_width}" len="${y_axis_len}" height="${y_track_height}" weight="${y_bar_weight}" />
 
 <joint name="joint_y_track_right_left" type="fixed">
 	<parent link="y_track_left" />
@@ -38,8 +38,8 @@
 	<origin xyz="${x_axis_len + y_track_width} 0 0" rpy="0 0 0" />	
 </joint>    
 
-<xacro:rr_port_base_y_side name="x_base_front"  width="${x_axis_len}" len="${y_track_width}" height="${y_track_height}" weight="${y_bar_weight}" />
-<xacro:rr_port_base_y_side name="x_base_back"  width="${x_axis_len}" len="${y_track_width}" height="${y_track_height}" weight="${y_bar_weight}" />
+<xacro:rr_portal_bar name="x_base_front"  width="${x_axis_len}" len="${y_track_width}" height="${y_track_height}" weight="${x_base_bar_weight}" />
+<xacro:rr_portal_bar name="x_base_back"  width="${x_axis_len}" len="${y_track_width}" height="${y_track_height}" weight="${x_base_bar_weight}" />
 	
 <joint name="joint_y_track_left_x_base_front" type="fixed">
 	<parent link="y_track_left" />

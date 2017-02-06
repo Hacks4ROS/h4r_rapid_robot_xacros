@@ -2,8 +2,17 @@
 	<!--
 	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
 	-->
-		
-	<param name="robot_description"  command="$(find xacro)/xacro --inorder $(find h4r_rapid_robot_xacros)/def/test_robots/portalbot.xacro" />
+	  <arg name="x_axis_len" default="1.0" /> 
+	  <arg name="y_axis_len" default="2.0" /> 
+	  <arg name="z_axis_len" default="1.5" /> 
+				
+	  	
+	  	
+	<param name="robot_description"  command="$(find xacro)/xacro --inorder '$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot.xacro'
+		x_axis_len:=$(arg x_axis_len)
+		y_axis_len:=$(arg y_axis_len)
+		z_axis_len:=$(arg z_axis_len)
+		"/>
 		
 	<node pkg="robot_state_publisher" type="state_publisher" 
 		  name="robot_state_publisher">
