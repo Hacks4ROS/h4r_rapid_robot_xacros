@@ -15,7 +15,7 @@
     </xacro:rr_inertia_box_solid>
 	<visual>
 		<geometry><box size="${width} ${len} ${height}" /></geometry>
-		<material name="rr_m_gray_tp"/>
+		<material name="rr_m_gray"/>
 	</visual>
 	
 	<collision>

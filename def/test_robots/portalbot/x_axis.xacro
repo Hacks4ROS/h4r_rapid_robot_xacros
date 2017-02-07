@@ -5,12 +5,24 @@
 xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
 xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
 xmlns:xacro="http://ros.org/wiki/xacro">
-	
+   
    <xacro:rr_portal_bar name="x_track"  width="${x_axis_len}" len="${x_track_height}" height="${x_track_width}" weight="${x_bar_weight}" />
    <joint name="joint_z_frame_x_track" type="fixed">
 		<parent link="z_frame_left" />
 		<child  link="x_track" />
 		<origin xyz="${x_axis_len/2+z_frame_bar_width/2} 0 ${z_frame_bar_length/2-x_track_width/2}" rpy="0 0 0" />	
    </joint>  
+   
+   	  <joint name="joint_x_axis" type="prismatic">
+			<parent link="x_track" />
+			<child  link="x_slider" />
+			<origin xyz="0 ${x_slider_len/2 + x_track_height/2} 0" rpy="0 0 0" />	
+		    <limit effort="1000.0" lower="-15" upper="15" velocity="30.0"/>
+      		<axis xyz="1 0 0"/>
+      </joint>  
+	   
+
+   <xacro:rr_portal_bar name="x_slider"  width="${x_slider_width}" len="${x_slider_len}" height="${x_slider_height}" weight="${x_slider_weight}" />
+   
         
 </robot>

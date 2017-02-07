@@ -22,6 +22,7 @@
 <xacro:rr_mat_color_def color="green_tp" rgba="0 1 0 .5" />
 <xacro:rr_mat_color_def color="black" rgba="0 0 0 1" />
 <xacro:rr_mat_color_def color="gray_tp" rgba="0.5 0.5 0.5 .9" />
+<xacro:rr_mat_color_def color="gray" rgba="0.7 0.7 0.7 1" />
 	
 </robot>
 	
