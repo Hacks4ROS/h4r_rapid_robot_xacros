@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+       			
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+xmlns:xacro="http://ros.org/wiki/xacro">
+	
+   <xacro:rr_portal_bar name="x_track"  width="${x_axis_len}" len="${x_track_height}" height="${x_track_width}" weight="${x_bar_weight}" />
+   <joint name="joint_z_frame_x_track" type="fixed">
+		<parent link="z_frame_left" />
+		<child  link="x_track" />
+		<origin xyz="${x_axis_len/2+z_frame_bar_width/2} 0 ${z_frame_bar_length/2-x_track_width/2}" rpy="0 0 0" />	
+   </joint>  
+        
+</robot>

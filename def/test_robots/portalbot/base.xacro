@@ -5,29 +5,6 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:macro name="rr_port_base_y_side" params="name width len height weight">
-<link name="${name}">
-	<xacro:rr_inertia_box_solid x="${width}" 
-		                        y="${len}" 
-		                        z="${height}" 
-		                        mass="${weight}">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:rr_inertia_box_solid>
-	<visual>
-		<geometry><box size="${width} ${len} ${height}" /></geometry>
-		<material name="rr_m_gray_tp"/>
-	</visual>
-	
-	<collision>
-		<geometry><box size="${width} ${len} ${height}" /></geometry>		  	
-	</collision>
-</link>   	
-</xacro:macro>
-
-
-
-       	
-
 
 <xacro:rr_portal_bar name="y_track_left"  width="${y_track_width}" len="${y_axis_len}" height="${y_track_height}" weight="${y_bar_weight}" />
 <xacro:rr_portal_bar name="y_track_right" width="${y_track_width}" len="${y_axis_len}" height="${y_track_height}" weight="${y_bar_weight}" />
@@ -35,7 +12,7 @@
 <joint name="joint_y_track_right_left" type="fixed">
 	<parent link="y_track_left" />
 	<child  link="y_track_right" />
-	<origin xyz="${x_axis_len + y_track_width} 0 0" rpy="0 0 0" />	
+	<origin xyz="${x_axis_len + y_track_width} 0 0" rpy="0 0 0" />
 </joint>    
 
 <xacro:rr_portal_bar name="x_base_front"  width="${x_axis_len}" len="${y_track_width}" height="${y_track_height}" weight="${x_base_bar_weight}" />

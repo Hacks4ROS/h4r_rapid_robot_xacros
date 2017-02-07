@@ -5,6 +5,14 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
+<!-- Axis length in meters -->
+
+<xacro:property name="x_axis_len"  value="$(arg x_axis_len)" />
+<xacro:property name="y_axis_len"  value="$(arg y_axis_len)" />
+<xacro:property name="z_axis_len"  value="$(arg z_axis_len)" />
+	
+       	
+       	
 <!-- Axis bar dimensions -->      	
 <xacro:property name="x_track_width"  value="0.20" />
 <xacro:property name="x_track_height" value="0.05" />
@@ -18,16 +26,14 @@
 <xacro:property name="x_base_bar_weight" value="1.5" />	
 
 	
-<xacro:property name="z_track_width"  value="${y_track_width}" />
-<xacro:property name="z_track_height" value="${x_track_height}" />
+<xacro:property name="z_frame_bar_width"  value="${y_track_width}" />
+<xacro:property name="z_frame_bar_height" value="${x_track_height}" />
+<xacro:property name="z_frame_bar_length" value="${z_axis_len-y_track_height+x_track_width}" />
+	
+<xacro:property name="z_frame_bar_weight" value="1.5" />	
 	
 
-<!-- Axis length in meters -->
 
-<xacro:property name="x_axis_len"  value="$(arg x_axis_len)" />
-<xacro:property name="y_axis_len"  value="$(arg y_axis_len)" />
-<xacro:property name="z_axis_len"  value="$(arg z_axis_len)" />
-	
 
 		
 
