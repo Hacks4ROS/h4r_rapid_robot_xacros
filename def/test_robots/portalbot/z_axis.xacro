@@ -8,7 +8,7 @@ xmlns:xacro="http://ros.org/wiki/xacro">
 	
 
 
-   <xacro:rr_portal_bar name="z_slider"  width="${z_slider_width}" len="${z_slider_height}" height="${z_slider_len}" weight="${x_slider_weight}" />
+   <xacro:rr_portal_element name="z_slider"  x_size="${z_slider_width}" y_size="${z_slider_height}" z_size="${z_slider_len}" weight="${x_slider_weight}" />
    
     <joint name="joint_x_slider_z_axis" type="prismatic">
 			<parent link="x_slider" />

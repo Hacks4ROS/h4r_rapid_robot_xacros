@@ -6,8 +6,8 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
 
-	   <xacro:rr_portal_bar name="z_frame_left"  width="${z_frame_bar_width}" len="${z_frame_bar_height}" height="${z_frame_bar_length}" weight="${z_frame_bar_weight}" />
-       <xacro:rr_portal_bar name="z_frame_right" width="${z_frame_bar_width}" len="${z_frame_bar_height}" height="${z_frame_bar_length}" weight="${z_frame_bar_weight}" />
+	   <xacro:rr_portal_element name="z_frame_left"  x_size="${z_frame_bar_width}" y_size="${z_frame_bar_height}" z_size="${z_frame_bar_length}" weight="${z_frame_bar_weight}" />
+       <xacro:rr_portal_element name="z_frame_right"  x_size="${z_frame_bar_width}" y_size="${z_frame_bar_height}" z_size="${z_frame_bar_length}" weight="${z_frame_bar_weight}" />
        
        <joint name="joint_z_frame_left_z_frame_right" type="fixed">
 			<parent link="z_frame_left" />

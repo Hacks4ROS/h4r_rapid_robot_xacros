@@ -5,22 +5,27 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:macro name="rr_portal_bar" params="name width len height weight">
+       	
+   
+      
+       	
+<xacro:macro name="rr_portal_element" params="name x_size y_size z_size weight">
 <link name="${name}">
-	<xacro:rr_inertia_box_solid x="${width}" 
-		                        y="${len}" 
-		                        z="${height}" 
+	<xacro:rr_inertia_box_solid x="${x_size}" 
+		                        y="${y_size}" 
+		                        z="${z_size}" 
 		                        mass="${weight}">
     <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:rr_inertia_box_solid>
 	<visual>
-		<geometry><box size="${width} ${len} ${height}" /></geometry>
+		<geometry><box size="${x_size} ${y_size} ${z_size}" /></geometry>
 		<material name="rr_m_gray"/>
 	</visual>
 	
 	<collision>
-		<geometry><box size="${width} ${len} ${height}" /></geometry>		  	
+		<geometry><box size="${x_size} ${y_size} ${z_size}" /></geometry>		  	
 	</collision>
 </link>   	
 </xacro:macro>
+
 </robot>
