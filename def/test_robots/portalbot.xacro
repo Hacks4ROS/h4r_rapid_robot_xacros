@@ -10,4 +10,5 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/base.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/portal.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/x_axis.xacro"/>
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot/z_axis.xacro"/>				
 </robot>		
