@@ -20,6 +20,9 @@ xmlns:xacro="http://ros.org/wiki/xacro">
 		    <limit effort="1000.0" lower="-15" upper="15" velocity="30.0"/>
       		<axis xyz="1 0 0"/>
       </joint>  
+      
+      
+      
 	   
 
    <xacro:rr_portal_element name="x_slider"  x_size="${x_slider_width}" y_size="${x_slider_len}" z_size="${x_slider_height}" weight="${x_slider_weight}" />
