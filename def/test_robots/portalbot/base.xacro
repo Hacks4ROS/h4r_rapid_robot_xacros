@@ -6,29 +6,17 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
 
-<xacro:rr_portal_element name="y_track_left"  x_size="${y_track_width}" y_size="${y_axis_len}" z_size="${y_track_height}" weight="${y_bar_weight}" />
+<xacro:rr_portal_element name="y_track_left"  x_size="${y_track_width}" y_size="${y_axis_len}" z_size="${y_track_height}" weight="${y_bar_weight}"  />
+
 <xacro:rr_portal_element name="y_track_right"  x_size="${y_track_width}" y_size="${y_axis_len}" z_size="${y_track_height}" weight="${y_bar_weight}" />
+<xacro:rr_joint_fixed parent="y_track_left" child="y_track_right" origin_x="${x_axis_len + y_track_width}" />
 
-<joint name="joint_y_track_right_left" type="fixed">
-	<parent link="y_track_left" />
-	<child  link="y_track_right" />
-	<origin xyz="${x_axis_len + y_track_width} 0 0" rpy="0 0 0" />
-</joint>    
+<xacro:rr_portal_element name="x_base_front"  x_size="${x_axis_len+y_track_width*2}" y_size="${y_track_width}" z_size="${y_track_height}" weight="${x_base_bar_weight}" />
+<xacro:rr_joint_fixed parent="y_track_left" child="x_base_front" origin_x="${x_axis_len/2+y_track_width/2}" origin_y="${y_track_width/2+y_axis_len/2}"  />
 
-<xacro:rr_portal_element name="x_base_front"  x_size="${x_axis_len}" y_size="${y_track_width}" z_size="${y_track_height}" weight="${x_base_bar_weight}" />
-<xacro:rr_portal_element name="x_base_back"  x_size="${x_axis_len}" y_size="${y_track_width}" z_size="${y_track_height}" weight="${x_base_bar_weight}" />
+<xacro:rr_portal_element name="x_base_back"  x_size="${x_axis_len+y_track_width*2}" y_size="${y_track_width}" z_size="${y_track_height}" weight="${x_base_bar_weight}" />
+<xacro:rr_joint_fixed parent="y_track_left" child="x_base_back" origin_x="${x_axis_len/2+y_track_width/2}" origin_y="${-y_axis_len/2-y_track_width/2}"  />
 	
-<joint name="joint_y_track_left_x_base_front" type="fixed">
-	<parent link="y_track_left" />
-	<child  link="x_base_front" />
-	<origin xyz="${x_axis_len/2+y_track_width/2} ${y_track_width/2-y_axis_len/2} 0" rpy="0 0 0" />	
-</joint>               	
 
-<joint name="joint_y_track_left_x_base_back" type="fixed">
-	<parent link="y_track_left" />
-	<child  link="x_base_back" />
-	<origin xyz="${x_axis_len/2+y_track_width/2} ${y_axis_len/2-y_track_width/2} 0" rpy="0 0 0" />	
-</joint>    
-       		
 </robot>
 
