@@ -53,19 +53,13 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        x_base_back:
+        rail_end_back:
           Value: true
-        x_base_front:
+        rail_end_front:
           Value: true
-        x_track:
+        rail_left:
           Value: true
-        y_track_left:
-          Value: true
-        y_track_right:
-          Value: true
-        z_frame_left:
-          Value: true
-        z_frame_right:
+        rail_right:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -73,12 +67,12 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        y_track_left:
-          x_base_back:
+        rail_left:
+          rail_end_back:
             {}
-          x_base_front:
+          rail_end_front:
             {}
-          y_track_right:
+          rail_right:
             {}
       Update Interval: 0
       Value: true
@@ -108,37 +102,22 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        x_base_back:
+        rail_end_back:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        x_base_front:
+        rail_end_front:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        x_track:
+        rail_left:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        y_track_left:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        y_track_right:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        z_frame_left:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        z_frame_right:
+        rail_right:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -154,7 +133,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: y_track_left
+    Fixed Frame: rail_left
     Frame Rate: 30
   Name: root
   Tools:
@@ -175,7 +154,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.34460974
+      Distance: 4.86440563
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -189,10 +168,10 @@ Visualization Manager:
       Focal Shape Size: 0.0500000007
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.215398476
+      Pitch: 0.96539855
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.18358994
+      Yaw: 3.90358949
     Saved: ~
 Window Geometry:
   "&Displays":
@@ -210,5 +189,5 @@ Window Geometry:
   Tool Properties:
     collapsed: false
   Width: 1200
-  X: 704
-  Y: 107
+  X: 700
+  Y: 78

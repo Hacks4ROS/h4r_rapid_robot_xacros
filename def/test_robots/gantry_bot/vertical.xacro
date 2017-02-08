@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+       	
+
+	   	
+<!-- Vertical -->				  	
+<xacro:rr_portal_element name="vertical" x_size="${vertical_height}" y_size="${vertical_width}" z_size="${vertical_length}" weight="${vertical_weight}" />
+		  	
+   					  	
+<!-- Vertical Axis -->	 
+<xacro:rr_linear_axis parent="boom_slider" 
+                     child="vertical"
+					 origin_x="${-(vertical_height/2+boom_slider_width/2)}" 
+					 effort="1000.0"
+					 lower ="-15"
+					 upper="15" 
+					 velocity="30"
+					 axis="z"/> 
+	   	
+
+</robot>

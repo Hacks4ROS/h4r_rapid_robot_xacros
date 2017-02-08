@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:property name="rail_length"  		value="$(arg y_axis_len)" />
+<xacro:property name="rail_width"   		value="0.05" />
+<xacro:property name="rail_height"  		value="0.10" />
+<xacro:property name="rail_weight"  		value="1.0" />
+
+<xacro:property name="rail_end_width"   	value="${rail_width}" />
+<xacro:property name="rail_end_height"  	value="${rail_height}" />
+<xacro:property name="rail_end_weight"  	value="1.0" />       
+
+<xacro:property name="boom_support_length" value="0.10" />
+<xacro:property name="boom_support_width"  value="${rail_width}" />
+<xacro:property name="boom_support_height" value="1.00" />
+<xacro:property name="boom_support_weight" value="1.00" />
+       	
+<xacro:property name="rail_slider_width"   	value="0.02" />
+<xacro:property name="rail_slider_length"   value="${boom_support_length+0.02}" />
+<xacro:property name="rail_slider_height"   value="${rail_height+0.04}" />
+<xacro:property name="rail_slider_weight"   value="1.0" />
+	
+<xacro:property name="boom_length"  		value="$(arg x_axis_len)" />
+<xacro:property name="boom_width"   		value="0.05" />
+<xacro:property name="boom_height"  		value="0.10" />
+<xacro:property name="boom_weight"  		value="1.0" />
+
+<xacro:property name="boom_slider_length"  		value="0.35" />
+<xacro:property name="boom_slider_width"   		value="0.05" />
+<xacro:property name="boom_slider_height"  		value="0.35" />
+<xacro:property name="boom_slider_weight"  		value="1.0" />
+	
+<xacro:property name="vertical_length"  	value="1.5" />
+<xacro:property name="vertical_width"   	value="0.20" />
+<xacro:property name="vertical_height"  	value="0.05" />
+<xacro:property name="vertical_weight"  	value="1.0" />
+		       	
+</robot>

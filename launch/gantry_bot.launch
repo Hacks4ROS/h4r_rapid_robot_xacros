@@ -8,7 +8,7 @@
 				
 	  	
 	  	
-	<param name="robot_description"  command="$(find xacro)/xacro --inorder '$(find h4r_rapid_robot_xacros)/def/test_robots/portalbot.xacro'
+	<param name="robot_description"  command="$(find xacro)/xacro --inorder '$(find h4r_rapid_robot_xacros)/def/test_robots/gantry_bot.xacro'
 		x_axis_len:=$(arg x_axis_len)
 		y_axis_len:=$(arg y_axis_len)
 		z_axis_len:=$(arg z_axis_len)

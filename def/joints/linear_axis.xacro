@@ -24,7 +24,7 @@
 			<parent link="${parent}" />
 			<child  link="${child}" />
 			<origin xyz="${origin_x} ${origin_y} ${origin_z}" rpy="${origin_R} ${origin_P} ${origin_Y}" />	
-		    <limit effort="${effort}" lower="${velocity}" upper="${upper}" velocity="${velocity}"/>
+		    <limit effort="${effort}" lower="${lower}" upper="${upper}" velocity="${velocity}"/>
       		
       		
 			<xacro:if value="${axis == 'x'}">
