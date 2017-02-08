@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:macro name="rr_linear_axis" params="   parent 
+											  child 
+											  origin_x:=0
+											  origin_y:=0
+											  origin_z:=0
+											  origin_R:=0
+											  origin_P:=0
+										      origin_Y:=0
+										      effort 
+											  lower 
+											  upper 
+											  velocity
+											  axis
+											  ">
+	
+   	  <joint name="joint_linear_${parent}_${child}" type="prismatic">
+			<parent link="${parent}" />
+			<child  link="${child}" />
+			<origin xyz="${origin_x} ${origin_y} ${origin_z}" rpy="${origin_R} ${origin_P} ${origin_Y}" />	
+		    <limit effort="${effort}" lower="${velocity}" upper="${upper}" velocity="${velocity}"/>
+      		
+      		
+			<xacro:if value="${axis == 'x'}">
+				<axis xyz="1 0 0"/>
+			</xacro:if>
+			<xacro:if value="${axis == 'y'}">
+				<axis xyz="0 1 0"/>
+			</xacro:if>
+			<xacro:if value="${axis == 'z'}">
+				<axis xyz="0 0 1"/>
+			</xacro:if>
+			     			
+      </joint>  
+</xacro:macro>
+
+
+
+</robot>
