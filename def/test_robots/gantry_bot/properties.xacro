@@ -39,4 +39,11 @@
 <xacro:property name="vertical_height"  	value="0.05" />
 <xacro:property name="vertical_weight"  	value="1.0" />
 		       	
+
+<xacro:property name="foot_length"  	value="0.1" />
+<xacro:property name="foot_width"   	value="0.05" />
+<xacro:property name="foot_height"  	value="0.05" />
+<xacro:property name="foot_weight"  	value="1.0" />
+
+<xacro:property name="ros_control"  	value="true" />
 </robot>
