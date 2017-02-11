@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:macro name="rr_roscontrol_simple_joint_transmission" params="joint actuator:='motor1' effort:=false velocity:=false position:=false reduction:=1">
+  <transmission name="transmission_simple_${joint}_${actuator}">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${joint}">
+      <xacro:if value="${effort}"><hardwareInterface>EffortJointInterface</hardwareInterface></xacro:if>	
+      <xacro:if value="${velocity}"><hardwareInterface>VelocityJointInterface</hardwareInterface></xacro:if>	
+      <xacro:if value="${position}"><hardwareInterface>PositionJointInterface</hardwareInterface></xacro:if>	      
+    </joint>
+    <actuator name="${actuator}">
+      <mechanicalReduction>${reduction}</mechanicalReduction>
+    </actuator>
+  </transmission>
+</xacro:macro>
+
+
+<xacro:macro name="rr_roscontrol_controller" params="namespace:=''">
+ <gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+	<xacro:if value="${namespace != ''}">	
+	    <robotNamespace>${namespace}</robotNamespace>
+	</xacro:if>
+  </plugin>
+</gazebo>
+</xacro:macro>
+
+</robot>

@@ -10,5 +10,8 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/gantry_bot/rails.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/gantry_bot/boom.xacro"/>
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/gantry_bot/vertical.xacro"/>
-	
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/test_robots/gantry_bot/feet.xacro"/>
+
+<xacro:rr_roscontrol_controller />
+		
 </robot>		

@@ -18,6 +18,12 @@
 											  upper 
 											  velocity
 											  axis
+											  ros_control:=false
+											  ros_control_actuator:='motor1'
+											  ros_control_effort:=false
+											  ros_control_velocity:=false
+											  ros_control_position:=false
+											  ros_control_reduction:=1
 											  ">
 	
    	  <joint name="joint_linear_${parent}_${child}" type="prismatic">
@@ -38,6 +44,18 @@
 			</xacro:if>
 			     			
       </joint>  
+      
+     <xacro:if value="${ros_control}">
+     	
+		<xacro:rr_roscontrol_simple_joint_transmission 
+			joint="joint_linear_${parent}_${child}" 
+			actuator="${ros_control_actuator}"			
+			effort="${ros_control_effort}"			
+			velocity="${ros_control_velocity}"			
+			position="${ros_control_position}"			
+		  	reduction="${ros_control_reduction}" />
+     </xacro:if>
+      
 </xacro:macro>
 
 

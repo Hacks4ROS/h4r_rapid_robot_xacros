@@ -1,8 +1,7 @@
 <launch>
-	<!--
+
 	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
-	-->
-	  <arg name="x_axis_len" default="1.0" /> 
+	  <arg name="x_axis_len" default="2.0" /> 
 	  <arg name="y_axis_len" default="2.0" /> 
 	  <arg name="z_axis_len" default="1.5" /> 
 				

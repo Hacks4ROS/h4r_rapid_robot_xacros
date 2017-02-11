@@ -38,13 +38,10 @@
 							 lower ="-15"
 							 upper="15" 
 							 velocity="30"
-							 axis="x"/> 
-	   	
-							 	
-	  
-	   
-  	
-
-	   
+							 axis="y"
+	   						 ros_control="${ros_control}"
+	   						 ros_control_position="true"
+	   						/>	 
+	   	   
        	
 </robot>

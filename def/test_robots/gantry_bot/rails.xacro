@@ -38,7 +38,11 @@
 				      lower ="0"
 				      upper="${rail_length - rail_slider_width}" 
 					  velocity="1"
-					  axis="x"/>
+					  axis="x"
+					  ros_control="${ros_control}"
+	   				  ros_control_position="true"
+	
+						/>	
 	
 </robot>
 
