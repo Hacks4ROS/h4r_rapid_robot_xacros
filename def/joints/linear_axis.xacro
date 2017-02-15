@@ -24,9 +24,17 @@
 											  ros_control_velocity:=false
 											  ros_control_position:=false
 											  ros_control_reduction:=1
+											  joint_name=''
 											  ">
 	
-   	  <joint name="joint_linear_${parent}_${child}" type="prismatic">
+	<xacro:if value="${joint_name == ''}">
+		 <xacro:property name="joint_name_in" value="joint_linear_${parent}_${child}" />
+	</xacro:if>									  	
+	<xacro:unless value="${joint_name == ''}">
+		 <xacro:property name="joint_name_in" value="${joint_name}" />
+	</xacro:unless>												  	
+											  	
+   	  <joint name="${joint_name_in}" type="prismatic">
 			<parent link="${parent}" />
 			<child  link="${child}" />
 			<origin xyz="${origin_x} ${origin_y} ${origin_z}" rpy="${origin_R} ${origin_P} ${origin_Y}" />	
@@ -48,7 +56,7 @@
      <xacro:if value="${ros_control}">
      	
 		<xacro:rr_roscontrol_simple_joint_transmission 
-			joint="joint_linear_${parent}_${child}" 
+			joint="${joint_name_in}" 
 			actuator="${ros_control_actuator}"			
 			effort="${ros_control_effort}"			
 			velocity="${ros_control_velocity}"			

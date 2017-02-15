@@ -41,7 +41,8 @@
 							 axis="y"
 	   						 ros_control="${ros_control}"
 	   						 ros_control_position="true"
-	   						/>	 
+	   						 joint_name="boom_joint"
+   						/>	 
 	   	   
        	
 </robot>

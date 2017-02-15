@@ -23,6 +23,7 @@
 					 axis="z"
 					 ros_control="${ros_control}"
 	   				 ros_control_position="true"
+					 joint_name="vertical_joint"
 					/> 
 	   	
 </robot>

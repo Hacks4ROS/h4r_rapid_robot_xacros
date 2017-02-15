@@ -41,7 +41,7 @@
 					  axis="x"
 					  ros_control="${ros_control}"
 	   				  ros_control_position="true"
-	
+					  joint_name="rail_joint"
 						/>	
 	
 </robot>

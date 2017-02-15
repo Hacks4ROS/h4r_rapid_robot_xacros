@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+       
+       <link name="base_link" />
+       <xacro:rr_joint_fixed parent="base_link" child="rail_left" origin_x="${rail_length/2}" origin_y="${-rail_width/2}" />
+		
+       	
+</robot>

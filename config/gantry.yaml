@@ -1,0 +1,19 @@
+
+# Publish all joint states -----------------------------------
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50  
+
+ # Position Controllers ---------------------------------------
+joint_rail:
+  type: position_controllers/JointPositionController
+  joint: rail_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+joint_boom:
+  type: position_controllers/JointPositionController
+  joint: boom_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}  
+joint_vertical:
+  type: position_controllers/JointPositionController
+  joint: vertical_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
