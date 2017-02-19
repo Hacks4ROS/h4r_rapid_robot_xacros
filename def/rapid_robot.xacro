@@ -40,6 +40,7 @@
 <!-- Fixes -->
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/fixes/id_link.xacro"/> 
 
-
-
+<!-- Simple -->
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/simple/simple_box.xacro"/> 
+	
 </robot>
