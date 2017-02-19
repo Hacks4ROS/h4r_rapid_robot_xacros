@@ -10,7 +10,7 @@
             fric_mu1=100 
             fric_mu2:=50
 			fric_fdir:='1 1 1' 
- 			kp:=1000000
+ 			kp:=2147483647.00  
 			kd:=1.0
 	        gazebo_material:='Gazebo/White' 
 	        rviz_material:='rr_m_gray_tp'
