@@ -1,17 +1,20 @@
 <launch>
 
 	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
-	  <arg name="x_axis_len" default="2.0" /> 
-	  <arg name="y_axis_len" default="2.0" /> 
-	  <arg name="z_axis_len" default="1.5" /> 
+	  <arg name="rail_len" default="2.0" /> 
+	  <arg name="boom_len" default="2.0" /> 
+	  <arg name="vertical_len" default="1.5" /> 
+	  <arg name="boom_support_height" default="1.5" /> 
+	  	
 				
 	  	
 	  	
 	<param name="robot_description"  command="$(find xacro)/xacro --inorder '$(find h4r_rapid_robot_xacros)/def/test_robots/gantry_bot.xacro'
-		x_axis_len:=$(arg x_axis_len)
-		y_axis_len:=$(arg y_axis_len)
-		z_axis_len:=$(arg z_axis_len)
-		"/>
+		rail_len:=$(arg rail_len)
+		boom_len:=$(arg boom_len)
+		vertical_len:=$(arg vertical_len)
+	    boom_support_height:=$(arg boom_support_height)
+		"/> 
 
 	<node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
 	      args="-z 0.2 -urdf -param robot_description -model gantry"

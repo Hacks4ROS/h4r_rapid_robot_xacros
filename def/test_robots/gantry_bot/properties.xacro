@@ -5,39 +5,53 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:property name="rail_length"  		value="$(arg y_axis_len)" />
-<xacro:property name="rail_width"   		value="0.05" />
-<xacro:property name="rail_height"  		value="0.10" />
-<xacro:property name="rail_weight"  		value="1.0" />
+<xacro:property name="vslot2020_weight_per_meter" value="0.75" />
+<xacro:property name="vslot2020_height"   		value="0.02" />
+<xacro:property name="vslot2020_width"   		value="0.02" />
+       	
+<xacro:property name="vslot2040_weight_per_meter" value="0.85" />
+<xacro:property name="vslot2040_height"   		value="0.04" />
+<xacro:property name="vslot2040_width"   		value="0.02" />
+	       	       	
+<xacro:property name="vslot2060_weight_per_meter" value="1.5" />
+<xacro:property name="vslot2060_height"   		value="0.06" />
+<xacro:property name="vslot2060_width"   		value="0.02" />
+
+<xacro:property name="rail_length"  		value="$(arg rail_len)" />
+<xacro:property name="boom_length"  		value="$(arg boom_len)" />
+<xacro:property name="vertical_length"  	value="$(arg vertical_len)" />
+<xacro:property name="boom_support_height"  value="$(arg boom_support_height)" />
+
+<xacro:property name="rail_width"   		value="${vslot2040_width}" />
+<xacro:property name="rail_height"  		value="${vslot2040_height}" />
+<xacro:property name="rail_weight"  		value="${rail_length*vslot2040_weight_per_meter}" />
 
 <xacro:property name="rail_end_width"   	value="${rail_width}" />
 <xacro:property name="rail_end_height"  	value="${rail_height}" />
-<xacro:property name="rail_end_weight"  	value="1.0" />       
-
-<xacro:property name="boom_support_length" value="0.10" />
-<xacro:property name="boom_support_width"  value="${rail_width}" />
-<xacro:property name="boom_support_height" value="1.00" />
-<xacro:property name="boom_support_weight" value="1.00" />
+<xacro:property name="rail_end_length"  	value="${boom_length}" />
+<xacro:property name="rail_end_weight"  	value="${rail_end_length*vslot2040_weight_per_meter}" />       
+	
+<xacro:property name="boom_support_length" value="${vslot2060_height}" />
+<xacro:property name="boom_support_width"  value="${vslot2060_width}" />
+<xacro:property name="boom_support_weight" value="${boom_support_height*vslot2060_weight_per_meter}" />
        	
 <xacro:property name="rail_slider_width"   	value="0.02" />
 <xacro:property name="rail_slider_length"   value="${boom_support_length+0.02}" />
 <xacro:property name="rail_slider_height"   value="${rail_height+0.04}" />
 <xacro:property name="rail_slider_weight"   value="1.0" />
 	
-<xacro:property name="boom_length"  		value="$(arg x_axis_len)" />
-<xacro:property name="boom_width"   		value="0.05" />
-<xacro:property name="boom_height"  		value="0.10" />
-<xacro:property name="boom_weight"  		value="1.0" />
+<xacro:property name="boom_width"   		value="${vslot2060_width}" />
+<xacro:property name="boom_height"  		value="${vslot2060_height}" />
+<xacro:property name="boom_weight"  		value="${boom_length*vslot2060_weight_per_meter}" />
 
 <xacro:property name="boom_slider_length"  	value="0.35" />
 <xacro:property name="boom_slider_width"   	value="0.05" />
 <xacro:property name="boom_slider_height"  	value="0.35" />
 <xacro:property name="boom_slider_weight"  	value="1.0" />
 	
-<xacro:property name="vertical_length"  	value="1.5" />
-<xacro:property name="vertical_width"   	value="0.20" />
-<xacro:property name="vertical_height"  	value="0.05" />
-<xacro:property name="vertical_weight"  	value="1.0" />
+<xacro:property name="vertical_width"   	value="${vslot2020_height}" />
+<xacro:property name="vertical_height"  	value="${vslot2020_width}" />
+<xacro:property name="vertical_weight"  	value="${vertical_length*vslot2020_weight_per_meter}" />
 
 <xacro:property name="foot_length"  	value="0.1" />
 <xacro:property name="foot_width"   	value="0.05" />
