@@ -56,7 +56,7 @@
 			<bodyName>${name}_link</bodyName>
 			<updateRate>30</updateRate>
 			<topicName>${topic_name}</topicName>
-			<serviceName>imu/calibbrate</serviceName>
+			<serviceName>${name}/calibbrate</serviceName>
 			<accelOffset>.0 .0 .0</accelOffset>
 			<accelDrift>.0 .0 .0</accelDrift>
 			<accelDriftFrequency>.0 .0 .0</accelDriftFrequency>
