@@ -43,4 +43,9 @@
 <!-- Simple -->
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/simple/simple_box.xacro"/> 
 	
+<!-- Video -->
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/video/screen.xacro"/> 
+		
+	
+	
 </robot>
