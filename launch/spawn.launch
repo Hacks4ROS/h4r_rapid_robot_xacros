@@ -18,3 +18,18 @@
            output="screen" />
 	 	
 </launch>
+
+<!-- Usage Example:
+   <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >  
+          <arg name="model_file" value="$(find myPackage)/def/myModel.xacro" />
+          <arg name="model_name" value="UNIQUE_model_name" />
+          <arg name="posX" value="0" />
+          <arg name="posY" value="0" />
+          <arg name="posZ" value="0" />
+          	          
+          <arg name="roll"         value="0" />
+          <arg name="pitch"        value="0" />
+          <arg name="yaw"          value="0" />
+          <arg name="model_params" value="static:=true" />
+	</include> 
+-->
