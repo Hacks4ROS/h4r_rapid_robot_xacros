@@ -7,11 +7,11 @@
 	
 <xacro:macro name="rr_world_joint" params="root_link:='base_link' default:=true" />
 <xacro:arg name="world_joint" default="${default}"/>
-<xacro:if value="$(arg world_joint)">
+<xacro:if value="$(arg root_link)">
   <link name="world"/>
   <joint name="fixed" type="fixed">
     <parent link="world"/>
-    <child link="${base_link}"/>
+    <child link="$(arg root_link)"/>
   </joint>
 </xacro:if> 
 </robot>

@@ -46,6 +46,10 @@
 <!-- Video -->
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/video/screen.xacro"/> 
 		
+<!-- World 	-->
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/world/static.xacro"/> 
 	
-	
+<!--
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/world/world_joint.xacro"/> 
+-->
 </robot>
