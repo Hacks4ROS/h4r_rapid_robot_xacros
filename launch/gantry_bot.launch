@@ -1,10 +1,10 @@
 <launch>
 
 	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
-	  <arg name="rail_len" default="2.0" /> 
-	  <arg name="boom_len" default="2.0" /> 
-	  <arg name="vertical_len" default="1.5" /> 
-	  <arg name="boom_support_height" default="1.5" /> 
+	  <arg name="rail_len" default="1.51" /> 
+	  <arg name="boom_len" default="1.01" /> 
+	  <arg name="vertical_len" default="1.01" /> 
+	  <arg name="boom_support_height" default="0.5" /> 
 	  	
 				
 	  	
@@ -17,8 +17,8 @@
 		"/> 
 
 	<node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
-	      args="-z 0.2 -urdf -param robot_description -model gantry"
-		  required="false" />
+	      args="-z 0.1 -urdf -param robot_description -model gantry"
+		  required="false" /> 
 	
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find h4r_rapid_robot_xacros)/rviz/portal.rviz" />
 	
