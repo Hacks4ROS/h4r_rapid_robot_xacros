@@ -1,12 +1,16 @@
 <launch>
 
-	<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		   <arg name="paused" value="true" />
+	</include>
+	
+	
 	  <arg name="rail_len" default="1.51" /> 
 	  <arg name="boom_len" default="1.01" /> 
 	  <arg name="vertical_len" default="1.01" /> 
 	  <arg name="boom_support_height" default="0.5" /> 
-	  	
-				
+	  <arg name="vertical_offset" default="0.28" /> 	
+	  <arg name="vertical_axis_slider_offset" default="-0.05" /> 		
 	  	
 	  	
 	<param name="robot_description"  command="$(find xacro)/xacro --inorder '$(find h4r_rapid_robot_xacros)/def/test_robots/gantry_bot.xacro'
@@ -14,10 +18,12 @@
 		boom_len:=$(arg boom_len)
 		vertical_len:=$(arg vertical_len)
 	    boom_support_height:=$(arg boom_support_height)
+		vertical_offset:=$(arg vertical_offset)	
+		vertical_axis_slider_offset:=$(arg vertical_axis_slider_offset)	
 		"/> 
 
 	<node name="spawn_test_bot" pkg="gazebo_ros" type="spawn_model" 
-	      args="-z 0.1 -urdf -param robot_description -model gantry"
+	      args="-z 0 -urdf -param robot_description -model gantry"
 		  required="false" /> 
 	
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find h4r_rapid_robot_xacros)/rviz/portal.rviz" />

@@ -17,14 +17,15 @@
                      child="vertical"
 					 origin_x="${-(vertical_height/2+boom_slider_width/2)}"
  					 origin_y="${vertical_axis_slider_offset}"
+					 origin_z="${vertical_length/2-vertical_offset}"
 					 effort="1000.0"
 					 lower ="0"
-					 upper="1" 
+					 upper="${vertical_length}" 
 					 velocity="30"
 					 axis="z"
 					 ros_control="${ros_control}"
 	   				 ros_control_position="true"
-					 joint_name="vertical_joint"
+					 joint_name="vertical_joint" 
 					/> 
 	   	
 </robot>

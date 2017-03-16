@@ -8,7 +8,7 @@
 
        
        <link name="base_link" />
-       <xacro:rr_joint_fixed parent="base_link" child="rail_left" origin_x="${rail_length/2}" origin_y="${-rail_width/2}" />
+       <xacro:rr_joint_fixed parent="base_link" child="rail_left" origin_x="${rail_length/2}" origin_y="${-rail_width/2}" origin_z="${(foot_length+rail_height/2)}" />
 	
        	
 </robot>

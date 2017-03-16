@@ -25,7 +25,7 @@
 <!-- Boom -->				  	
 <xacro:rr_portal_element name="boom" x_size="${boom_width}" y_size="${boom_length}" z_size="${boom_height}" weight="${boom_weight}" />
 <xacro:rr_joint_fixed parent="boom_support_left" child="boom" 
-					  origin_x="${boom_support_length/2-boom_width/2}"
+					  origin_x="${-(boom_support_length/2-boom_width/2)}"
 					  origin_y="${boom_length/2-boom_support_width/2}"
    					  origin_z="${boom_support_height/2+boom_height/2}"/>  			  	
    					  	
@@ -34,9 +34,10 @@
 	   <xacro:rr_linear_axis parent="boom" 
 	                         child="boom_slider"
 	   						 origin_x="${-(boom_slider_width/2+boom_width/2)}" 
+							 origin_y="${(boom_length-boom_slider_length)/2}"	   
 	   						 effort="1000.0"
-							 lower ="-15"
-							 upper="15" 
+							 lower ="0"
+							 upper="${boom_length-boom_slider_length}" 
 							 velocity="30"
 							 axis="y"
 	   						 ros_control="${ros_control}"
