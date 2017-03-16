@@ -15,7 +15,8 @@
 <!-- Vertical Axis -->	 
 <xacro:rr_linear_axis parent="boom_slider" 
                      child="vertical"
-					 origin_x="${-(vertical_height/2+boom_slider_width/2)}" 
+					 origin_x="${-(vertical_height/2+boom_slider_width/2)}"
+ 					 origin_y="${vertical_axis_slider_offset}"
 					 effort="1000.0"
 					 lower ="0"
 					 upper="1" 

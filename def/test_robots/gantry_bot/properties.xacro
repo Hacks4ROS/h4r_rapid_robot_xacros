@@ -44,15 +44,16 @@
 <xacro:property name="boom_height"  		value="${vslot2060_height}" />
 <xacro:property name="boom_weight"  		value="${boom_length*vslot2060_weight_per_meter}" />
 
-<xacro:property name="boom_slider_length"  	value="0.35" />
-<xacro:property name="boom_slider_width"   	value="0.05" />
-<xacro:property name="boom_slider_height"  	value="0.35" />
+<xacro:property name="boom_slider_length"  	value="0.17" />
+<xacro:property name="boom_slider_width"   	value="0.01" />
+<xacro:property name="boom_slider_height"  	value="0.15" />
 <xacro:property name="boom_slider_weight"  	value="1.0" />
 	
 <xacro:property name="vertical_width"   	value="${vslot2020_height}" />
 <xacro:property name="vertical_height"  	value="${vslot2020_width}" />
 <xacro:property name="vertical_weight"  	value="${vertical_length*vslot2020_weight_per_meter}" />
-
+<xacro:property name="vertical_axis_slider_offset"  value="0.05" />
+	
 <xacro:property name="foot_length"  	value="0.1" />
 <xacro:property name="foot_width"   	value="0.05" />
 <xacro:property name="foot_height"  	value="0.05" />
