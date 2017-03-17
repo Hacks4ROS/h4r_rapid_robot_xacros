@@ -18,13 +18,21 @@
 <xacro:property name="vslot2060_width"   		value="0.02" />
 
 <xacro:property name="rail_length"  		value="$(arg rail_len)" />
+<xacro:property name="rail_length_offset_start"  		value="$(arg rail_length_offset_start)" />
+<xacro:property name="rail_length_offset_end"  			value="$(arg rail_length_offset_end)" />
+
 <xacro:property name="boom_length"  		value="$(arg boom_len)" />
-<xacro:property name="vertical_length"  	value="$(arg vertical_len)" />
+<xacro:property name="boom_length_offset_start"  		value="$(arg boom_length_offset_start)" />
+<xacro:property name="boom_length_offset_end"  			value="$(arg boom_length_offset_end)" />
+	
 <xacro:property name="boom_support_height"  value="$(arg boom_support_height)" />
-<xacro:property name="vertical_offset"  	value="$(arg vertical_offset)" />
+
+<xacro:property name="vertical_length"  	value="$(arg vertical_len)" />
+<xacro:property name="vertical_length_offset_start"  	value="$(arg vertical_length_offset_start)" />
+<xacro:property name="vertical_length_offset_end"  		value="$(arg vertical_length_offset_end)" />
+
 <xacro:property name="vertical_axis_slider_offset"  value="$(arg vertical_axis_slider_offset)" />
 	
-
 	
 <xacro:property name="rail_width"   		value="${vslot2040_width}" />
 <xacro:property name="rail_height"  		value="${vslot2040_height}" />

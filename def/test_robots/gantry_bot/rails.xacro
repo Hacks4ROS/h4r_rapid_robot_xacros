@@ -32,11 +32,11 @@
 <!-- Rail Axis -->	
 <xacro:rr_linear_axis parent="rail_left" 
 	                  child="rail_slider_left" 
-	   	              origin_x="${ -( (rail_length/2) - (rail_slider_length/2) )}"
+	   	              origin_x="${ -( (rail_length/2) - (rail_slider_length/2) ) + rail_length_offset_start}"
 					  origin_y="${ -( (rail_width/2)  + (rail_slider_width/2) )}" 
 	   				  effort="1000.0"
 				      lower ="0"
-				      upper="${rail_length - rail_slider_width}" 
+				      upper="${rail_length - rail_slider_width - rail_length_offset_start - rail_length_offset_end}" 
 					  velocity="1"
 					  axis="x"
 					  ros_control="${ros_control}"
