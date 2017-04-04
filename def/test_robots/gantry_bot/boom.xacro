@@ -34,7 +34,7 @@
 	   <xacro:rr_linear_axis parent="boom" 
 	                         child="boom_slider"
 	   						 origin_x="${-(boom_slider_width/2+boom_width/2)}" 
-							 origin_y="${(boom_length-boom_slider_length)/2-boom_length_offset_start}"	   
+							 origin_y="${(boom_length-boom_slider_length)/2+boom_length_offset_start}"	   
 	   						 effort="1000.0"
 							 lower ="0"
 							 upper="${boom_length-boom_slider_length-boom_length_offset_start-boom_length_offset_end}" 
