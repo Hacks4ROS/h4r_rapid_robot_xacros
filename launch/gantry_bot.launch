@@ -16,7 +16,7 @@
 	  <arg name="boom_support_height" default="0.5" /> 
 	  	
 	  <arg name="vertical_len" default="1.01" /> 
-	  <arg name="vertical_length_offset_start" default="0.01" /> 
+	  <arg name="vertical_length_offset_start" default="0.28" /> 
 	  <arg name="vertical_length_offset_end"   default="0.01" /> 
 	  		
 	  <arg name="vertical_axis_slider_offset" default="-0.05" /> 		
@@ -24,16 +24,18 @@
 	  	
 	<param name="robot_description"  command="$(find xacro)/xacro --inorder '$(find h4r_rapid_robot_xacros)/def/test_robots/gantry_bot.xacro'
 		rail_len:=$(arg rail_len)
+		boom_len:=$(arg boom_len)
+		vertical_len:=$(arg vertical_len)
+		
+	
 		rail_length_offset_start:=$(arg rail_length_offset_start)
 		rail_length_offset_end:=$(arg rail_length_offset_end)
 		
-		boom_len:=$(arg boom_len)
 	    boom_length_offset_start:=$(arg boom_length_offset_start)
 		boom_length_offset_end:=$(arg boom_length_offset_end)
 	
 		boom_support_height:=$(arg boom_support_height)
 	
-		vertical_len:=$(arg vertical_len)
 		vertical_length_offset_start:=$(arg vertical_length_offset_start)
 		vertical_length_offset_end:=$(arg vertical_length_offset_end)
 			
