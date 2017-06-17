@@ -36,19 +36,19 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/joints/ros_control.xacro" />
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/joints/fixed.xacro" />
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/joints/linear_axis.xacro" />
-		
+        
 <!-- Fixes -->
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/fixes/id_link.xacro"/> 
 
 <!-- Simple -->
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/simple/simple_box.xacro"/> 
-	
+    
 <!-- Video -->
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/video/screen.xacro"/> 
-		
-<!-- World 	-->
+        
+<!-- World     -->
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/world/static.xacro"/> 
-	
+    
 <!--
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/world/world_joint.xacro"/> 
 -->

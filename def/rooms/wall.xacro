@@ -4,23 +4,23 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
        <xacro:macro name="rr_wall" 
-       	params="id
-       			length
-       	        height:=2
-       	        has_window:=false
-       			window_height:=0.10
-       	        window_width:=0.10
-       	        window_left:=0.10
-       	        window_bottom:=0.5
-       			is_start=true
-       			parent_id:=''
-       			corner_angle:=90
-       	" >
-       		
-       	
+            params="id
+            length
+            height:=2
+            has_window:=false
+            window_height:=0.10
+            window_width:=0.10
+            window_left:=0.10
+            window_bottom:=0.5
+            is_start=true
+            parent_id:=''
+            corner_angle:=90
+           " >
+               
+           
        </xacro:macro>  
-     	
-       	
+         
+           
 </robot>

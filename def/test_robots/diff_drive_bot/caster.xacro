@@ -4,30 +4,30 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
 <link name="caster_link">
-	<visual>
-		<geometry>
-			<sphere radius="${chassis_floor_clearance}" />
-		</geometry>
-		<material name="rr_m_black"/>
-	</visual>
-	<collision>
-		<geometry>
-			<sphere radius="${chassis_floor_clearance}" />
-		</geometry>
-	</collision>
+    <visual>
+        <geometry>
+            <sphere radius="${chassis_floor_clearance}" />
+        </geometry>
+        <material name="rr_m_black"/>
+    </visual>
+    <collision>
+        <geometry>
+            <sphere radius="${chassis_floor_clearance}" />
+        </geometry>
+    </collision>
     <xacro:rr_inertia_sphere_solid radius="${chassis_floor_clearance}" mass="0.2">
-    	<origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:rr_inertia_sphere_solid>
 </link>
 <xacro:rr_m_gz_black name="caster"/>
 
 <joint name="base_caster_col_joint" type="fixed">
-	<parent link="base_link" />
-	<child link="caster_link" />
-	<origin xyz="${caster_x-wheel_base_center_x} 0 ${chassis_center_z-(chassis_height/2)}" rpy="0 0 0" />	
+    <parent link="base_link" />
+    <child link="caster_link" />
+    <origin xyz="${caster_x-wheel_base_center_x} 0 ${chassis_center_z-(chassis_height/2)}" rpy="0 0 0" />    
 </joint>    
     
 </robot>
-	
+    

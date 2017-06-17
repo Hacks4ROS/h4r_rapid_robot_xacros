@@ -4,7 +4,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
 <xacro:macro name="rr_world_joint" params="root_link:='base_link' default:=true" />
 <xacro:arg name="world_joint" default="${default}"/>
 <xacro:if value="$(arg root_link)">

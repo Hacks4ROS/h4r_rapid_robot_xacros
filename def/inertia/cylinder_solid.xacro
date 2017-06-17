@@ -6,13 +6,13 @@
        xmlns:xacro="http://ros.org/wiki/xacro"
 >
 <xacro:macro name="rr_inertia_cylinder_solid" params="r h mass *origin">
-	<inertial>
+    <inertial>
       <mass value="${mass}" />
       <xacro:insert_block name="origin" />
-		    <inertia  ixx="${1/4*mass*r*r+1/12*mass+h*h}"  
+            <inertia  ixx="${1/4*mass*r*r+1/12*mass+h*h}"  
                       iyy="${1/4*mass*r*r+1/12*mass+h*h}" 
                       izz="${1/2*mass*r*r}"
-		    		  ixy = "0" ixz = "0" iyz = "0"  />		    
-	</inertial>
+                      ixy = "0" ixz = "0" iyz = "0"  />            
+    </inertial>
 </xacro:macro>
 </robot>

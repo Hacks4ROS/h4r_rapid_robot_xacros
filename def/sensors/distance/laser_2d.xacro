@@ -6,29 +6,29 @@
        xmlns:xacro="http://ros.org/wiki/xacro"
 >
 <xacro:macro name="rr_laser_2d" params="
-	name
-	topic_name
-	update_rate
-	visualize
-	hor_samples
-	hor_resolution
-	hor_min_angle
-	hor_max_angle
-	range_min
-	range_max
-	range_resolution
-	noise_type
+    name
+    topic_name
+    update_rate
+    visualize
+    hor_samples
+    hor_resolution
+    hor_min_angle
+    hor_max_angle
+    range_min
+    range_max
+    range_resolution
+    noise_type
     noise_mean
     noise_stddev
-	parent
+    parent
     has_inertia 
     *origin 
     *geometry 
     *material 
     *inertial
-	*laser_pose
-	">
-	<xacro:rr_geo_ins/>
+    *laser_pose
+    ">
+    <xacro:rr_geo_ins/>
   <gazebo reference="${name}_link">
     <sensor type="gpu_ray" name="${name}_sensor">      
       <xacro:insert_block name="laser_pose" />
@@ -55,7 +55,7 @@
         </noise>
       </ray>
       <plugin name="${name}_gpu_laser_controller" filename="libgazebo_ros_gpu_laser.so">
-      	<topicName>${topic_name}</topicName>
+          <topicName>${topic_name}</topicName>
         <frameName>${name}_link</frameName>
       </plugin>
     </sensor>

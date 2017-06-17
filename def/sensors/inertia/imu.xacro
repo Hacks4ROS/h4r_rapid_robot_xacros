@@ -6,72 +6,72 @@
        xmlns:xacro="http://ros.org/wiki/xacro"
 >
 <xacro:macro name="rr_imu" params="name
-								topic_name
-								gaussian_noise
-								imu_x 
-								imu_y 
-								imu_z 
-								imu_roll 
-								imu_pitch 
-								imu_yaw 	     
-								parent
-								has_inertia 
-								*origin 
-								*geometry 
-								*material 
-								*inertial
-								">	
-	
+                                topic_name
+                                gaussian_noise
+                                imu_x 
+                                imu_y 
+                                imu_z 
+                                imu_roll 
+                                imu_pitch 
+                                imu_yaw          
+                                parent
+                                has_inertia 
+                                *origin 
+                                *geometry 
+                                *material 
+                                *inertial
+                                ">    
+    
 <xacro:rr_geo_ins/>
 <gazebo>
-	  <plugin name="${name}_controller" filename="libgazebo_ros_imu.so">
-			<bodyName>${name}_link</bodyName>
-			<topicName>${topic_name}</topicName>
-			<gaussianNoise>${gaussian_noise}</gaussianNoise>
-			<xyzOffsets>${imu_x} ${imu_y} ${imu_z}</xyzOffsets>
-			<rpyOffsets>${imu_roll} ${imu_pitch} ${imu_yaw}</rpyOffsets>
-	  </plugin>
+      <plugin name="${name}_controller" filename="libgazebo_ros_imu.so">
+            <bodyName>${name}_link</bodyName>
+            <topicName>${topic_name}</topicName>
+            <gaussianNoise>${gaussian_noise}</gaussianNoise>
+            <xyzOffsets>${imu_x} ${imu_y} ${imu_z}</xyzOffsets>
+            <rpyOffsets>${imu_roll} ${imu_pitch} ${imu_yaw}</rpyOffsets>
+      </plugin>
 </gazebo>
 </xacro:macro>
 
 <xacro:macro name="rr_imu_hector" params="name
-								topic_name
-								gaussian_noise
-								imu_x 
-								imu_y 
-								imu_z 
-								imu_roll 
-								imu_pitch 
-								imu_yaw 	     
-								parent
-								has_inertia 
-								*origin 
-								*geometry 
-								*material 
-								*inertial
-								">
+                                topic_name
+                                gaussian_noise
+                                imu_x 
+                                imu_y 
+                                imu_z 
+                                imu_roll 
+                                imu_pitch 
+                                imu_yaw          
+                                parent
+                                has_inertia 
+                                *origin 
+                                *geometry 
+                                *material 
+                                *inertial
+                                ">
 <xacro:rr_geo_ins/>
 <gazebo>
-		<plugin name="${name}_controller" filename="libhector_gazebo_ros_imu.so">
-			<bodyName>${name}_link</bodyName>
-			<updateRate>30</updateRate>
-			<topicName>${topic_name}</topicName>
-			<serviceName>${name}/calibbrate</serviceName>
-			<accelOffset>.0 .0 .0</accelOffset>
-			<accelDrift>.0 .0 .0</accelDrift>
-			<accelDriftFrequency>.0 .0 .0</accelDriftFrequency>
-			<accelGaussianNoise>.0 .0 .0</accelGaussianNoise>
-			<rateOffset>.0 .0 .0</rateOffset>
-			<rateDrift>.0 .0 .0</rateDrift>
-			<rateDriftFrequency>.0 .0 .0</rateDriftFrequency>
-			<rateGaussianNoise>.0 .0 .0</rateGaussianNoise>
-			<headingOffset>.0</headingOffset>
-			<headingDrift>.0</headingDrift>
-			<headingDriftFrequency>.0</headingDriftFrequency>
-			<headingGaussianNoise>.0</headingGaussianNoise>
-			<rpyOffsets>${imu_roll} ${imu_pitch} ${imu_yaw}</rpyOffsets>
-			<gaussianNoise>.0</gaussianNoise>
-		</plugin>
+        <plugin name="${name}_controller" filename="libhector_gazebo_ros_imu.so">
+            <bodyName>${name}_link</bodyName>
+            <updateRate>30</updateRate>
+            <topicName>${topic_name}</topicName>
+            <serviceName>${name}/calibbrate</serviceName>
+            <accelOffset>.0 .0 .0</accelOffset>
+            <accelDrift>.0 .0 .0</accelDrift>
+            <accelDriftFrequency>.0 .0 .0</accelDriftFrequency>
+            <accelGaussianNoise>.0 .0 .0</accelGaussianNoise>
+            <rateOffset>.0 .0 .0</rateOffset>
+            <rateDrift>.0 .0 .0</rateDrift>
+            <rateDriftFrequency>.0 .0 .0</rateDriftFrequency>
+            <rateGaussianNoise>.0 .0 .0</rateGaussianNoise>
+            <headingOffset>.0</headingOffset>
+            <headingDrift>.0</headingDrift>
+            <headingDriftFrequency>.0</headingDriftFrequency>
+            <headingGaussianNoise>.0</headingGaussianNoise>
+            <rpyOffsets>${imu_roll} ${imu_pitch} ${imu_yaw}</rpyOffsets>
+            <gaussianNoise>.0</gaussianNoise>
+        </plugin>
 </gazebo>
 </xacro:macro>
 

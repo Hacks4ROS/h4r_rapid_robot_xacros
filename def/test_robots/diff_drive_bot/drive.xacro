@@ -4,7 +4,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
 <xacro:rr_diff_drive
      parent="base_link"
      wheel_base_center_x="0"

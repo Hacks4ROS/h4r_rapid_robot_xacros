@@ -4,29 +4,29 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
 <xacro:rr_imu_hector
-		name="imu0"
-		topic_name="/imu"
-		gaussian_noise="0"
-		imu_x="0"
-		imu_y="0"
-		imu_z="0"
-		imu_roll="0"
-		imu_pitch="0"
-		imu_yaw="0"
-		parent="base_link"
-		has_inertia="false"
-		>
-		<origin xyz="0.41 0.0 0.2" rpy="0.0 0.0 0" />
-		<geometry>
-			<box size="0.02 0.02 0.02" />
-		</geometry>
-		<material name="Yellow">
-			<color rgba="1 1 0 1"/>		
-		</material>
-		 <inertial/>
-	</xacro:rr_imu_hector>
+        name="imu0"
+        topic_name="/imu"
+        gaussian_noise="0"
+        imu_x="0"
+        imu_y="0"
+        imu_z="0"
+        imu_roll="0"
+        imu_pitch="0"
+        imu_yaw="0"
+        parent="base_link"
+        has_inertia="false"
+        >
+        <origin xyz="0.41 0.0 0.2" rpy="0.0 0.0 0" />
+        <geometry>
+            <box size="0.02 0.02 0.02" />
+        </geometry>
+        <material name="Yellow">
+            <color rgba="1 1 0 1"/>        
+        </material>
+         <inertial/>
+    </xacro:rr_imu_hector>
 <xacro:rr_m_gz_black name="imu0"/>
-			      	     	
+                               
 </robot>

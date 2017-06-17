@@ -21,17 +21,17 @@
     noise_stddev="0.01"
     parent="base_link"
     has_inertia="false"
-	>
-	<origin xyz="0 0 ${chassis_center_z+0.15}" rpy="0 0 0" />
-	<geometry>
-		<box size="0.098 0.07 0.1" />
-	</geometry>
-	<material name="Black">
-		<color rgba="0 0 0 1"/>		
-	</material>
-	<inertial/>
-    <pose>0 0 0 0 0 0</pose>    	
+    >
+    <origin xyz="0 0 ${chassis_center_z+0.15}" rpy="0 0 0" />
+    <geometry>
+        <box size="0.098 0.07 0.1" />
+    </geometry>
+    <material name="Black">
+        <color rgba="0 0 0 1"/>        
+    </material>
+    <inertial/>
+    <pose>0 0 0 0 0 0</pose>        
 </xacro:rr_laser_2d>
 <xacro:rr_m_gz_black name="laser"/>
-	   	  
+             
 </robot>

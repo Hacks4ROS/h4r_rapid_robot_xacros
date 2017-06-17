@@ -6,75 +6,75 @@
 
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/geometry/geo_ins.xacro"/>
 <xacro:macro name="rr_cam" 
-			params="
-					name
-					always_on
-					frame_name
-					image_width
-					image_height
-					image_format
-					clip_near
-					clip_far 
-					noise_type
-					noise_mean
-					noise_std_dev
-					fov
-					hack_baseline
-					dist_K1
-					dist_K2
-					dist_K3
-					dist_T1
-					dist_T2
-					update_rate
-					parent
-					has_inertia 
-					*origin 
-					*geometry 
-					*material 
-					*inertial
-					">
-	
+            params="
+                    name
+                    always_on
+                    frame_name
+                    image_width
+                    image_height
+                    image_format
+                    clip_near
+                    clip_far 
+                    noise_type
+                    noise_mean
+                    noise_std_dev
+                    fov
+                    hack_baseline
+                    dist_K1
+                    dist_K2
+                    dist_K3
+                    dist_T1
+                    dist_T2
+                    update_rate
+                    parent
+                    has_inertia 
+                    *origin 
+                    *geometry 
+                    *material 
+                    *inertial
+                    ">
+    
 <xacro:rr_geo_ins/>
 <gazebo reference="${name}_link">
-	<material value="Gazebo/FlatBlack" />
-	<sensor type="camera" name="${name}">
-		<update_rate>${update_rate}</update_rate>
-		<camera name="${name}_head">
-			<horizontal_fov>${fov}</horizontal_fov>
-			<image>
-				<width>${image_width}</width>
-				<height>${image_height}</height>
-				<format>${image_format}</format>
-			</image>
-			<clip>
-				<near>${clip_near}</near>
-				<far>${clip_far}</far>
-			</clip>
-			<noise>
-				<type>${noise_type}</type>
-				<mean>${noise_mean}</mean>
-				<stddev>${noise_std_dev}</stddev>
-			</noise>
-		</camera>
-		<plugin name="camera_sensor" filename="libgazebo_ros_camera.so">
-			<alwaysOn>${always_on}</alwaysOn>
-			<updateRate>${update_rate}</updateRate>
-			<cameraName>${name}</cameraName>
-			<imageTopicName>image_raw</imageTopicName>
-			<cameraInfoTopicName>camera_info</cameraInfoTopicName>
-			<frameName>${frame_name}</frameName>
-			<hackBaseline>${hack_baseline}</hackBaseline>
-			<distortionK1>${dist_K1}</distortionK1>
-			<distortionK2>${dist_K2}</distortionK2>
-			<distortionK3>${dist_K3}</distortionK3>
-			<distortionT1>${dist_T1}</distortionT1>
-			<distortionT2>${dist_T2}</distortionT2>
-		</plugin>
-	</sensor>
+    <material value="Gazebo/FlatBlack" />
+    <sensor type="camera" name="${name}">
+        <update_rate>${update_rate}</update_rate>
+        <camera name="${name}_head">
+            <horizontal_fov>${fov}</horizontal_fov>
+            <image>
+                <width>${image_width}</width>
+                <height>${image_height}</height>
+                <format>${image_format}</format>
+            </image>
+            <clip>
+                <near>${clip_near}</near>
+                <far>${clip_far}</far>
+            </clip>
+            <noise>
+                <type>${noise_type}</type>
+                <mean>${noise_mean}</mean>
+                <stddev>${noise_std_dev}</stddev>
+            </noise>
+        </camera>
+        <plugin name="camera_sensor" filename="libgazebo_ros_camera.so">
+            <alwaysOn>${always_on}</alwaysOn>
+            <updateRate>${update_rate}</updateRate>
+            <cameraName>${name}</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>${frame_name}</frameName>
+            <hackBaseline>${hack_baseline}</hackBaseline>
+            <distortionK1>${dist_K1}</distortionK1>
+            <distortionK2>${dist_K2}</distortionK2>
+            <distortionK3>${dist_K3}</distortionK3>
+            <distortionT1>${dist_T1}</distortionT1>
+            <distortionT2>${dist_T2}</distortionT2>
+        </plugin>
+    </sensor>
 </gazebo>
 <joint name="${frame_name}_${name}_joint" type="fixed">
-	<parent link="${name}_link" />
-	<child link="${frame_name}" />
+    <parent link="${name}_link" />
+    <child link="${frame_name}" />
     <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />  
 </joint>
 <link name="${frame_name}" ></link>

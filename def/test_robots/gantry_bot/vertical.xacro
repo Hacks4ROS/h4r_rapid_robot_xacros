@@ -5,28 +5,28 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-       	
+           
 
-	   	
-<!-- Vertical -->				  	
+           
+<!-- Vertical -->                      
 <xacro:rr_portal_element name="vertical" x_size="${vertical_height}" y_size="${vertical_width}" z_size="${vertical_length}" weight="${vertical_weight}" />
-		  	
-   					  	
-<!-- Vertical Axis -->	 
+              
+                             
+<!-- Vertical Axis -->     
 <xacro:rr_linear_axis parent="boom_slider" 
                      child="vertical"
-					 origin_x="${-(vertical_height/2+boom_slider_width/2)}"
- 					 origin_y="${vertical_axis_slider_offset}"
-					 origin_z="${vertical_length/2-vertical_length_offset_start}"
-					 effort="1000.0"
-					 lower ="0"
-					 upper="${vertical_length-vertical_length_offset_start-vertical_length_offset_end}" 
-					 velocity="30"
-					 axis="z"
-					 ros_control="${ros_control}"
-	   				 ros_control_position="true"
-					 joint_name="vertical_joint" 
-					/> 
-	   	
+                     origin_x="${-(vertical_height/2+boom_slider_width/2)}"
+                     origin_y="${vertical_axis_slider_offset}"
+                     origin_z="${vertical_length/2-vertical_length_offset_start}"
+                     effort="1000.0"
+                     lower ="0"
+                     upper="${vertical_length-vertical_length_offset_start-vertical_length_offset_end}" 
+                     velocity="30"
+                     axis="z"
+                     ros_control="${ros_control}"
+                     ros_control_position="true"
+                     joint_name="vertical_joint" 
+                    /> 
+           
 </robot>
 

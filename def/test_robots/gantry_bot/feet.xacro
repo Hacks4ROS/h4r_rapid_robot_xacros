@@ -5,19 +5,19 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-       	
+           
        <xacro:rr_portal_element name="foot_front_left"  x_size="${foot_width}" y_size="${foot_height}" z_size="${foot_length}" weight="${foot_weight}" />
        <xacro:rr_portal_element name="foot_front_right"  x_size="${foot_width}" y_size="${foot_height}" z_size="${foot_length}" weight="${foot_weight}" />
        <xacro:rr_portal_element name="foot_back_left"  x_size="${foot_width}" y_size="${foot_height}" z_size="${foot_length}" weight="${foot_weight}" />
        <xacro:rr_portal_element name="foot_back_right"  x_size="${foot_width}" y_size="${foot_height}" z_size="${foot_length}" weight="${foot_weight}" />
-           		
+                   
        <xacro:property name="foot_y_pos" value="${rail_length/2 - foot_width/2}" />
        <xacro:property name="foot_x_pos_right" value="${boom_length - rail_width}" />
-       	
-       <xacro:rr_joint_fixed parent="rail_left" child="foot_front_left"  origin_x="${foot_y_pos}"  origin_y="0" 				origin_z="${-foot_length/2-rail_height/2}" />
-       <xacro:rr_joint_fixed parent="rail_left" child="foot_front_right" origin_x="${foot_y_pos}"  origin_y="${foot_x_pos_right}" 	origin_z="${-foot_length/2-rail_height/2}" />
-       <xacro:rr_joint_fixed parent="rail_left" child="foot_back_left"   origin_x="${-foot_y_pos}" origin_y="0" 				origin_z="${-foot_length/2-rail_height/2}" />
-       <xacro:rr_joint_fixed parent="rail_left" child="foot_back_right"  origin_x="${-foot_y_pos}" origin_y="${foot_x_pos_right}" 	origin_z="${-foot_length/2-rail_height/2}" />
-       			
-       	
+           
+       <xacro:rr_joint_fixed parent="rail_left" child="foot_front_left"  origin_x="${foot_y_pos}"  origin_y="0"                 origin_z="${-foot_length/2-rail_height/2}" />
+       <xacro:rr_joint_fixed parent="rail_left" child="foot_front_right" origin_x="${foot_y_pos}"  origin_y="${foot_x_pos_right}"     origin_z="${-foot_length/2-rail_height/2}" />
+       <xacro:rr_joint_fixed parent="rail_left" child="foot_back_left"   origin_x="${-foot_y_pos}" origin_y="0"                 origin_z="${-foot_length/2-rail_height/2}" />
+       <xacro:rr_joint_fixed parent="rail_left" child="foot_back_right"  origin_x="${-foot_y_pos}" origin_y="${foot_x_pos_right}"     origin_z="${-foot_length/2-rail_height/2}" />
+                   
+           
 </robot>

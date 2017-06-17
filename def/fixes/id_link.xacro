@@ -4,7 +4,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
  <xacro:macro name="rr_name_to_namelink" params="name">
 <link name="${name}" />
 <joint name="${name}_to_${name}_link_joint" type="fixed">
@@ -13,6 +13,6 @@
     <origin xyz="0 0 0" rpy="0 0 0" />
 </joint>
 </xacro:macro>
-	
+    
 
-</robot>									
+</robot>                                    

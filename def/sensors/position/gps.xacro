@@ -8,17 +8,17 @@
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/geometry/geo_ins.xacro"/>
 <xacro:macro name="rr_gps_receiver" 
 params= "name
-		 reference_latitude
-		 reference_longitude
-		 reference_heading
-		 reference_altitude
-		 parent
-	     has_inertia 
-	     *origin 
-	     *geometry 
-	     *material 
-	     *inertial
-		">		 
+         reference_latitude
+         reference_longitude
+         reference_heading
+         reference_altitude
+         parent
+         has_inertia 
+         *origin 
+         *geometry 
+         *material 
+         *inertial
+        ">         
 
 <xacro:rr_geo_ins/>
 <gazebo>

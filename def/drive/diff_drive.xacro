@@ -4,101 +4,101 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/constants.xacro"/>	
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/constants.xacro"/>    
 <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/drive/wheel_solid.xacro"/>
 
 <xacro:macro name="rr_diff_drive" 
-	params="parent
-	wheel_base_center_x
-	wheel_separation 
-	wheel_diameter 
-	wheel_torque
-	wheel_acceleration
-	wheel_joint_limit_vel
-	wheel_joint_limit_effort
-	wheel_friction1
-	wheel_friction2
-	wheel_contact_damping
-	wheel_contact_stiffness
-	wheel_mass
-	wheel_width
-	z_dist
-	cmd_topic
-	odom_topic
-	odom_frame
-	ros_plugin_always_on
-	ros_plugin_controller_name
-	ros_plugin_update_rate
-	ros_plugin_odom_source
-	ros_plugin_publish_wheel_joint_state
-	ros_plugin_publish_wheel_tf
-	ros_plugin_publish_tf
-	">
-	                 	
+    params="parent
+    wheel_base_center_x
+    wheel_separation 
+    wheel_diameter 
+    wheel_torque
+    wheel_acceleration
+    wheel_joint_limit_vel
+    wheel_joint_limit_effort
+    wheel_friction1
+    wheel_friction2
+    wheel_contact_damping
+    wheel_contact_stiffness
+    wheel_mass
+    wheel_width
+    z_dist
+    cmd_topic
+    odom_topic
+    odom_frame
+    ros_plugin_always_on
+    ros_plugin_controller_name
+    ros_plugin_update_rate
+    ros_plugin_odom_source
+    ros_plugin_publish_wheel_joint_state
+    ros_plugin_publish_wheel_tf
+    ros_plugin_publish_tf
+    ">
+                         
 <xacro:rr_wheel_solid
-	name="${ros_plugin_controller_name}_wheel_left"
-	parent="${parent}"
-	radius="${wheel_diameter/2}"
-	width="${wheel_width}"
-	mass="${wheel_mass}"
-	origin_x="${wheel_base_center_x}" 
-	origin_y="${(wheel_separation+wheel_width)/2}" 
-	origin_z="${z_dist}"
-	limit_vel="${wheel_joint_limit_vel}" 
-	limit_effort="${wheel_joint_limit_effort}"
-	contact_stiffness="${wheel_contact_stiffness}"
-	contact_damping="${wheel_contact_damping}"
-	friction1="${wheel_friction1}"
-	friction2="${wheel_friction2}" 
-/>	
-	                 	
+    name="${ros_plugin_controller_name}_wheel_left"
+    parent="${parent}"
+    radius="${wheel_diameter/2}"
+    width="${wheel_width}"
+    mass="${wheel_mass}"
+    origin_x="${wheel_base_center_x}" 
+    origin_y="${(wheel_separation+wheel_width)/2}" 
+    origin_z="${z_dist}"
+    limit_vel="${wheel_joint_limit_vel}" 
+    limit_effort="${wheel_joint_limit_effort}"
+    contact_stiffness="${wheel_contact_stiffness}"
+    contact_damping="${wheel_contact_damping}"
+    friction1="${wheel_friction1}"
+    friction2="${wheel_friction2}" 
+/>    
+                         
 <xacro:rr_wheel_solid
-	name="${ros_plugin_controller_name}_wheel_right"
-	parent="${parent}"
-	radius="${wheel_diameter/2}"
-	width="${wheel_width}"
-	mass="${wheel_mass}"
-	origin_x="${wheel_base_center_x}" 
-	origin_y="${-(wheel_separation+wheel_width)/2}" 
-	origin_z="${z_dist}"
-	limit_vel="${wheel_joint_limit_vel}" 
-	limit_effort="${wheel_joint_limit_effort}"
-	contact_stiffness="${wheel_contact_stiffness}"
-	contact_damping="${wheel_contact_damping}"
-	friction1="${wheel_friction1}"
-	friction2="${wheel_friction2}" 
-/>         	
-         	
-	                 	   	
-<gazebo>	
-	<plugin name="${ros_plugin_controller_name}"
-		filename="libgazebo_ros_diff_drive.so">
-		<robotBaseFrame>${parent}</robotBaseFrame>
-					
-		<wheelSeparation>${(wheel_separation+wheel_width)}</wheelSeparation>
-		<wheelDiameter>${wheel_diameter}</wheelDiameter>
-		<wheelTorque>${wheel_torque}</wheelTorque>
-		<wheelAcceleration>${wheel_acceleration}</wheelAcceleration>
-		
-		<Acceleration_v>1</Acceleration_v>
-		<Acceleration_w>1</Acceleration_w>
+    name="${ros_plugin_controller_name}_wheel_right"
+    parent="${parent}"
+    radius="${wheel_diameter/2}"
+    width="${wheel_width}"
+    mass="${wheel_mass}"
+    origin_x="${wheel_base_center_x}" 
+    origin_y="${-(wheel_separation+wheel_width)/2}" 
+    origin_z="${z_dist}"
+    limit_vel="${wheel_joint_limit_vel}" 
+    limit_effort="${wheel_joint_limit_effort}"
+    contact_stiffness="${wheel_contact_stiffness}"
+    contact_damping="${wheel_contact_damping}"
+    friction1="${wheel_friction1}"
+    friction2="${wheel_friction2}" 
+/>             
+             
+                                
+<gazebo>    
+    <plugin name="${ros_plugin_controller_name}"
+        filename="libgazebo_ros_diff_drive.so">
+        <robotBaseFrame>${parent}</robotBaseFrame>
+                    
+        <wheelSeparation>${(wheel_separation+wheel_width)}</wheelSeparation>
+        <wheelDiameter>${wheel_diameter}</wheelDiameter>
+        <wheelTorque>${wheel_torque}</wheelTorque>
+        <wheelAcceleration>${wheel_acceleration}</wheelAcceleration>
         
-		<commandTopic>${cmd_topic}</commandTopic>
-		<odometryTopic>${odom_topic}</odometryTopic> 
-		<odometryFrame>${odom_frame}</odometryFrame>
-		
-		<alwaysOn>${ros_plugin_always_on}</alwaysOn>
-		<updateRate>${ros_plugin_update_rate}</updateRate>
-		<odometrySource>${ros_plugin_odom_source}</odometrySource>
-		<legacyMode>false</legacyMode>
-			    
-		<leftJoint>${ros_plugin_controller_name}_wheel_left_joint</leftJoint>
-		<rightJoint>${ros_plugin_controller_name}_wheel_right_joint</rightJoint>
-		<rosDebugLevel>${debugLevel}</rosDebugLevel>
-		<publishWheelTF>${ros_plugin_publish_wheel_tf}</publishWheelTF>
-		<publishWheelJointState>${ros_plugin_publish_wheel_joint_state}</publishWheelJointState>
-		<publishTf>${ros_plugin_publish_tf}</publishTf>
-	</plugin>
+        <Acceleration_v>1</Acceleration_v>
+        <Acceleration_w>1</Acceleration_w>
+        
+        <commandTopic>${cmd_topic}</commandTopic>
+        <odometryTopic>${odom_topic}</odometryTopic> 
+        <odometryFrame>${odom_frame}</odometryFrame>
+        
+        <alwaysOn>${ros_plugin_always_on}</alwaysOn>
+        <updateRate>${ros_plugin_update_rate}</updateRate>
+        <odometrySource>${ros_plugin_odom_source}</odometrySource>
+        <legacyMode>false</legacyMode>
+                
+        <leftJoint>${ros_plugin_controller_name}_wheel_left_joint</leftJoint>
+        <rightJoint>${ros_plugin_controller_name}_wheel_right_joint</rightJoint>
+        <rosDebugLevel>${debugLevel}</rosDebugLevel>
+        <publishWheelTF>${ros_plugin_publish_wheel_tf}</publishWheelTF>
+        <publishWheelJointState>${ros_plugin_publish_wheel_joint_state}</publishWheelJointState>
+        <publishTf>${ros_plugin_publish_tf}</publishTf>
+    </plugin>
 </gazebo>
 
 </xacro:macro>
@@ -106,5 +106,5 @@
 </robot>
 
 
-		
-	
+        
+    

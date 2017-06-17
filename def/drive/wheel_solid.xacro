@@ -4,71 +4,71 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
-	<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/constants.xacro"/>
-	<xacro:macro name="rr_wheel_solid" 
-			         params="name
-						     parent
-			                 radius
-			                 width
-							 mass
-							 origin_x origin_y origin_z
-							 limit_vel limit_effort
-							 contact_stiffness
-							 contact_damping
-		                     friction1
-							 friction2
-							">
-		
-		<link name="${name}">
-		<inertial> 
-			<mass value="${mass}"/>	
-			<origin xyz="0 0 0" rpy="${rr_const_pi/2} 0 0" />			
-		    <inertia  ixx="${1/4*mass*radius*radius+1/12*mass+width*width}"  
+    
+    <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/constants.xacro"/>
+    <xacro:macro name="rr_wheel_solid" 
+                     params="name
+                             parent
+                             radius
+                             width
+                             mass
+                             origin_x origin_y origin_z
+                             limit_vel limit_effort
+                             contact_stiffness
+                             contact_damping
+                             friction1
+                             friction2
+                            ">
+        
+        <link name="${name}">
+        <inertial> 
+            <mass value="${mass}"/>    
+            <origin xyz="0 0 0" rpy="${rr_const_pi/2} 0 0" />            
+            <inertia  ixx="${1/4*mass*radius*radius+1/12*mass+width*width}"  
                       iyy="${1/4*mass*radius*radius+1/12*mass+width*width}" 
                       izz="${1/2*mass*radius*radius}"
-		    		  ixy = "0" ixz = "0" iyz = "0"  />	 
-		    </inertial>			
-		<visual>
-			<origin xyz="0 0 0" 
-			        rpy="${rr_const_pi/2} 0 0"/>
-			<geometry>
-				<cylinder radius="${radius}" length="${width}"/>
-			</geometry>
-			<material name="WheelBlack">
-				<color rgba="0.0 0.0 0.0 1.0"/>
-			</material>
-		</visual>
-		
-		<collision>
-			<origin xyz="0 0 0"  
-			        rpy="${rr_const_pi/2} 0 0"/>
-			<geometry>
-				<cylinder radius="${radius}" length="${width}"/>
-			</geometry>
-		</collision>					
-		</link>		 	
-					
-		
+                      ixy = "0" ixz = "0" iyz = "0"  />     
+            </inertial>            
+        <visual>
+            <origin xyz="0 0 0" 
+                    rpy="${rr_const_pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${radius}" length="${width}"/>
+            </geometry>
+            <material name="WheelBlack">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0"  
+                    rpy="${rr_const_pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${radius}" length="${width}"/>
+            </geometry>
+        </collision>                    
+        </link>             
+                    
+        
     <joint name="${name}_joint" type="continuous">
-		<axis xyz="0 1 0" />
-		<origin xyz="${origin_x} ${origin_y} ${origin_z}" py="0 0 0"/>
-		
-    	<limit effort="${limit_effort}" velocity="${limit_vel}" />
+        <axis xyz="0 1 0" />
+        <origin xyz="${origin_x} ${origin_y} ${origin_z}" py="0 0 0"/>
+        
+        <limit effort="${limit_effort}" velocity="${limit_vel}" />
 
-   		<parent link="${parent}"/>
-		<child link="${name}"/>
-	</joint>
-	
+           <parent link="${parent}"/>
+        <child link="${name}"/>
+    </joint>
+    
 
-	<gazebo reference="${name}">
-	    <material value="Gazebo/FlatBlack"/>
-	    <kp>${contact_stiffness}</kp>
-	    <kd>${contact_damping}</kd>
-	    <mu1>${friction1}</mu1>
-	    <mu2>${friction2}</mu2>
-	    <fdir1>1 0 0</fdir1>
-	    <maxVel>${limit_vel}</maxVel>
-	</gazebo>		 
-	</xacro:macro>
+    <gazebo reference="${name}">
+        <material value="Gazebo/FlatBlack"/>
+        <kp>${contact_stiffness}</kp>
+        <kd>${contact_damping}</kd>
+        <mu1>${friction1}</mu1>
+        <mu2>${friction2}</mu2>
+        <fdir1>1 0 0</fdir1>
+        <maxVel>${limit_vel}</maxVel>
+    </gazebo>         
+    </xacro:macro>
 </robot>

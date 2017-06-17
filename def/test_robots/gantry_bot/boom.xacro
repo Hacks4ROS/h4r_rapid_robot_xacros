@@ -4,46 +4,46 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-
-       	
-       	
-<!-- Boom Supports -->
-<xacro:rr_portal_element name="boom_support_left"  x_size="${boom_support_length}" y_size="${boom_support_width}" z_size="${boom_support_height}" weight="${boom_support_weight}" />
-<xacro:rr_portal_element name="boom_support_right" x_size="${boom_support_length}" y_size="${boom_support_width}" z_size="${boom_support_height}" weight="${boom_support_weight}" />
-		  
-<xacro:property name="boom_support_y_pos"   	value="${rail_slider_width/2+boom_support_width/2}" />
-<xacro:property name="boom_support_z_pos"   	value="${boom_support_height/2+rail_height/2}" />	
-
-<xacro:rr_joint_fixed parent="rail_slider_left" child="boom_support_left" 
-					  origin_y="${boom_support_y_pos}"
-   					  origin_z="${boom_support_z_pos}" />
-
-<xacro:rr_joint_fixed parent="rail_slider_right" child="boom_support_right" 
-					  origin_y="${-boom_support_y_pos}"
-   					  origin_z="${boom_support_z_pos}" />     
-	   	
-<!-- Boom -->				  	
-<xacro:rr_portal_element name="boom" x_size="${boom_width}" y_size="${boom_length}" z_size="${boom_height}" weight="${boom_weight}" />
-<xacro:rr_joint_fixed parent="boom_support_left" child="boom" 
-					  origin_x="${-(boom_support_length/2-boom_width/2)}"
-					  origin_y="${boom_length/2-boom_support_width/2}"
-   					  origin_z="${boom_support_height/2+boom_height/2}"/>  			  	
-   					  	
-<!-- Boom Axis -->	 
-       <xacro:rr_portal_element name="boom_slider"  x_size="${boom_slider_width}" y_size="${boom_slider_length}" z_size="${boom_slider_height}" weight="${boom_slider_weight}" />
-	   <xacro:rr_linear_axis parent="boom" 
-	                         child="boom_slider"
-	   						 origin_x="${-(boom_slider_width/2+boom_width/2)}" 
-							 origin_y="${(boom_length-boom_slider_length)/2+boom_length_offset_start}"	   
-	   						 effort="1000.0"
-							 lower ="0"
-							 upper="${boom_length-boom_slider_length-boom_length_offset_start-boom_length_offset_end}" 
-							 velocity="30"
-							 axis="y"
-	   						 ros_control="${ros_control}"
-	   						 ros_control_position="true"
-	   						 joint_name="boom_joint"
-   						/>	 
-	   	   
-       	
-</robot>
+    
+    
+    
+    <!-- Boom Supports -->
+    <xacro:rr_portal_element name="boom_support_left"  x_size="${boom_support_length}" y_size="${boom_support_width}" z_size="${boom_support_height}" weight="${boom_support_weight}" />
+    <xacro:rr_portal_element name="boom_support_right" x_size="${boom_support_length}" y_size="${boom_support_width}" z_size="${boom_support_height}" weight="${boom_support_weight}" />
+    
+    <xacro:property name="boom_support_y_pos"       value="${rail_slider_width/2+boom_support_width/2}" />
+    <xacro:property name="boom_support_z_pos"       value="${boom_support_height/2+rail_height/2}" />
+    
+    <xacro:rr_joint_fixed parent="rail_slider_left" child="boom_support_left" 
+                      origin_y="${boom_support_y_pos}"
+                         origin_z="${boom_support_z_pos}" />
+    
+    <xacro:rr_joint_fixed parent="rail_slider_right" child="boom_support_right" 
+                      origin_y="${-boom_support_y_pos}"
+                         origin_z="${boom_support_z_pos}" />
+    
+    <!-- Boom -->
+    <xacro:rr_portal_element name="boom" x_size="${boom_width}" y_size="${boom_length}" z_size="${boom_height}" weight="${boom_weight}" />
+    <xacro:rr_joint_fixed parent="boom_support_left" child="boom" 
+                      origin_x="${-(boom_support_length/2-boom_width/2)}"
+                      origin_y="${boom_length/2-boom_support_width/2}"
+                         origin_z="${boom_support_height/2+boom_height/2}"/>
+    
+    <!-- Boom Axis -->
+    <xacro:rr_portal_element name="boom_slider"  x_size="${boom_slider_width}" y_size="${boom_slider_length}" z_size="${boom_slider_height}" weight="${boom_slider_weight}" />
+    <xacro:rr_linear_axis parent="boom" 
+                             child="boom_slider"
+                                origin_x="${-(boom_slider_width/2+boom_width/2)}" 
+                             origin_y="${(boom_length-boom_slider_length)/2+boom_length_offset_start}"       
+                                effort="1000.0"
+                             lower ="0"
+                             upper="${boom_length-boom_slider_length-boom_length_offset_start-boom_length_offset_end}" 
+                             velocity="30"
+                             axis="y"
+                                ros_control="${ros_control}"
+                                ros_control_position="true"
+                                joint_name="boom_joint"
+                           />
+    
+    
+</robot> 

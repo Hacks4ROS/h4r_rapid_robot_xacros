@@ -4,35 +4,35 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
 <link name="base_link">
-	<xacro:rr_inertia_box_solid x="${chassis_len}" 
-		                        y="${chassis_width}" 
-		                        z="${chassis_height}" 
-		                        mass="1">
-      	 <origin xyz=" ${-wheel_base_center_x} 
-      	                0 
-      	 				${chassis_center_z}" 
-      	         rpy="0 0 0" />
+    <xacro:rr_inertia_box_solid x="${chassis_len}" 
+                                y="${chassis_width}" 
+                                z="${chassis_height}" 
+                                mass="1">
+           <origin xyz=" ${-wheel_base_center_x} 
+                          0 
+                           ${chassis_center_z}" 
+                   rpy="0 0 0" />
     </xacro:rr_inertia_box_solid>
-	<visual>
-		<origin xyz="${-wheel_base_center_x} 
-		             0 
-			         ${chassis_center_z}" 
-		        rpy="0 0 0" />
-		<geometry>
-			<box size="${chassis_len} ${chassis_width} ${chassis_height}" />
-		</geometry>
-		<material name="rr_m_green_tp"/>
-	</visual>
-	<collision>
-		<origin xyz="${-wheel_base_center_x} 0 ${chassis_center_z}" rpy="0 0 0" />
-		<geometry>
-			<box size="${chassis_len} ${chassis_width} ${chassis_height}" />
-		</geometry>		  	
-	</collision>
+    <visual>
+        <origin xyz="${-wheel_base_center_x} 
+                     0 
+                     ${chassis_center_z}" 
+                rpy="0 0 0" />
+        <geometry>
+            <box size="${chassis_len} ${chassis_width} ${chassis_height}" />
+        </geometry>
+        <material name="rr_m_green_tp"/>
+    </visual>
+    <collision>
+        <origin xyz="${-wheel_base_center_x} 0 ${chassis_center_z}" rpy="0 0 0" />
+        <geometry>
+            <box size="${chassis_len} ${chassis_width} ${chassis_height}" />
+        </geometry>              
+    </collision>
 </link>
 <xacro:rr_m_gz_green name="base"/>
-       	
+           
 </robot>
-	
+    

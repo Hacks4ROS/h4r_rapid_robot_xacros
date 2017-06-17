@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Inserting geometrys with and without inertia for various other macros -->
 <!-- required parameters:
-	parent
+    parent
     has_inertia 
     *origin 
     *geometry 
@@ -13,23 +13,23 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 <xacro:macro name="rr_geo_ins">
- <link name="${name}_link">	
-	<visual> 	  	
-	  <xacro:insert_block name="geometry" />
-	  <xacro:insert_block name="material" />      
-	</visual>
-	<collision name="${name}_link_collision">
-	  	<xacro:insert_block name="geometry" />
-	</collision>
-	
-	<xacro:if value="${has_inertia}">
-	<xacro:insert_block name="inertial" />
-	</xacro:if>
-</link>	
+ <link name="${name}_link">    
+    <visual>           
+      <xacro:insert_block name="geometry" />
+      <xacro:insert_block name="material" />      
+    </visual>
+    <collision name="${name}_link_collision">
+          <xacro:insert_block name="geometry" />
+    </collision>
+    
+    <xacro:if value="${has_inertia}">
+    <xacro:insert_block name="inertial" />
+    </xacro:if>
+</link>    
 <joint name="${name}_${parent}_joint" type="fixed">
-	<parent link="${parent}" />
-	<child link="${name}_link" />
-	<xacro:insert_block name="origin" />
+    <parent link="${parent}" />
+    <child link="${name}_link" />
+    <xacro:insert_block name="origin" />
 </joint>
 </xacro:macro>
 </robot>

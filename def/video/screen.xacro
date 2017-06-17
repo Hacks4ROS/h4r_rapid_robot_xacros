@@ -4,45 +4,45 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
 <xacro:macro
-	name="rr_video_screen"
-	params="name
-			height
-			width
-			depth
-			border:=0
-			weight
-			material:='Gazebo/Black'
-			robot_namespace:='/'	
-			topic_name:='image_raw'
-			pix_width:=800
-			pix_height:=600
-		   "
- 	>
+    name="rr_video_screen"
+    params="name
+            height
+            width
+            depth
+            border:=0
+            weight
+            material:='Gazebo/Black'
+            robot_namespace:='/'    
+            topic_name:='image_raw'
+            pix_width:=800
+            pix_height:=600
+           "
+     >
 
-  	<xacro:rr_simple_box name="${name}"  
+      <xacro:rr_simple_box name="${name}"  
                      x_size="${depth}" 
                      y_size="${width}" 
-	                 z_size="${height}"  
+                     z_size="${height}"  
                      weight="${weight-0.01}"
-					 gazebo_material="${material}" />
+                     gazebo_material="${material}" />
    
-					 	
+                         
     <xacro:rr_joint_fixed parent="${name}" child="${name}_display" origin_R="1.57" origin_Y="1.57" origin_x="${depth/2+0.01/2}" />
-					 		
+                             
 
-					 	 			
- 	<xacro:rr_simple_box name="${name}_display"  
+                                      
+     <xacro:rr_simple_box name="${name}_display"  
                      x_size="${width-border*2}" 
                      y_size="${height-border*2}" 
-	                 z_size="0.01"   
+                     z_size="0.01"   
                      weight="0.01"
-					 gazebo_material="Gazebo/Black" />
- 		
-	
- 		
-<gazebo reference="${name}_display">  		
+                     gazebo_material="Gazebo/Black" />
+         
+    
+         
+<gazebo reference="${name}_display">          
   <visual>
     <plugin name="display_video_controller" filename="libgazebo_ros_video.so">
       <topicName>${topic_name}</topicName>
@@ -51,11 +51,11 @@
     </plugin>
   </visual>
 </gazebo>
- 		
- 		
-	
- 	
-</xacro:macro>      	
+         
+         
+    
+     
+</xacro:macro>          
 
 
 </robot>

@@ -4,45 +4,45 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-
-<xacro:property name="rail_end_length"  	value="${boom_length}" />
-<xacro:property name="rail_distance"  	    value="${boom_length-rail_width}" />     
-<xacro:property name="rail_end_x_pos" 		value="${rail_length/2 + rail_end_width/2}" /> 
-<xacro:property name="rail_end_y_pos" 		value="${rail_end_length/2 - rail_width/2}" /> 
-		
-<!-- Rails -->  	
-<xacro:rr_portal_element name="rail_left"   x_size="${rail_length}" y_size="${rail_width}" z_size="${rail_height}" weight="${rail_weight}" />
-<xacro:rr_portal_element name="rail_right"  x_size="${rail_length}" y_size="${rail_width}" z_size="${rail_height}" weight="${rail_weight}" />
-
-<xacro:rr_joint_fixed parent="rail_left" child="rail_right" origin_y="${rail_distance}" />
-
-<!-- Rail Ends-->
-<xacro:rr_portal_element name="rail_end_front" x_size="${rail_end_width}" y_size="${rail_end_length}" z_size="${rail_end_height}" weight="${rail_end_weight}" />
-<xacro:rr_portal_element name="rail_end_back"  x_size="${rail_end_width}" y_size="${rail_end_length}" z_size="${rail_end_height}" weight="${rail_end_weight}" />
-	
-<xacro:rr_joint_fixed parent="rail_left" child="rail_end_front" origin_x="${ rail_end_x_pos }"  origin_y="${ rail_end_y_pos }"  />
-<xacro:rr_joint_fixed parent="rail_left" child="rail_end_back"  origin_x="${-rail_end_x_pos }"  origin_y="${ rail_end_y_pos }"  />
-	
-<!-- Rail Sliders -->
-<xacro:rr_portal_element name="rail_slider_left"  x_size="${rail_slider_length}" y_size="${rail_slider_width}" z_size="${rail_slider_height}" weight="${rail_slider_weight}" />
-<xacro:rr_portal_element name="rail_slider_right" x_size="${rail_slider_length}" y_size="${rail_slider_width}" z_size="${rail_slider_height}" weight="${rail_slider_weight}" />
-		
-<xacro:rr_joint_fixed parent="rail_slider_left" child="rail_slider_right" origin_y="${rail_distance + rail_slider_width + rail_width}" />
-		
-<!-- Rail Axis -->	
-<xacro:rr_linear_axis parent="rail_left" 
-	                  child="rail_slider_left" 
-	   	              origin_x="${ -( (rail_length/2) - (rail_slider_length/2) ) + rail_length_offset_start}"
-					  origin_y="${ -( (rail_width/2)  + (rail_slider_width/2) )}" 
-	   				  effort="1000.0"
-				      lower ="0"
-				      upper="${rail_length - rail_slider_width - rail_length_offset_start - rail_length_offset_end}" 
-					  velocity="1"
-					  axis="x"
-					  ros_control="${ros_control}"
-	   				  ros_control_position="true"
-					  joint_name="rail_joint"
-						/>	
-	
+    
+    <xacro:property name="rail_end_length"      value="${boom_length}" />
+    <xacro:property name="rail_distance"          value="${boom_length-rail_width}" />
+    <xacro:property name="rail_end_x_pos"         value="${rail_length/2 + rail_end_width/2}" />
+    <xacro:property name="rail_end_y_pos"         value="${rail_end_length/2 - rail_width/2}" />
+    
+    <!-- Rails -->
+    <xacro:rr_portal_element name="rail_left"   x_size="${rail_length}" y_size="${rail_width}" z_size="${rail_height}" weight="${rail_weight}" />
+    <xacro:rr_portal_element name="rail_right"  x_size="${rail_length}" y_size="${rail_width}" z_size="${rail_height}" weight="${rail_weight}" />
+    
+    <xacro:rr_joint_fixed parent="rail_left" child="rail_right" origin_y="${rail_distance}" />
+    
+    <!-- Rail Ends-->
+    <xacro:rr_portal_element name="rail_end_front" x_size="${rail_end_width}" y_size="${rail_end_length}" z_size="${rail_end_height}" weight="${rail_end_weight}" />
+    <xacro:rr_portal_element name="rail_end_back"  x_size="${rail_end_width}" y_size="${rail_end_length}" z_size="${rail_end_height}" weight="${rail_end_weight}" />
+    
+    <xacro:rr_joint_fixed parent="rail_left" child="rail_end_front" origin_x="${ rail_end_x_pos }"  origin_y="${ rail_end_y_pos }"  />
+    <xacro:rr_joint_fixed parent="rail_left" child="rail_end_back"  origin_x="${-rail_end_x_pos }"  origin_y="${ rail_end_y_pos }"  />
+    
+    <!-- Rail Sliders -->
+    <xacro:rr_portal_element name="rail_slider_left"  x_size="${rail_slider_length}" y_size="${rail_slider_width}" z_size="${rail_slider_height}" weight="${rail_slider_weight}" />
+    <xacro:rr_portal_element name="rail_slider_right" x_size="${rail_slider_length}" y_size="${rail_slider_width}" z_size="${rail_slider_height}" weight="${rail_slider_weight}" />
+    
+    <xacro:rr_joint_fixed parent="rail_slider_left" child="rail_slider_right" origin_y="${rail_distance + rail_slider_width + rail_width}" />
+    
+    <!-- Rail Axis -->
+    <xacro:rr_linear_axis parent="rail_left" 
+                      child="rail_slider_left" 
+                      origin_x="${ -( (rail_length/2) - (rail_slider_length/2) ) + rail_length_offset_start}"
+                      origin_y="${ -( (rail_width/2)  + (rail_slider_width/2) )}" 
+                      effort="1000.0"
+                      lower ="0"
+                      upper="${rail_length - rail_slider_width - rail_length_offset_start - rail_length_offset_end}" 
+                      velocity="1"
+                      axis="x"
+                      ros_control="${ros_control}"
+                      ros_control_position="true"
+                      joint_name="rail_joint"
+                        />
+    
 </robot>
 

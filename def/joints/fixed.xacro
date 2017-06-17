@@ -6,19 +6,19 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
 <xacro:macro name="rr_joint_fixed" params="   parent 
-											  child 
-											  origin_x:=0
-											  origin_y:=0
-											  origin_z:=0
-											  origin_R:=0
-											  origin_P:=0
-										      origin_Y:=0
-											  ">
-	
-   	  <joint name="joint_fixed_${parent}_${child}" type="fixed">
-			<parent link="${parent}" />
-			<child  link="${child}" />
-			<origin xyz="${origin_x} ${origin_y} ${origin_z}" rpy="${origin_R} ${origin_P} ${origin_Y}" />		
+                                              child 
+                                              origin_x:=0
+                                              origin_y:=0
+                                              origin_z:=0
+                                              origin_R:=0
+                                              origin_P:=0
+                                              origin_Y:=0
+                                              ">
+    
+         <joint name="joint_fixed_${parent}_${child}" type="fixed">
+            <parent link="${parent}" />
+            <child  link="${child}" />
+            <origin xyz="${origin_x} ${origin_y} ${origin_z}" rpy="${origin_R} ${origin_P} ${origin_Y}" />        
       </joint>  
 </xacro:macro>
 

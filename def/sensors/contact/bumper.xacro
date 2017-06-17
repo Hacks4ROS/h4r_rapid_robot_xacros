@@ -2,31 +2,31 @@
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       xmlns:xacro="http://ros.org/wiki/xacro">	       	
+       xmlns:xacro="http://ros.org/wiki/xacro">               
 <xacro:macro name="rr_bumper" 
-	params="name 
-			parent
-			always_on 
-			update_rate 
-			topic 
-			has_inertia 
-			*origin 
-			*geometry 
-			*material
-			*inertial">	
-	<xacro:rr_geo_ins/>
-	<gazebo reference="${name}_link">
-	  <sensor name="${name}_sensor" type="contact">
-	    <always_on>${always_on}</always_on>
-	    <update_rate>${update_rate}</update_rate>
-	    <contact>
-	      <collision>${name}_link_collision</collision>
-	    </contact>
-	    <plugin name="${name}_plugin" filename="libgazebo_ros_bumper.so">
-	      <bumperTopicName>${topic}</bumperTopicName>
-	      <frameName>${name}</frameName>
-	    </plugin>
-	  </sensor>
-	</gazebo>
+    params="name 
+            parent
+            always_on 
+            update_rate 
+            topic 
+            has_inertia 
+            *origin 
+            *geometry 
+            *material
+            *inertial">    
+    <xacro:rr_geo_ins/>
+    <gazebo reference="${name}_link">
+      <sensor name="${name}_sensor" type="contact">
+        <always_on>${always_on}</always_on>
+        <update_rate>${update_rate}</update_rate>
+        <contact>
+          <collision>${name}_link_collision</collision>
+        </contact>
+        <plugin name="${name}_plugin" filename="libgazebo_ros_bumper.so">
+          <bumperTopicName>${topic}</bumperTopicName>
+          <frameName>${name}</frameName>
+        </plugin>
+      </sensor>
+    </gazebo>
 </xacro:macro>  
 </robot>
