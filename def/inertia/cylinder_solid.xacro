@@ -9,10 +9,10 @@
     <inertial>
       <mass value="${mass}" />
       <xacro:insert_block name="origin" />
-            <inertia  ixx="${1/4*mass*r*r+1/12*mass+h*h}"  
-                      iyy="${1/4*mass*r*r+1/12*mass+h*h}" 
-                      izz="${1/2*mass*r*r}"
-                      ixy = "0" ixz = "0" iyz = "0"  />            
+      <inertia  ixx="${(mass/12)*((3*r*r)+(h*h))}"  
+                iyy="${(mass/12)*((3*r*r)+(h*h))}" 
+                izz="${(mass*r*r)/2}"
+                ixy = "0" ixz = "0" iyz = "0"  />            
     </inertial>
 </xacro:macro>
 </robot>
